@@ -1,0 +1,18 @@
+.linkButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0762ed;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  height: 42px;
+  width: 100%;
+  border-radius: 4px;
+  text-align: center;
+  padding: 4px;
+}
+
+.linkButton:hover {
+  background: #192b66;
+}
