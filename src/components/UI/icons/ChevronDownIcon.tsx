@@ -1,0 +1,27 @@
+import type { FunctionComponent } from 'react';
+import type { SvgIconProps } from '@mui/material';
+import { SvgIcon } from '@mui/material';
+
+export const ChevronDownIcon: FunctionComponent<SvgIconProps> = (props) => {
+  const { htmlColor = '#373737' } = props;
+
+  return (
+    <SvgIcon {...props}>
+      <path
+        d="M7 10L12 14L17 10"
+        fill="none"
+        stroke={htmlColor}
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </SvgIcon>
+  );
+};
+
+ChevronDownIcon.defaultProps = {
+  viewBox: '0 0 24 24',
+  width: '24',
+  height: '24',
+  fill: 'none'
+};

@@ -1,0 +1,33 @@
+import type { FunctionComponent } from 'react';
+import type { SvgIconProps } from '@mui/material';
+import { SvgIcon } from '@mui/material';
+
+export const RightDownIcon: FunctionComponent<SvgIconProps> = (props) => {
+  const { htmlColor = '#373737' } = props;
+
+  return (
+    <SvgIcon {...props}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M7 15.5179V8.48207C7 6.93849 8.67443 5.97675 10.0077 6.75451L16.0385 10.2724C17.3615 11.0442 17.3615 12.9558 16.0385 13.7276L10.0077 17.2455C8.67443 18.0232 7 17.0615 7 15.5179Z"
+          stroke={htmlColor}
+          strokeWidth="2"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </SvgIcon>
+  );
+};
+
+RightDownIcon.defaultProps = {
+  viewBox: '0 0 24 25',
+  width: '24',
+  height: '25',
+  fill: 'none'
+};

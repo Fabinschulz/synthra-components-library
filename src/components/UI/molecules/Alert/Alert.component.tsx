@@ -13,7 +13,7 @@ export const Alert: FunctionComponent<IAlertProps> = ({ description, title, type
       data-testid={`${type}Alert`}
       severity={type}
     >
-      <AlertTitle>{title}</AlertTitle>
+      {title && <AlertTitle>{title}</AlertTitle>}
       {description}
     </MuiAlert>
   );

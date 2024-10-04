@@ -2,18 +2,17 @@
 import { activeTheme, getObjectPropertyValue } from '@/utils';
 import { Box, SelectChangeEvent, InputAdornment, IconButton } from '@mui/material';
 import { FunctionComponent } from 'react';
-import { MdOutlineCancel } from 'react-icons/md';
-import { CiSearch } from 'react-icons/ci';
-import { Caption2, SelectField, SelectProps } from '../UI';
+import { SelectField, SelectFieldProps } from '../UI';
 import { useFormContext } from '@/contexts/formContext';
 import React from 'react';
+import { Typography, CancelIcon, SearchIcon } from '../UI';
 
 export interface SelectOption {
   label: string;
   value: string | number | undefined | boolean | null;
 }
 
-export type SelectFormFieldProps = SelectProps & {
+export type SelectFormFieldProps = SelectFieldProps & {
   name: string;
   /**
    * Determina os items do select
@@ -55,7 +54,7 @@ export const SelectFormField: FunctionComponent<SelectFormFieldProps> = ({
     : ['Nenhuma opção encontrada'];
 
   let value = undefined;
-  var { validationErrors, setValue, watch, readOnly } = useFormContext();
+  let { validationErrors, setValue, watch, readOnly } = useFormContext();
 
   const errorsMessage = validationErrors && getObjectPropertyValue(name, validationErrors)?.message;
 
@@ -85,12 +84,10 @@ export const SelectFormField: FunctionComponent<SelectFormFieldProps> = ({
         }
       });
       setValue(name, selectedValues, { shouldDirty: true });
-      setValue(`${name}Display`, selectedLabels, { shouldDirty: true });
     } else if (options?.length) {
       const value = event.target?.value as string;
       const index = options.findIndex((i) => i?.label === value);
       setValue(name, options[index]?.value, { shouldDirty: true });
-      setValue(`${name}Display`, options[index]?.label, { shouldDirty: true });
     }
   };
 
@@ -109,7 +106,7 @@ export const SelectFormField: FunctionComponent<SelectFormFieldProps> = ({
             {props.showEndAdornment && (
               <InputAdornment position="end" sx={{ marginRight: 1.5 }}>
                 <IconButton type="submit">
-                  <CiSearch style={{ width: 25, height: 25 }} color="#666666" />
+                  <SearchIcon style={{ width: 25, height: 25 }} htmlColor="#666666" />
                 </IconButton>
               </InputAdornment>
             )}
@@ -118,7 +115,7 @@ export const SelectFormField: FunctionComponent<SelectFormFieldProps> = ({
                 {!!value && !readOnly && (
                   <InputAdornment position="end" sx={{ marginRight: 1.5 }}>
                     <IconButton onClick={() => setValue(name, null)}>
-                      <MdOutlineCancel style={{ width: 15, height: 15 }} color="#666666" />
+                      <CancelIcon style={{ width: 15, height: 15 }} htmlColor="#666666" />
                     </IconButton>
                   </InputAdornment>
                 )}
@@ -135,9 +132,9 @@ export const SelectFormField: FunctionComponent<SelectFormFieldProps> = ({
         {...props}
       />
       {!!errorsMessage && (
-        <Caption2 color={theme.palette.error.dark} variant="caption">
+        <Typography mt={0.5} variant="body1" color={theme.palette.error.dark}>
           <>{errorsMessage}</>
-        </Caption2>
+        </Typography>
       )}
     </Box>
   );

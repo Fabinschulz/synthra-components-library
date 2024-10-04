@@ -3,7 +3,7 @@ import { CheckboxProps } from '@mui/material';
 import { FunctionComponent } from 'react';
 import { activeTheme, getObjectPropertyValue } from '@/utils';
 import { useFormContext } from '@/contexts/formContext';
-import { Caption2, CheckboxField } from '../UI';
+import { Checkbox, Typography } from '../UI';
 import React from 'react';
 
 export interface CheckboxFormFieldProps extends CheckboxProps {
@@ -18,7 +18,7 @@ export const CheckboxFormField: FunctionComponent<CheckboxFormFieldProps> = ({
 }) => {
   const name = props.name;
   let value = undefined;
-  var { validationErrors, watch, setValue } = useFormContext();
+  let { validationErrors, watch, setValue } = useFormContext();
 
   if (watch) {
     value = watch(name);
@@ -33,7 +33,7 @@ export const CheckboxFormField: FunctionComponent<CheckboxFormFieldProps> = ({
 
   return (
     <>
-      <CheckboxField
+      <Checkbox
         label={label}
         onChange={onChange}
         checked={value === true}
@@ -43,9 +43,9 @@ export const CheckboxFormField: FunctionComponent<CheckboxFormFieldProps> = ({
         {...props}
       />
       {!!errorsMessage && (
-        <Caption2 color={theme.palette.error.dark} variant="caption">
+        <Typography mt={0.5} variant="body1" color={theme.palette.error.dark}>
           <>{errorsMessage}</>
-        </Caption2>
+        </Typography>
       )}
     </>
   );

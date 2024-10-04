@@ -1,0 +1,53 @@
+import type { FunctionComponent } from 'react';
+import type { SvgIconProps } from '@mui/material';
+import { SvgIcon } from '@mui/material';
+
+export const WalletCheckIcon: FunctionComponent<SvgIconProps> = (props) => {
+  const { htmlColor = '#373737' } = props;
+
+  return (
+    <SvgIcon {...props}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M16 20L17.7528 21.4023C18.1707 21.7366 18.7777 21.6826 19.1301 21.2799L22 18"
+          stroke={htmlColor}
+          strokeWidth="1.7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M22 14V6H6C3.79086 6 2 7.79086 2 10V18C2 20.2091 3.79086 22 6 22H13"
+          stroke={htmlColor}
+          strokeWidth="1.7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M22 6C22 3.79086 20.2091 2 18 2H12C9.79086 2 8 3.79086 8 6V6H22V6Z"
+          stroke={htmlColor}
+          strokeWidth="1.7"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M2 12L2 16L6 16C7.10457 16 8 15.1046 8 14V14C8 12.8954 7.10457 12 6 12L2 12Z"
+          stroke={htmlColor}
+          strokeWidth="1.7"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </SvgIcon>
+  );
+};
+
+WalletCheckIcon.defaultProps = {
+  viewBox: '0 0 24 24',
+  width: '24',
+  height: '24',
+  fill: 'none'
+};

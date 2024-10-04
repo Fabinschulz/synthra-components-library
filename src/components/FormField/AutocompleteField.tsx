@@ -1,6 +1,6 @@
 'use client';
 import { useFormContext } from '@/contexts/formContext';
-import { Autocomplete, Caption2, IAutocompleteProps } from '../UI';
+import { Autocomplete, IAutocompleteProps, Typography } from '../UI';
 import { activeTheme, getObjectPropertyValue } from '@/utils';
 import React from 'react';
 
@@ -21,7 +21,7 @@ export default function AutocompleteField(props: AutocompleteFieldProps) {
   const errorsMessage = validationErrors && getObjectPropertyValue(name, validationErrors)?.message;
 
   return (
-    <div>
+    <>
       <Autocomplete
         disabled={disabled || readOnly}
         value={autoCompleteValue}
@@ -30,10 +30,10 @@ export default function AutocompleteField(props: AutocompleteFieldProps) {
         onChange={onChange}
       />
       {!!errorsMessage && (
-        <Caption2 color={theme.palette.error.dark} variant="caption">
+        <Typography mt={0.5} variant="body1" color={theme.palette.error.dark}>
           <>{errorsMessage}</>
-        </Caption2>
+        </Typography>
       )}
-    </div>
+    </>
   );
 }

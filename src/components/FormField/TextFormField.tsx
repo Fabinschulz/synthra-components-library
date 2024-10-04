@@ -3,7 +3,7 @@ import React from 'react';
 import { Controller } from 'react-hook-form';
 import { activeTheme, getObjectPropertyValue } from '@/utils';
 import { useFormContext } from '@/contexts/formContext';
-import { Caption2, ITextFieldProps, TextField } from '../UI';
+import { ITextFieldProps, TextField, Typography } from '../UI';
 
 interface TextFormFieldProps extends ITextFieldProps {
   name: string;
@@ -24,9 +24,9 @@ export const TextFormField = (props: TextFormFieldProps) => {
         control={control}
       />
       {!!errorsMessage && (
-        <Caption2 color={theme.palette.error.dark} variant="caption">
+        <Typography mt={0.5} variant="body1" color={theme.palette.error.dark}>
           <>{errorsMessage}</>
-        </Caption2>
+        </Typography>
       )}
     </>
   );
