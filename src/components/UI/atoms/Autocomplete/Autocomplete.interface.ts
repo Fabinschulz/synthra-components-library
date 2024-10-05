@@ -1,7 +1,6 @@
 import { AutocompleteProps as AutocompletePropsMUI } from '@mui/material';
 
-export interface IAutocompleteProps
-  extends Omit<AutocompletePropsMUI<any, any, any, any>, 'renderInput'> {
+export type AutocompleteBaseProps = {
   /**
    * Determina a Label do campo
    * @default ''
@@ -54,4 +53,10 @@ export interface IAutocompleteProps
    * @type boolean
    */
   required?: boolean;
-}
+} & AutocompletePropsMUI<
+  unknown,
+  boolean | undefined,
+  boolean | undefined,
+  boolean | undefined,
+  React.ElementType<any, keyof React.JSX.IntrinsicElements>
+>;

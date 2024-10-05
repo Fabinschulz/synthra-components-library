@@ -1,7 +1,6 @@
 'use client';
 import type { FunctionComponent } from 'react';
 import type { ModalProps } from './Modal.interface';
-import CloseIcon from '@mui/icons-material/Close';
 import { Stack, useMediaQuery } from '@mui/material';
 import {
   StyledDialog,
@@ -10,8 +9,9 @@ import {
   StyledIconButton,
   BoxIcon
 } from './Modal.styled';
-import { Body2, H3 } from '../../atoms';
+import { Typography } from '../../atoms';
 import { activeTheme } from '@/utils';
+import { CloseIcon } from '../../icons';
 
 const theme = activeTheme();
 export const Modal: FunctionComponent<ModalProps> = ({
@@ -48,15 +48,15 @@ export const Modal: FunctionComponent<ModalProps> = ({
             {icon && <BoxIcon style={{ display: isMobile ? 'none' : 'flex' }}>{icon}</BoxIcon>}
             <Stack direction="column" sx={{ width: '100%' }}>
               {title && (
-                <H3 lineHeight="24px" mb={1} textAlign={align}>
+                <Typography variant="h3" mb={1} textAlign={align}>
                   {title}
-                </H3>
+                </Typography>
               )}
 
               {description && (
-                <Body2 lineHeight="19px" textAlign={align}>
+                <Typography variant="body2" textAlign={align}>
                   {description}
-                </Body2>
+                </Typography>
               )}
             </Stack>
           </Stack>

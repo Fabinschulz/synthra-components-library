@@ -2,18 +2,20 @@
 import { FunctionComponent } from 'react';
 import { CircularProgress, IconButton, InputAdornment, Typography } from '@mui/material';
 import Link from 'next/link';
-import { CiSearch } from 'react-icons/ci';
-import type { IAutocompleteProps } from './Autocomplete.interface';
+import { AutocompleteBaseProps } from './Autocomplete.interface';
 import { StyledAutocomplete } from './Autocomplete.styled';
 import { TextField } from '../TextField';
 import React from 'react';
+import { SearchIcon } from '../../icons';
+import { activeTheme } from '@/utils';
 
 type EndAdornmenProps = {
   endIconType: 'link' | 'submit' | undefined;
   link: string | undefined;
 };
 
-export const Autocomplete: FunctionComponent<IAutocompleteProps> = (props) => {
+const theme = activeTheme();
+export const Autocomplete: FunctionComponent<AutocompleteBaseProps> = (props) => {
   const {
     options = [],
     onChange,
@@ -34,7 +36,6 @@ export const Autocomplete: FunctionComponent<IAutocompleteProps> = (props) => {
   return (
     <StyledAutocomplete
       {...rest}
-      data-testid={name}
       options={options}
       multiple={multiple}
       disableCloseOnSelect={multiple}
@@ -54,21 +55,24 @@ export const Autocomplete: FunctionComponent<IAutocompleteProps> = (props) => {
       value={arrayValue}
       renderInput={(params) => (
         <TextField
+          variant="outlined"
           error={error}
           {...params}
           required={required}
           name={`autocomplete-${name}`}
           label={label}
-          InputProps={{
+          slotProps={{
             ...params.InputProps,
-            endAdornment: (
-              <>
-                {loading ? <CircularProgress color="inherit" size={20} /> : null}
-                {params.InputProps.endAdornment}
-                <EndAdornmen link={link} endIconType={endIconType} />
-              </>
-            ),
-            onChange: onChangeTextField
+            input: {
+              endAdornment: (
+                <>
+                  {loading ? <CircularProgress color="inherit" size={20} /> : null}
+                  {params.InputProps.endAdornment}
+                  <EndAdornmen link={link} endIconType={endIconType} />
+                </>
+              ),
+              onChange: onChangeTextField
+            }
           }}
         />
       )}
@@ -87,7 +91,10 @@ const renderOption = (props: object, option: any) => {
 
 const EndAdornmen = ({ link = '', endIconType }: EndAdornmenProps) => {
   const Search = () => (
-    <CiSearch color="#E11D48" style={{ display: 'inline-block', width: 21, height: 21 }} />
+    <SearchIcon
+      htmlColor={theme.palette.primary.main}
+      style={{ display: 'inline-block', width: 21, height: 21 }}
+    />
   );
 
   return (
