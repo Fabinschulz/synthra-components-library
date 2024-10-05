@@ -9,3 +9,4 @@ export * from './Switch';
 export * from './TabItem';
 export * from './TextField';
 export * from './Typography';
+export * from './Dropdown';

@@ -1,64 +1,67 @@
 import type { ThemeOptions } from '@mui/material/styles';
-import { font } from './tokens';
+import { fontSizes } from '../tokens/font-sizes';
+import { fontWeights } from '../tokens/font-weights';
+import { fonts } from '../tokens/fonts';
+import { lineHeights } from '../tokens';
 
 export const typography: ThemeOptions['typography'] = {
   fontSize: 10,
   htmlFontSize: 10,
-  fontFamily: '"Lato", sans-serif',
+  fontFamily: fonts.lato,
 
   h1: {
-    fontWeight: font.weight.bold,
-    fontSize: font.size.h1,
-    lineHeight: font.lineHeight.h1
+    fontWeight: fontWeights.bold,
+    fontSize: fontSizes['6xl'],
+    lineHeight: lineHeights.shorter
   },
   h2: {
-    fontWeight: font.weight.bold,
-    fontSize: font.size.h2,
-    lineHeight: font.lineHeight.h2
+    fontWeight: fontWeights.bold,
+    fontSize: fontSizes['5xl'],
+    lineHeight: lineHeights.shorter
   },
   h3: {
-    fontWeight: font.weight.regular,
-    fontSize: font.size.h3,
-    lineHeight: font.lineHeight.h3
+    fontWeight: fontWeights.regular,
+    fontSize: fontSizes['2xl'],
+    lineHeight: lineHeights.short
   },
   h4: {
-    fontWeight: font.weight.regular,
-    fontSize: font.size.h4,
-    lineHeight: font.lineHeight.h4
+    fontWeight: fontWeights.regular,
+    fontSize: fontSizes.xl,
+    lineHeight: lineHeights.short
   },
   h5: {
-    fontWeight: font.weight.semibold,
-    fontSize: font.size.h5,
-    lineHeight: font.lineHeight.h5
+    fontWeight: fontWeights.semibold,
+    fontSize: fontSizes.lg,
+    lineHeight: lineHeights.base
   },
   h6: {
-    fontWeight: font.weight.semibold,
-    fontSize: font.size.h6,
-    lineHeight: font.lineHeight.h6
+    fontWeight: fontWeights.semibold,
+    fontSize: fontSizes.md,
+    lineHeight: lineHeights.base
   },
   subtitle1: {
-    fontWeight: font.weight.regular,
-    fontSize: font.size.subtitle1,
-    lineHeight: font.lineHeight.subtitle1
+    fontWeight: fontWeights.regular,
+    fontSize: fontSizes.md,
+    lineHeight: lineHeights.tall
   },
   subtitle2: {
-    fontWeight: font.weight.semibold,
-    fontSize: font.size.subtitle2,
-    lineHeight: font.lineHeight.subtitle2
+    fontWeight: fontWeights.semibold,
+    fontSize: fontSizes.sm,
+    lineHeight: lineHeights.tall
   },
   body1: {
-    fontWeight: font.weight.regular,
-    fontSize: font.size.body1,
-    lineHeight: font.lineHeight.body1
+    fontWeight: fontWeights.regular,
+    fontSize: fontSizes.md,
+    lineHeight: lineHeights.base
   },
   body2: {
-    fontWeight: font.weight.regular,
-    fontSize: font.size.body2,
-    lineHeight: font.lineHeight.body2
+    fontWeight: fontWeights.regular,
+    fontSize: fontSizes.sm,
+    lineHeight: lineHeights.base
   },
   caption: {
-    fontWeight: font.weight.regular,
-    fontSize: font.size.caption,
-    lineHeight: font.lineHeight.caption
+    fontWeight: fontWeights.regular,
+    fontSize: fontSizes.xs,
+    lineHeight: lineHeights.short
   }
 };

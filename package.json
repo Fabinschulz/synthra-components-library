@@ -1,5 +1,5 @@
 {
-  "name": "@freetech/web-components",
+  "name": "@freetech-ui/web-components",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.13.0",
     "@hookform/resolvers": "^3.9.0",
     "@mui/material": "^6.1.2",
+    "@mui/x-data-grid": "^7.19.0",
     "autoprefixer": "^10.4.20",
     "next": "14.2.14",
     "react": "^18",
