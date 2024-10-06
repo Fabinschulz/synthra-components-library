@@ -1,8 +1,47 @@
 import type { ThemeOptions } from '@mui/material/styles';
+import { TypographyStyleOptions } from '@mui/material/styles/createTypography';
 import { fontSizes } from '../tokens/font-sizes';
 import { fontWeights } from '../tokens/font-weights';
 import { fonts } from '../tokens/fonts';
 import { lineHeights } from '../tokens';
+
+declare module '@mui/material/styles' {
+  interface TypographyVariants {
+    xg?: TypographyStyleOptions;
+    xxxl?: TypographyStyleOptions;
+    xxl?: TypographyStyleOptions;
+    xl?: TypographyStyleOptions;
+    lg?: TypographyStyleOptions;
+    md?: TypographyStyleOptions;
+    sm?: TypographyStyleOptions;
+    xs?: TypographyStyleOptions;
+  }
+
+  interface TypographyVariantsOptions {
+    xg?: TypographyStyleOptions;
+    xxxl?: TypographyStyleOptions;
+    xxl?: TypographyStyleOptions;
+    xl?: TypographyStyleOptions;
+    lg?: TypographyStyleOptions;
+    md?: TypographyStyleOptions;
+    sm?: TypographyStyleOptions;
+    xs?: TypographyStyleOptions;
+  }
+}
+
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    xg?: true;
+    xxxl?: true;
+    xxl?: true;
+    xl?: true;
+    lg?: true;
+    md?: true;
+    sm?: true;
+    xs?: true;
+  }
+}
+
 
 export const typography: ThemeOptions['typography'] = {
   fontSize: 10,

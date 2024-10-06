@@ -414,3 +414,4 @@ export { WalletMinusIcon } from './WalletMinusIcon';
 export { ArrowSortCircleIcon } from './ArrowSortCircleIcon';
 export { TaskDownloadIcon } from './TaskDownloadIcon';
 export { ListViewRectangleIcon } from './ListViewRectangleIcon';
+export { ArrowUpIcon } from './ArrowUpIcon';

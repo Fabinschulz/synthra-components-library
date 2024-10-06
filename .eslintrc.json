@@ -16,6 +16,7 @@
     "react/no-unescaped-entities": "off",
     "react/react-in-jsx-scope": "off",
     "no-undef": "off",
-    "prefer-const": "off"
+    "prefer-const": "off",
+    "sonarjs/no-duplicate-string": "off"
   }
 }
