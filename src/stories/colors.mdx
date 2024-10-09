@@ -1,0 +1,109 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+import { light } from '@/utils';
+import { alpha } from '@mui/material/styles';
+
+{/* Referência para a criação e configuração de paletas de cores: https://www.youtube.com/watch?v=vn-mz2iRDBs*/}
+
+<Meta title="Tokens/Cores" />
+
+# Cores
+
+Conheça as variações de cores usadas no projeto.
+
+---
+
+### Paleta de cores
+
+<details>
+  <summary>Ver paleta de cores</summary>
+
+  <ColorPalette>
+    <ColorItem  
+        title="Primary" 
+        subtitle="Paleta de cores primária" 
+        colors={{
+        light: light.palette.primary.light,
+        main: light.palette.primary.main,
+        dark: light.palette.primary.dark,
+        contrastText: light.palette.primary.contrastText,
+        }} 
+    />
+
+    <ColorItem 
+        title="Secondary" 
+        subtitle="Paleta de cores Secundária"
+        colors={{
+        light: light.palette.secondary.light,
+        main: light.palette.secondary.main,
+        dark: light.palette.secondary.dark,
+        contrastText: light.palette.secondary.contrastText,
+        }} 
+    />
+
+     <ColorItem
+        title="Neutral" 
+        subtitle="Paleta de cores neutras" 
+        colors={{
+        lightest: light.palette.neutral.lightest,
+        light: light.palette.neutral.light,
+        medium: light.palette.neutral.medium,
+        dark: light.palette.neutral.dark,
+        darkest: light.palette.neutral.darkest,
+        }} 
+    />
+
+    <ColorItem
+        title="Common"
+        subtitle="Paleta de cores Comuns"
+        colors={{
+        black: light.palette.common.black,
+        white: light.palette.common.white,
+        }}
+    />
+
+    <ColorItem
+        title="Success"
+        subtitle="Paleta de cores Sucesso"
+        colors={{
+            light: light.palette.success.light,
+            main: light.palette.success.main,
+            dark: light.palette.success.dark,
+            contrastText: light.palette.success.contrastText,
+        }}
+    />
+
+    <ColorItem
+        title="Error"
+        subtitle="Paleta de cores de Erros"
+        colors={{
+            light: light.palette.error.light,
+            main: light.palette.error.main,
+            dark: light.palette.error.dark,
+            contrastText: light.palette.error.contrastText,
+        }}
+    />
+
+    <ColorItem
+        title="Info"
+        subtitle="Paleta de cores de Info"
+        colors={{
+            light: light.palette.info.light,
+            main: light.palette.info.main,
+            dark: light.palette.info.dark,
+            contrastText: light.palette.info.contrastText,
+        }}
+    />
+
+    <ColorItem
+        title="Warning"
+        subtitle="Paleta de cores de Alertas"
+        colors={{
+            light: light.palette.warning.light,
+            main: light.palette.warning.main,
+            dark: light.palette.warning.dark,
+            contrastText: light.palette.warning.contrastText,
+        }}
+    />
+
+  </ColorPalette>
+</details>
