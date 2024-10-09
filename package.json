@@ -1,13 +1,16 @@
 {
-  "name": "@freetech-ui/web-components",
+  "name": "@synthra/ui-kit",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "license": "MIT",
   "scripts": {
-    "dev": "next dev tsup src --dts --format cjs,esm --watch",
-    "build": "tsup src --dts --format cjs,esm",
+    "dev": "next dev tsup src --dts --format cjs,esm --external react --watch",
+    "build": "tsup src --dts --format cjs,esm --external react",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"**/*.{ts,tsx,json,css}\""
+    "format": "prettier --write \"**/*.{ts,tsx,json,css}\"",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",
@@ -18,12 +21,19 @@
     "@mui/x-data-grid": "^7.19.0",
     "autoprefixer": "^10.4.20",
     "next": "14.2.14",
-    "react": "^18",
-    "react-dom": "^18",
     "react-hook-form": "^7.53.0"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "1.9.0",
     "@rocketseat/eslint-config": "^2.2.2",
+    "@storybook/addon-essentials": "8.3.5",
+    "@storybook/addon-interactions": "8.3.5",
+    "@storybook/addon-links": "8.3.5",
+    "@storybook/addon-onboarding": "8.3.5",
+    "@storybook/blocks": "8.3.5",
+    "@storybook/nextjs": "8.3.5",
+    "@storybook/react": "8.3.5",
+    "@storybook/test": "8.3.5",
     "@swc/cli": "0.4.1-nightly.20240914",
     "@swc/core": "^1.7.26",
     "@types/node": "^20",
@@ -31,6 +41,10 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.14",
+    "eslint-plugin-storybook": "^0.9.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "storybook": "8.3.5",
     "tsup": "^8.3.0",
     "typescript": "^5"
   }
