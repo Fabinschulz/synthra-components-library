@@ -1,42 +1,63 @@
-'use client';
-import type { FunctionComponent } from 'react';
-import type { CodeFieldProps } from './CodeField.interface';
+import { Stack, Typography } from '@mui/material';
+import React from 'react';
+import ReactCodeInput, { ReactCodeInputProps } from 'react-code-input';
+import './CodeField.css';
+import { activeTheme, getObjectPropertyValue } from '@/utils';
+import { useFormContext } from '@/contexts';
+import { CodeFieldProps } from './CodeField.interface';
 
-import { useState, createRef } from 'react';
+interface IFieldCode {
+  handleChange: (event: string) => void;
+  props: ReactCodeInputProps;
+}
 
-import { FormControl } from './CodeField.styled';
-import { TextField } from '../TextField';
+const theme = activeTheme();
 
-export const CodeField: FunctionComponent<CodeFieldProps> = ({ onSubmit }) => {
-  const [code, setCode] = useState<any[]>([]);
-
-  const codeArr = new Array(6).fill(null).map(() => createRef<any>());
-
-  const handleChange = (index: any) => (event: any) => {
-    setCode((currentValue) => [...currentValue, event.target.value]);
-
-    event.preventDefault();
-
-    if (codeArr[index + 1].current) {
-      codeArr[index + 1].current.focus();
-    }
-    if (index === 5) {
-      const newCode = code.toString();
-      onSubmit?.(newCode);
-    }
-  };
+const FieldCode = ({ handleChange, props }: IFieldCode) => {
   return (
-    <FormControl>
-      {codeArr.map((item, index) => (
-        <TextField
-          key={index}
-          variant="outlined"
-          onChange={handleChange(index)}
-          slotProps={{
-            htmlInput: { maxLength: 1, ref: item }
-          }}
-        />
-      ))}
-    </FormControl>
+    <ReactCodeInput
+      className="text-field-code"
+      onChange={handleChange}
+      type="number"
+      fields={6}
+      {...props}
+    />
+  );
+};
+
+export const CodeField: React.FC<CodeFieldProps> = ({ name, toggle }) => {
+  const { setValue, validationErrors } = useFormContext();
+  let error = validationErrors && getObjectPropertyValue(name, validationErrors)?.message;
+
+  const onChangeField = (value: string) => {
+    if (value.length === 0 || !value) return;
+    setValue(name, value);
+  };
+
+  const dinamicProps: ReactCodeInputProps = {
+    inputStyle: {
+      fontSize: '24px',
+      fontWeight: '700',
+      textAlign: 'center',
+      margin: toggle ? '5px 10px 10px 0px' : '5px 30px 10px 0px',
+      outline: 'none',
+      width: '60px',
+      height: '60px',
+      border: `1px solid ${error ? 'red' : 'black'}`,
+      borderRadius: '8px'
+    },
+    name: '',
+    inputMode: 'numeric'
+  };
+
+  return (
+    <Stack justifyContent="center">
+      <FieldCode handleChange={onChangeField} props={dinamicProps} />
+      {!!error && (
+        <Typography variant="body1" color={theme.palette.error.dark}>
+          <>{error}</>
+        </Typography>
+      )}
+    </Stack>
   );
 };

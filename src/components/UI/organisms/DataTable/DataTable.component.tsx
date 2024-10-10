@@ -11,7 +11,7 @@ import { Typography } from '../../atoms';
 const NoOverlayMsg = (message: string) => {
   return (
     <Stack height="auto" alignItems="center" justifyContent="center">
-      <Typography variant='body2' color="black" lineHeight="29px">
+      <Typography variant="body2" color="black" lineHeight="29px">
         {message}
       </Typography>
     </Stack>

@@ -1,11 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button.component';
 import { argsProps, iconeADireitaProps, iconeAEsquerdaProps } from './Button.mock';
+import { ComponentProps } from 'react';
+import { fn } from '@storybook/test';
 
-const meta: Meta = {
+type StoryProps = ComponentProps<typeof Button>;
+
+const meta: Meta<StoryProps> = {
   title: 'UI/atoms/Button',
   component: Button,
-  tags: ['autodocs', 'button'],
+  tags: ['autodocs'],
   parameters: {
     design: {
       type: 'figma',
@@ -44,12 +48,15 @@ const meta: Meta = {
     startIcon: {
       control: false
     }
+  },
+  args: {
+    onClick: fn()
   }
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<StoryProps>;
 
 export const Template: Story = {
   args: argsProps

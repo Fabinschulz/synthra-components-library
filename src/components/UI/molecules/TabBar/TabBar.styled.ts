@@ -3,7 +3,7 @@ import { Tabs as MuiTabs } from '@mui/material';
 
 export const Tabs = styled(MuiTabs)(({ theme }) => ({
   '& .MuiTabs-scroller': {
-    borderRadius: '8px 8px 0 0',
+    borderRadius: '8px 8px 0 0'
   },
   '& .MuiTabs-indicator': {
     bottom: 'auto',
@@ -13,15 +13,15 @@ export const Tabs = styled(MuiTabs)(({ theme }) => ({
     pointerEvents: 'none',
     backgroundColor: 'transparent',
     '[data-first="true"]&': {
-      borderTopLeftRadius: '8px',
+      borderTopLeftRadius: '8px'
     },
     '[data-last="true"]&': {
-      borderTopRightRadius: '8px',
-    },
+      borderTopRightRadius: '8px'
+    }
   },
   [theme.breakpoints.up('sm')]: {
     '& .MuiTabScrollButton-root': {
-      display: 'none',
-    },
-  },
+      display: 'none'
+    }
+  }
 }));

@@ -16,7 +16,7 @@ export const MuiDataGrid: DataGridComponents['MuiDataGrid'] = {
         }
       }
     },
-    pageSizeOptions: [10, 50, 100, 200],
+    pageSizeOptions: [10, 50, 100, 200]
     // slotProps: {
     //   columnHeaders: {
     //     style: {

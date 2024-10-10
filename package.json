@@ -8,7 +8,7 @@
     "build": "tsup src --dts --format cjs,esm --external react",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"**/*.{ts,tsx,json,css}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,json,css,mdx}\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -21,6 +21,7 @@
     "@mui/x-data-grid": "^7.19.0",
     "autoprefixer": "^10.4.20",
     "next": "14.2.14",
+    "react-code-input": "^3.10.1",
     "react-hook-form": "^7.53.0"
   },
   "devDependencies": {

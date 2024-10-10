@@ -1,12 +1,11 @@
 export const MuiCssBaseline = {
-    styleOverrides: () => ({
-      '@font-face': {
-        fontFamily: '"Lato", sans-serif',
-      },
-      ':root': {
-        fontSize: '10px',
-        height: '100%'      
-      },
-    }),
-  };
-  
+  styleOverrides: () => ({
+    '@font-face': {
+      fontFamily: '"Lato", sans-serif'
+    },
+    ':root': {
+      fontSize: '10px',
+      height: '100%'
+    }
+  })
+};

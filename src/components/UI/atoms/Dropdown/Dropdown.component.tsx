@@ -21,8 +21,8 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
     setActiveItem(event.target.value as string);
   };
 
-  const labelId = `${name ?? 'dropdown'}-label`
-  const nameId = `${name ?? 'dropdown'}`
+  const labelId = `${name ?? 'dropdown'}-label`;
+  const nameId = `${name ?? 'dropdown'}`;
 
   return (
     <FormControl fullWidth className={className}>

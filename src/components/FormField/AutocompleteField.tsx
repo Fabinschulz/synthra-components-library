@@ -1,12 +1,12 @@
 'use client';
 import { useFormContext } from '@/contexts/formContext';
-import { Autocomplete, IAutocompleteProps, Typography } from '../UI';
+import { Autocomplete, AutocompleteBaseProps, Typography } from '../UI';
 import { activeTheme, getObjectPropertyValue } from '@/utils';
 import React from 'react';
 
 type AutocompleteFieldProps = {
   name: string;
-} & IAutocompleteProps;
+} & AutocompleteBaseProps;
 
 const theme = activeTheme();
 export default function AutocompleteField(props: AutocompleteFieldProps) {

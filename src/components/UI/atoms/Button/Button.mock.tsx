@@ -7,25 +7,25 @@ export const argsProps: IButtonProps = {
   children: 'Submit',
   size: 'medium',
   fullWidth: false,
-  disabled: false,
+  disabled: false
 };
 
 export const iconeADireitaProps: IButtonProps = {
-  endIcon: <RightIcon htmlColor='#FFFFFF' />,
+  endIcon: <RightIcon htmlColor="#FFFFFF" />,
   variant: 'contained',
   color: 'primary',
   children: 'Submit',
   size: 'medium',
   fullWidth: false,
-  disabled: false,
+  disabled: false
 };
 
 export const iconeAEsquerdaProps: IButtonProps = {
-  startIcon: <LeftIcon htmlColor='#FFFFFF' />,
+  startIcon: <LeftIcon htmlColor="#FFFFFF" />,
   variant: 'contained',
   color: 'primary',
   children: 'Submit',
   size: 'medium',
   fullWidth: false,
-  disabled: false,
+  disabled: false
 };

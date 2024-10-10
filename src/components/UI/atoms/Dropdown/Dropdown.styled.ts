@@ -14,18 +14,18 @@ export const FormControl = styled(MuiFormControl)(({ theme }) => ({
     '&::placeholder': {
       ...theme.typography.body2,
       color: theme.palette.neutral.dark,
-      opacity: 1,
+      opacity: 1
     }
   },
   '& fieldset': {
     border: 'none'
   },
   '& svg': {
-    color: theme.palette.neutral.light,
+    color: theme.palette.neutral.light
   },
   '& #simple-select': {
     display: 'flex',
     alignItems: 'center',
     border: 'none'
   }
-}))
+}));

@@ -8,17 +8,17 @@ const palette = paletteOptions! as Palette;
 const typography = typographyOptions! as Typography;
 
 export const MuiAlert: Components['MuiAlert'] = {
-    styleOverrides: {
-        root: {
-            ...typography.caption,
-            alignItems: 'center',
-            padding: '4px 16px',
-            '.MuiAlert-message': {
-                padding: '0'
-            }
-        },
-        filledInfo: {
-            backgroundColor: palette.info.light
-        }
+  styleOverrides: {
+    root: {
+      ...typography.caption,
+      alignItems: 'center',
+      padding: '4px 16px',
+      '.MuiAlert-message': {
+        padding: '0'
+      }
+    },
+    filledInfo: {
+      backgroundColor: palette.info.light
     }
-}
+  }
+};

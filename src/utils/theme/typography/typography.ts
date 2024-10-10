@@ -42,7 +42,6 @@ declare module '@mui/material/Typography' {
   }
 }
 
-
 export const typography: ThemeOptions['typography'] = {
   fontSize: 10,
   htmlFontSize: 10,

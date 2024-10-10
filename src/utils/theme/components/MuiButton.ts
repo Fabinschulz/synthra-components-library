@@ -7,7 +7,7 @@ const typography = typographyOptions! as Typography;
 export const MuiButton: Components['MuiButton'] = {
   styleOverrides: {
     root: {
-      textTransform: 'none',
+      textTransform: 'none'
     },
     sizeSmall: {
       padding: '8px',
@@ -29,6 +29,6 @@ export const MuiButton: Components['MuiButton'] = {
       '& svg': {
         fontSize: '18px!important'
       }
-    },
+    }
   }
 };

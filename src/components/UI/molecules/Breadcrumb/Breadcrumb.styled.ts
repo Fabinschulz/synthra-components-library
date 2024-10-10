@@ -1,4 +1,3 @@
-
 import { styled } from '@mui/material';
 import Link from 'next/link';
 
@@ -7,6 +6,6 @@ export const StyledLink = styled(Link)(({ theme, color }) => ({
   textDecoration: 'none',
   color,
   '&:hover': {
-    textDecoration: 'underline',
-  },
+    textDecoration: 'underline'
+  }
 }));

@@ -1,15 +1,16 @@
 export interface CodeFieldProps {
   /**
-   * Determina o valor do campo
+   * Determina o nome do campo
    * @default ''
    * @type {string}
    */
-  value?: string;
+  name: string;
 
   /**
-   *  Submete o valor do campo
-   * @default () => {}
-   * @type {(code: string) => void}
+   * Determina se o campo é um toggle
+   * @default false
+   * @type boolean
    */
-  onSubmit?: (code: string) => void;
+
+  toggle: boolean;
 }
