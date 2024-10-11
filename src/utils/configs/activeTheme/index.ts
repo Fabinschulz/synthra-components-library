@@ -1,5 +1,5 @@
 'use client';
-import { light } from '@/utils/theme';
+import { light } from '@/theme';
 import { createTheme } from '@mui/material';
 
 let {

@@ -2,7 +2,7 @@ import type { ThemeOptions } from '@mui/material/styles';
 import { TypographyStyleOptions } from '@mui/material/styles/createTypography';
 import { fontSizes } from '../tokens/font-sizes';
 import { fontWeights } from '../tokens/font-weights';
-import { fonts } from '../tokens/fonts';
+import { fontFamily } from '../tokens/font-family';
 import { lineHeights } from '../tokens';
 
 declare module '@mui/material/styles' {
@@ -45,7 +45,7 @@ declare module '@mui/material/Typography' {
 export const typography: ThemeOptions['typography'] = {
   fontSize: 10,
   htmlFontSize: 10,
-  fontFamily: fonts.lato,
+  fontFamily: fontFamily.lato,
 
   h1: {
     fontWeight: fontWeights.bold,

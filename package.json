@@ -4,12 +4,11 @@
   "private": false,
   "license": "MIT",
   "scripts": {
-    "dev": "next dev tsup src --dts --format cjs,esm --external react --watch",
+    "dev": "storybook dev -p 3000",
     "build": "tsup src --dts --format cjs,esm --external react",
-    "start": "next start",
+    "start": "storybook start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{ts,tsx,json,css,mdx}\"",
-    "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {

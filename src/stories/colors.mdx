@@ -1,10 +1,10 @@
 import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
-import { light } from '@/utils';
+import { light } from 'src/theme';
 import { alpha } from '@mui/material/styles';
 
-{/* Referência para a criação e configuração de paletas de cores: https://www.youtube.com/watch?v=vn-mz2iRDBs*/}
+{/* Referência para a criação e configuração de paletas de cores: https://www.youtube.com/watch?v=vn-mz2iRDBs */}
 
-<Meta title="Tokens/Cores" />
+<Meta title="System/Colors" />
 
 # Cores
 
@@ -29,27 +29,27 @@ Conheça as variações de cores usadas no projeto.
         }} 
     />
 
-    <ColorItem 
-        title="Secondary" 
+    <ColorItem
+        title="Secondary"
         subtitle="Paleta de cores Secundária"
         colors={{
         light: light.palette.secondary.light,
         main: light.palette.secondary.main,
         dark: light.palette.secondary.dark,
         contrastText: light.palette.secondary.contrastText,
-        }} 
+        }}
     />
 
      <ColorItem
-        title="Neutral" 
-        subtitle="Paleta de cores neutras" 
+        title="Neutral"
+        subtitle="Paleta de cores neutras"
         colors={{
         lightest: light.palette.neutral.lightest,
         light: light.palette.neutral.light,
         medium: light.palette.neutral.medium,
         dark: light.palette.neutral.dark,
         darkest: light.palette.neutral.darkest,
-        }} 
+        }}
     />
 
     <ColorItem

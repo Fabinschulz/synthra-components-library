@@ -3,7 +3,7 @@ import React from 'react';
 import createCache from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
 import { useServerInsertedHTML } from 'next/navigation';
-import { ThemeContext } from '@/utils/theme';
+import { ThemeContext } from '@/theme';
 import activeTheme from '../activeTheme';
 
 const options = { key: 'css', prepend: true };

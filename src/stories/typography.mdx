@@ -1,0 +1,50 @@
+import { Meta, Typeset } from '@storybook/blocks';
+import { light, fontWeights, fontSizes, fontFamily } from 'src/theme';
+
+<Meta title="System/Typography" />
+
+# Tipografia
+
+Conheça os estilos de texto usados no projeto.
+
+---
+
+export const typography = {
+  type: fontFamily,
+  weight: fontWeights,
+  size: [
+    fontSizes.xs,
+    fontSizes.sm,
+    fontSizes.md,
+    fontSizes.lg,
+    fontSizes.xl,
+    fontSizes['2xl'],
+    fontSizes['3xl'],
+    fontSizes['4xl'],
+    fontSizes['5xl'],
+    fontSizes['6xl'],
+    fontSizes['7xl'],
+    fontSizes['8xl'],
+    fontSizes['9xl']
+  ]
+};
+
+export const SampleText = 'Lorem ipsum dolor sit amet';
+
+### Tamanhos de fonte
+
+**Font**: Lato
+
+**Weights:** 400(regular), 500(medium), 600(semibold), 700(bold), 800(extrabold), 900(black)
+
+<details>
+  <summary>Ver fontes</summary>
+
+<Typeset
+  fontWeight={typography.weight.black}
+  sampleText={SampleText}
+  fontFamily={typography.type.lato}
+  fontSizes={typography.size}
+/>
+
+</details>
