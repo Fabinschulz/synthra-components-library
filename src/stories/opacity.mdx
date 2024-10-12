@@ -1,0 +1,32 @@
+import { Meta } from '@storybook/blocks';
+import { opacity } from 'src/theme';
+
+<Meta title="Tokens/Opacity" />
+
+# Opacidade
+
+Conheça os níveis de opacidade usados no projeto.
+
+---
+
+export const padding = '0.5rem 1rem';
+
+<details>
+  <summary>Ver fontes</summary>
+  <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+    <thead>
+      <tr style={{ textAlign: 'left' }}>
+        <th style={{ padding }}>Name</th>
+        <th style={{ padding }}>Properties</th>
+      </tr>
+    </thead>
+    <tbody>
+      {Object.entries(opacity).map(([key, value]) => (
+        <tr key={key}>
+          <td style={{ padding }}>{key}</td>
+          <td style={{ padding }}>{value}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</details>

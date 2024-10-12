@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/blocks';
+import { borderRadius } from 'src/theme';
+
+<Meta title="Tokens/Border Radius" />
+
+# Border Radius
+
+Conheça os raios de borda usados no projeto.
+
+---
+
+export const padding = '0.5rem 1rem';
+
+<details>
+  <summary>Ver fontes</summary>
+  <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px' }}>
+    <thead>
+      <tr style={{ textAlign: 'left' }}>
+        <th style={{ padding }}>Name</th>
+        <th style={{ padding }}>Properties</th>
+      </tr>
+    </thead>
+    <tbody>
+      {Object.entries(borderRadius).map(([name, value], index) => {
+        return (
+          <tr key={index}>
+            <td style={{ padding }}>{name}</td>
+            <td style={{ padding }}>{value}</td>
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+</details>

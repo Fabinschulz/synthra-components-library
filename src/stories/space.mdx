@@ -1,0 +1,40 @@
+import { Meta } from '@storybook/blocks';
+import { spacing } from 'src/theme';
+
+<Meta title="Tokens/Space" />
+
+# Espaçamento
+
+Conheça os espaçamentos usados no projeto.
+
+---
+
+export const padding = '0.5rem 1rem';
+
+<details>
+  <summary>Ver fontes</summary>
+  <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px' }}>
+    <thead>
+      <tr style={{ textAlign: 'left' }}>
+        <th style={{ padding }}>Name</th>
+        <th style={{ padding }}>Size (rem)</th>
+        <th style={{ padding }}>Properties</th>
+      </tr>
+    </thead>
+    <tbody>
+      {Object.entries(spacing).map(([key, value], index) => {
+        const remValue = parseFloat(value.replace('rem', ''));
+        const pixelValue = remValue * 16; // Conversão de rem para px (1rem = 16px)
+
+        return (
+          <tr key={key}>
+            <td style={{ padding }}>{key}</td>
+            <td style={{ padding }}>{value}</td>
+            <td style={{ padding }}>{pixelValue}px</td>
+          </tr>
+        );
+      })}
+    </tbody>
+
+  </table>
+</details>

@@ -1,3 +1,4 @@
+// https://tailwindcss.com/docs/opacity - Opacity Scale Reference
 export const opacity = {
   'opacity-0': '0',
   'opacity-5': '0.05',

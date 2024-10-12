@@ -2,7 +2,7 @@ import type { ThemeOptions } from '@mui/material/styles';
 import { TypographyStyleOptions } from '@mui/material/styles/createTypography';
 import { fontSizes } from '../tokens/font-sizes';
 import { fontWeights } from '../tokens/font-weights';
-import { fontFamily } from '../tokens/font-family';
+import { fonts } from '../tokens/fonts';
 import { lineHeights } from '../tokens';
 
 declare module '@mui/material/styles' {
@@ -45,61 +45,61 @@ declare module '@mui/material/Typography' {
 export const typography: ThemeOptions['typography'] = {
   fontSize: 10,
   htmlFontSize: 10,
-  fontFamily: fontFamily.lato,
+  fontFamily: fonts.lato,
 
   h1: {
     fontWeight: fontWeights.bold,
     fontSize: fontSizes['6xl'],
-    lineHeight: lineHeights.shorter
+    lineHeight: lineHeights['leading-6']
   },
   h2: {
     fontWeight: fontWeights.bold,
     fontSize: fontSizes['5xl'],
-    lineHeight: lineHeights.shorter
+    lineHeight: lineHeights['leading-6']
   },
   h3: {
     fontWeight: fontWeights.regular,
     fontSize: fontSizes['2xl'],
-    lineHeight: lineHeights.short
+    lineHeight: lineHeights['leading-tight']
   },
   h4: {
     fontWeight: fontWeights.regular,
     fontSize: fontSizes.xl,
-    lineHeight: lineHeights.short
+    lineHeight: lineHeights['leading-tight']
   },
   h5: {
     fontWeight: fontWeights.semibold,
     fontSize: fontSizes.lg,
-    lineHeight: lineHeights.base
+    lineHeight: lineHeights['leading-normal']
   },
   h6: {
     fontWeight: fontWeights.semibold,
     fontSize: fontSizes.md,
-    lineHeight: lineHeights.base
+    lineHeight: lineHeights['leading-normal']
   },
   subtitle1: {
     fontWeight: fontWeights.regular,
     fontSize: fontSizes.md,
-    lineHeight: lineHeights.tall
+    lineHeight: lineHeights['leading-relaxed']
   },
   subtitle2: {
     fontWeight: fontWeights.semibold,
     fontSize: fontSizes.sm,
-    lineHeight: lineHeights.tall
+    lineHeight: lineHeights['leading-relaxed']
   },
   body1: {
     fontWeight: fontWeights.regular,
     fontSize: fontSizes.md,
-    lineHeight: lineHeights.base
+    lineHeight: lineHeights['leading-normal']
   },
   body2: {
     fontWeight: fontWeights.regular,
     fontSize: fontSizes.sm,
-    lineHeight: lineHeights.base
+    lineHeight: lineHeights['leading-normal']
   },
   caption: {
     fontWeight: fontWeights.regular,
     fontSize: fontSizes.xs,
-    lineHeight: lineHeights.short
+    lineHeight: lineHeights['leading-tight']
   }
 };
