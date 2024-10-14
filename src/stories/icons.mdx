@@ -1,0 +1,24 @@
+import { Meta } from '@storybook/blocks';
+import * as Icons from 'src/components/UI/icons';
+
+<Meta title="Tokens/Icons" />
+
+# Ícones
+
+Esta página apresenta todos os ícones disponíveis.
+
+---
+
+<details>
+  <summary style={{marginBottom: "3rem"}}>Ver ícones</summary>
+  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', gap: '20px' }}>
+    {Object.entries(Icons).map(([iconName, IconComponent]) => (
+      <div key={iconName} style={{ textAlign: 'center' }}>
+        <IconComponent style={{ width: '25px', height: '25px' }} />
+        <p>{iconName}</p>
+      </div>
+    ))}
+  </div>
+    
+</details>
+

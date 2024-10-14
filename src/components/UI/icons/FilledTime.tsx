@@ -3,7 +3,7 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const FilledTime: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#D04D27' } = props;
+  const { htmlColor = '#373737' } = props;
 
   return (
     <SvgIcon {...props}>

@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": false,
   "license": "MIT",
+  "author": "Synthra",
+  "description": "A framework for building UI components",
   "scripts": {
-    "dev": "storybook dev -p 3000",
+    "dev": "storybook dev -p 6006",
     "build": "tsup src --dts --format cjs,esm --external react",
     "start": "storybook start",
     "lint": "next lint",

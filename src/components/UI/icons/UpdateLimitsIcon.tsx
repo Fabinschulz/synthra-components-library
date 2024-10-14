@@ -2,7 +2,7 @@ import type { FunctionComponent } from 'react';
 import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
-export const TransactionalLimitsIcon: FunctionComponent<SvgIconProps> = (props) => {
+export const UpdateLimitsIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
@@ -63,7 +63,7 @@ export const TransactionalLimitsIcon: FunctionComponent<SvgIconProps> = (props) 
   );
 };
 
-TransactionalLimitsIcon.defaultProps = {
+UpdateLimitsIcon.defaultProps = {
   viewBox: '0 0 26 24',
   width: '26',
   height: '24',
