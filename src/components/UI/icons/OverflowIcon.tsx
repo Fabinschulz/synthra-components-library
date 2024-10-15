@@ -2,7 +2,7 @@ import type { FunctionComponent } from 'react';
 import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
-export const ActionsIcon: FunctionComponent<SvgIconProps> = (props) => {
+export const OverflowIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
@@ -34,7 +34,7 @@ export const ActionsIcon: FunctionComponent<SvgIconProps> = (props) => {
   );
 };
 
-ActionsIcon.defaultProps = {
+OverflowIcon.defaultProps = {
   viewBox: '0 0 24 25',
   width: '24',
   height: '25',

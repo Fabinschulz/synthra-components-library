@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
 import * as Icons from 'src/components/UI/icons';
+import { Tooltip, Box } from '@mui/material';
 
 <Meta title="Tokens/Icons" />
 
@@ -10,15 +11,21 @@ Esta página apresenta todos os ícones disponíveis.
 ---
 
 <details>
-  <summary style={{marginBottom: "3rem"}}>Ver ícones</summary>
-  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', gap: '20px' }}>
+  <summary style={{ marginBottom: '3rem' }}>Ver ícones</summary>
+  <Box
+    sx={{
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: 2,
+      alignItems: 'center'
+    }}
+  >
     {Object.entries(Icons).map(([iconName, IconComponent]) => (
-      <div key={iconName} style={{ textAlign: 'center' }}>
-        <IconComponent style={{ width: '25px', height: '25px' }} />
-        <p>{iconName}</p>
-      </div>
+      <Tooltip key={iconName} title={iconName} arrow>
+        <Box sx={{ textAlign: 'center', cursor: 'pointer', mb: 2 }}>
+          <IconComponent style={{ width: '26px', height: '26px' }} />
+        </Box>
+      </Tooltip>
     ))}
-  </div>
-    
+  </Box>
 </details>
-

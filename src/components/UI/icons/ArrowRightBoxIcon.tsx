@@ -2,7 +2,7 @@ import type { FunctionComponent } from 'react';
 import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
-export const UploadCircleIcon: FunctionComponent<SvgIconProps> = (props) => {
+export const ArrowRightBoxIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
@@ -15,24 +15,25 @@ export const UploadCircleIcon: FunctionComponent<SvgIconProps> = (props) => {
         fill="none"
       >
         <path
-          d="M8 6L12 2M12 2L16 6M12 2L12 16"
+          d="M6 2H18C20.2091 2 22 3.79086 22 6V18C22 20.2091 20.2091 22 18 22H6C3.79086 22 2 20.2091 2 18V6C2 3.79086 3.79086 2 6 2Z"
           stroke={htmlColor}
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
-          d="M18.2454 9C19.3433 10.3696 20 12.1081 20 14C20 18.4183 16.4183 22 12 22C7.58172 22 4 18.4183 4 14C4 12.1081 4.65672 10.3696 5.75462 9"
+          d="M13 15L16 12M16 12L13 9M16 12L8 12"
           stroke={htmlColor}
           strokeWidth="2"
           strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </SvgIcon>
   );
 };
 
-UploadCircleIcon.defaultProps = {
+ArrowRightBoxIcon.defaultProps = {
   viewBox: '0 0 24 25',
   width: '24',
   height: '25',

@@ -2,7 +2,7 @@ import type { FunctionComponent } from 'react';
 import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
-export const ArrowRightRectangleIcon: FunctionComponent<SvgIconProps> = (props) => {
+export const ArrowDownBoxIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
@@ -22,7 +22,7 @@ export const ArrowRightRectangleIcon: FunctionComponent<SvgIconProps> = (props) 
           strokeLinejoin="round"
         />
         <path
-          d="M13 15L16 12M16 12L13 9M16 12L8 12"
+          d="M9 13L12 16M12 16L15 13M12 16V8"
           stroke={htmlColor}
           strokeWidth="2"
           strokeLinecap="round"
@@ -33,7 +33,7 @@ export const ArrowRightRectangleIcon: FunctionComponent<SvgIconProps> = (props) 
   );
 };
 
-ArrowRightRectangleIcon.defaultProps = {
+ArrowDownBoxIcon.defaultProps = {
   viewBox: '0 0 24 25',
   width: '24',
   height: '25',

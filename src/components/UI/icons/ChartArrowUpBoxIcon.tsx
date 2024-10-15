@@ -2,7 +2,7 @@ import type { FunctionComponent } from 'react';
 import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
-export const ChartArrowUpRectangleIcon: FunctionComponent<SvgIconProps> = (props) => {
+export const ChartArrowUpBoxIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
@@ -23,7 +23,7 @@ export const ChartArrowUpRectangleIcon: FunctionComponent<SvgIconProps> = (props
   );
 };
 
-ChartArrowUpRectangleIcon.defaultProps = {
+ChartArrowUpBoxIcon.defaultProps = {
   viewBox: '0 0 24 24',
   width: '24',
   height: '24',
