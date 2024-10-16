@@ -5,7 +5,7 @@ import { light } from './light';
 
 export interface ThemeContextProps {
   theme?: Partial<Theme> | ((outerTheme: Theme) => Theme);
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const ThemeContext = ({ theme = light, children }: ThemeContextProps) => (

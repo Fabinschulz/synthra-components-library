@@ -13,7 +13,7 @@ const meta: Meta<StoryProps> = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/wszzS39ImbNm0Un5Z6OamL/MUI---Hypera?node-id=11011-143217&node-type=frame&t=4gGOkgoaVbfPsEKF-0'
+      url: ''
     }
   },
   argTypes: {

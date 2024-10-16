@@ -10,22 +10,12 @@ declare module '@mui/material/styles' {
     xg?: TypographyStyleOptions;
     xxxl?: TypographyStyleOptions;
     xxl?: TypographyStyleOptions;
-    xl?: TypographyStyleOptions;
-    lg?: TypographyStyleOptions;
-    md?: TypographyStyleOptions;
-    sm?: TypographyStyleOptions;
-    xs?: TypographyStyleOptions;
   }
 
   interface TypographyVariantsOptions {
     xg?: TypographyStyleOptions;
     xxxl?: TypographyStyleOptions;
     xxl?: TypographyStyleOptions;
-    xl?: TypographyStyleOptions;
-    lg?: TypographyStyleOptions;
-    md?: TypographyStyleOptions;
-    sm?: TypographyStyleOptions;
-    xs?: TypographyStyleOptions;
   }
 }
 
@@ -34,19 +24,27 @@ declare module '@mui/material/Typography' {
     xg?: true;
     xxxl?: true;
     xxl?: true;
-    xl?: true;
-    lg?: true;
-    md?: true;
-    sm?: true;
-    xs?: true;
   }
 }
 
 export const typography: ThemeOptions['typography'] = {
-  fontSize: 10,
-  htmlFontSize: 10,
   fontFamily: fonts.lato,
 
+  xg: {
+    fontWeight: fontWeights.semibold,
+    fontSize: fontSizes['9xl'],
+    lineHeight: lineHeights['leading-normal']
+  },
+  xxxl: {
+    fontWeight: fontWeights.bold,
+    fontSize: fontSizes['8xl'],
+    lineHeight: lineHeights['leading-tight']
+  },
+  xxl: {
+    fontWeight: fontWeights.bold,
+    fontSize: fontSizes['7xl'],
+    lineHeight: lineHeights['leading-tight']
+  },
   h1: {
     fontWeight: fontWeights.bold,
     fontSize: fontSizes['6xl'],
@@ -59,32 +57,32 @@ export const typography: ThemeOptions['typography'] = {
   },
   h3: {
     fontWeight: fontWeights.regular,
-    fontSize: fontSizes['2xl'],
+    fontSize: fontSizes['4xl'],
     lineHeight: lineHeights['leading-tight']
   },
   h4: {
     fontWeight: fontWeights.regular,
-    fontSize: fontSizes.xl,
+    fontSize: fontSizes['3xl'],
     lineHeight: lineHeights['leading-tight']
   },
   h5: {
     fontWeight: fontWeights.semibold,
-    fontSize: fontSizes.lg,
+    fontSize: fontSizes['2xl'],
     lineHeight: lineHeights['leading-normal']
   },
   h6: {
     fontWeight: fontWeights.semibold,
-    fontSize: fontSizes.md,
+    fontSize:   fontSizes.xl,
     lineHeight: lineHeights['leading-normal']
   },
   subtitle1: {
     fontWeight: fontWeights.regular,
-    fontSize: fontSizes.md,
+    fontSize: fontSizes.lg,
     lineHeight: lineHeights['leading-relaxed']
   },
   subtitle2: {
     fontWeight: fontWeights.semibold,
-    fontSize: fontSizes.sm,
+    fontSize: fontSizes.md,
     lineHeight: lineHeights['leading-relaxed']
   },
   body1: {

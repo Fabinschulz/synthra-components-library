@@ -102,6 +102,9 @@ importers:
       storybook:
         specifier: 8.3.5
         version: 8.3.5
+      storybook-addon-theme-provider:
+        specifier: ^0.2.2
+        version: 0.2.2(@storybook/blocks@8.3.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.5))(@storybook/components@8.3.5(storybook@8.3.5))(@storybook/manager-api@8.3.5(storybook@8.3.5))(@storybook/preview-api@8.3.5(storybook@8.3.5))(@storybook/theming@8.3.5(storybook@8.3.5))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       tsup:
         specifier: ^8.3.0
         version: 8.3.0(@swc/core@1.7.26(@swc/helpers@0.5.5))(jiti@1.21.6)(postcss@8.4.47)(typescript@5.6.2)
@@ -4912,6 +4915,38 @@ packages:
   stop-iteration-iterator@1.0.0:
     resolution: {integrity: sha512-iCGQj+0l0HOdZ2AEeBADlsRC+vsnDsZsbdSiH1yNSjcfKM7fdpCMfqAL/dwF5BLiw/XhRft/Wax6zQbhq2BcjQ==}
     engines: {node: '>= 0.4'}
+
+  storybook-addon-theme-provider@0.2.2:
+    resolution: {integrity: sha512-sEzVXh3v55Z3vPA1qvaDeILJRLCDnRzvTBVREGsuYO/1N6Cb8wBK3XN4O/gK7VgarL7WtfuWRqOBKXgTeaicdQ==}
+    peerDependencies:
+      '@storybook/blocks': '>=7.0.0'
+      '@storybook/components': '>=7.0.0'
+      '@storybook/core-events': '>=7.0.0'
+      '@storybook/manager-api': '>=7.0.0'
+      '@storybook/preview-api': '>=7.0.0'
+      '@storybook/theming': '>=7.0.0'
+      '@storybook/types': '>=7.0.0'
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    peerDependenciesMeta:
+      '@storybook/blocks':
+        optional: true
+      '@storybook/components':
+        optional: true
+      '@storybook/core-events':
+        optional: true
+      '@storybook/manager-api':
+        optional: true
+      '@storybook/preview-api':
+        optional: true
+      '@storybook/theming':
+        optional: true
+      '@storybook/types':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
 
   storybook@8.3.5:
     resolution: {integrity: sha512-hYQVtP2l+3kO8oKDn4fjXXQYxgTRsj/LaV6lUMJH0zt+OhVmDXKJLxmdUP4ieTm0T8wEbSYosFavgPcQZlxRfw==}
@@ -11047,6 +11082,16 @@ snapshots:
   stop-iteration-iterator@1.0.0:
     dependencies:
       internal-slot: 1.0.7
+
+  storybook-addon-theme-provider@0.2.2(@storybook/blocks@8.3.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.5))(@storybook/components@8.3.5(storybook@8.3.5))(@storybook/manager-api@8.3.5(storybook@8.3.5))(@storybook/preview-api@8.3.5(storybook@8.3.5))(@storybook/theming@8.3.5(storybook@8.3.5))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    optionalDependencies:
+      '@storybook/blocks': 8.3.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.5)
+      '@storybook/components': 8.3.5(storybook@8.3.5)
+      '@storybook/manager-api': 8.3.5(storybook@8.3.5)
+      '@storybook/preview-api': 8.3.5(storybook@8.3.5)
+      '@storybook/theming': 8.3.5(storybook@8.3.5)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   storybook@8.3.5:
     dependencies:
