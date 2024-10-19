@@ -6,11 +6,10 @@
   "author": "Synthra",
   "description": "A framework for building UI components",
   "scripts": {
-    "dev": "storybook dev -p 6006",
     "build": "tsup src --dts --format cjs,esm --external react",
-    "start": "storybook start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{ts,tsx,json,css,mdx}\"",
+    "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
@@ -20,6 +19,7 @@
     "@hookform/resolvers": "^3.9.0",
     "@mui/material": "^6.1.2",
     "@mui/x-data-grid": "^7.19.0",
+    "@storybook/addon-a11y": "^8.3.5",
     "autoprefixer": "^10.4.20",
     "next": "14.2.14",
     "react-code-input": "^3.10.1",
