@@ -72,7 +72,7 @@ export const typography: ThemeOptions['typography'] = {
   },
   h6: {
     fontWeight: fontWeights.semibold,
-    fontSize:   fontSizes.xl,
+    fontSize: fontSizes.xl,
     lineHeight: lineHeights['leading-normal']
   },
   subtitle1: {

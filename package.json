@@ -6,7 +6,7 @@
   "author": "Synthra",
   "description": "A framework for building UI components",
   "scripts": {
-    "build": "tsup src --dts --format cjs,esm --external react",
+    "build": "tsup",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{ts,tsx,json,css,mdx}\"",
     "storybook": "storybook dev -p 6006",
