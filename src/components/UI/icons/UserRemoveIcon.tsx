@@ -3,36 +3,30 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const UserRemoveIcon: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#373737' } = props;
+  const { htmlColor = '#373737', fill = 'none' } = props;
 
   return (
     <SvgIcon {...props}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-      >
-        <ellipse
-          cx="10"
-          cy="17.5"
-          rx="7"
-          ry="3.5"
-          stroke={htmlColor}
-          strokeWidth="2"
-          strokeLinejoin="round"
-        />
-        <circle cx="10" cy="7" r="4" stroke={htmlColor} strokeWidth="2" strokeLinejoin="round" />
-        <path d="M21 11H17" stroke={htmlColor} strokeWidth="2" strokeLinecap="round" />
-      </svg>
+      <ellipse
+        cx="10"
+        cy="17.5"
+        rx="7"
+        ry="3.5"
+        stroke={htmlColor}
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+        fill={fill}
+      />
+      <circle
+        cx="10"
+        cy="7"
+        r="4"
+        stroke={htmlColor}
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+        fill={fill}
+      />
+      <path d="M21 11H17" stroke={htmlColor} strokeWidth="1.5" stroke-linecap="round" />
     </SvgIcon>
   );
-};
-
-UserRemoveIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  width: '24',
-  height: '24',
-  fill: 'none'
 };

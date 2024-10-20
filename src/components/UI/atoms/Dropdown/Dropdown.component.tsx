@@ -5,7 +5,7 @@ import { InputLabel } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { FormControl } from './Dropdown.styled';
 import { MenuItem } from '../MenuItem';
-import { ChevronDownIcon } from '../../icons';
+import { DownIcon } from '../../icons';
 
 export const Dropdown: FunctionComponent<DropdownProps> = ({
   name,
@@ -39,7 +39,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
         onChange={handleChange}
         displayEmpty
         disabled={disabled}
-        IconComponent={ChevronDownIcon}
+        IconComponent={DownIcon}
         inputProps={{ 'aria-label': 'Without label' }}
       >
         <MenuItem value="">{items?.[0]}</MenuItem>

@@ -8,12 +8,12 @@ export const DownIcon: FunctionComponent<SvgIconProps> = (props) => {
   return (
     <SvgIcon {...props}>
       <path
-        d="M2 9L12 16L22 9"
+        d="M7 10L12 14L17 10"
+        fill="none"
         stroke={htmlColor}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        fill="none"
       />
     </SvgIcon>
   );

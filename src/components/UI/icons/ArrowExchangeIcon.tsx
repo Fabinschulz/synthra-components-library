@@ -2,7 +2,7 @@ import type { FunctionComponent } from 'react';
 import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
-export const ZoomArrowRectangleIcon: FunctionComponent<SvgIconProps> = (props) => {
+export const ArrowExchangeIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
@@ -15,14 +15,14 @@ export const ZoomArrowRectangleIcon: FunctionComponent<SvgIconProps> = (props) =
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M6 2H18C20.2091 2 22 3.79086 22 6V18C22 20.2091 20.2091 22 18 22H6C3.79086 22 2 20.2091 2 18V6C2 3.79086 3.79086 2 6 2Z"
+          d="M15 18L12 21M12 21L9 18M12 21L12 3M12 3L15 6M12 3L9 6"
           stroke={htmlColor}
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
-          d="M13 8H16M16 8V11M16 8L8 16M8 16V13M8 16H11"
+          d="M6 15L3 12M3 12L6 9M3 12L21 12M21 12L18 15M21 12L18 9"
           stroke={htmlColor}
           strokeWidth="1.5"
           strokeLinecap="round"
@@ -31,11 +31,4 @@ export const ZoomArrowRectangleIcon: FunctionComponent<SvgIconProps> = (props) =
       </svg>
     </SvgIcon>
   );
-};
-
-ZoomArrowRectangleIcon.defaultProps = {
-  viewBox: '0 0 24 25',
-  width: '24',
-  height: '25',
-  fill: 'none'
 };

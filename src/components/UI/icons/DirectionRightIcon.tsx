@@ -2,7 +2,7 @@ import type { FunctionComponent } from 'react';
 import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
-export const DirecionRightIcon: FunctionComponent<SvgIconProps> = (props) => {
+export const DirectionRightIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
@@ -33,7 +33,7 @@ export const DirecionRightIcon: FunctionComponent<SvgIconProps> = (props) => {
   );
 };
 
-DirecionRightIcon.defaultProps = {
+DirectionRightIcon.defaultProps = {
   viewBox: '0 0 24 25',
   width: '24',
   height: '25',

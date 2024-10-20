@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 import * as Icons from 'src/components/UI/icons';
-import { Tooltip, Box } from '@mui/material';
+import { Tooltip, Box, Typography, Paper } from '@mui/material';
 
 <Meta title="Tokens/Icons" />
 
@@ -10,22 +10,120 @@ Esta página apresenta todos os ícones disponíveis.
 
 ---
 
+export const Title = ({ title, icons = [] }) => (
+  <Paper sx={{ width: '100%', p: 2, my: 5 }}>
+    <Typography variant="h4" sx={{ mb: 3 }}>
+      {title}
+    </Typography>
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, alignItems: 'center' }}>
+      {icons.map((iconName) => (
+        <Tooltip key={iconName} title={iconName} arrow>
+          <Box sx={{ textAlign: 'center', cursor: 'pointer', mb: 2 }}>
+            {React.createElement(Icons[iconName], { style: { width: '26px', height: '26px' } })}
+          </Box>
+        </Tooltip>
+      ))}
+    </Box>
+  </Paper>
+);
+
+export const arrows = [
+  'ArrowExchangeIcon',
+  'LeftIcon',
+  'RightIcon',
+  'UpIcon',
+  'DownIcon',
+  'ArrowBackIcon',
+  'ArrowReturnIcon',
+  'ArrowSortIcon',
+  'ArrowTransferIcon',
+  'ArrowLeftIcon',
+  'ArrowRightIcon',
+  'ArrowUpIcon',
+  'ArrowDownIcon',
+  'ExchangeRectangleIcon',
+  'ArrowBackRectangleIcon',
+  'ArrowReturnRectangleIcon',
+  'ArrowDownBoxIcon',
+  'ArrowLeftRectangleIcon',
+  'ArrowRightBoxIcon',
+  'ArrowSortRectangleIcon',
+  'ArrowTransferRectangleIcon',
+  'ZoomArrowRectangleIcon',
+  'ArrowMaximizeIcon',
+  'ArrowMoveRectangleIcon',
+  'ArrowDownCircleIcon',
+  'ArrowLeftCircleIcon',
+  'ArrowRightCircleIcon',
+  'ArrowUpCircleIcon',
+  'ArrowSortCircleIcon',
+  'AscendingOrderIcon',
+  'LogoutIcon',
+  'SignInIcon',
+  'MinimizeIcon',
+  'MinimizeLeftIcon',
+  'OutCircleIcon',
+  'MaximizeIcon',
+  'InCircleIcon',
+  'DirectionDownRectangleIcon',
+  'DirectionUpRectangleIcon',
+  'DirectionDownCircleIcon',
+  'DirectionRightRectangleIcon',
+  'DirectionUpCircleIcon',
+  'DirectionLeftCircleIcon',
+  'DirectionRightCircleIcon',
+  'DirectionDownIcon',
+  'DirectionUpIcon',
+  'DirectionLeftIcon',
+  'DirectionRightIcon',
+  'ReloadRectangleIcon',
+  'DownArrowIcon',
+  'UpDownIcon',
+  'LeftArrowIcon',
+  'UpDownBoldIcon',
+  'DownBoldIcon',
+  'LeftBoldIcon',
+  'RightBoldIcon',
+  'PreviwsIcon',
+  'NextArrowIcon'
+];
+
+export const calendar = ['CalendarIcon', 'FilledTime', 'WaitingTimeIcon'];
+
+export const users = [
+  'LegalPersonIcon',
+  'NaturalPersonIcon',
+  'UserGroupIcon',
+  'UserConnectionsIcon',
+  'UserAddIcon',
+  'UserBloackIcon',
+  'UserRejectIcon',
+  'UserRemoveIcon',
+  'ShieldProtectionIcon',
+  'ProfileBadgeIcon',
+  'UserNetworkIcon',
+  'UserStatusEditIcon',
+  'UserCircleMinusIcon',
+  'UserDeleteIcon',
+  'UserBlockIcon',
+  'UsersCommunityIcon'
+];
+
+export const edit = [
+  'CopyIcon',
+  'DeleteIcon',
+  'EditIcon',
+  'DownloadIcon',
+  'UploadIcon',
+  'DraftIcon'
+];
+
 <details>
   <summary style={{ marginBottom: '3rem' }}>Ver ícones</summary>
-  <Box
-    sx={{
-      display: 'flex',
-      flexWrap: 'wrap',
-      gap: 2,
-      alignItems: 'center'
-    }}
-  >
-    {Object.entries(Icons).map(([iconName, IconComponent]) => (
-      <Tooltip key={iconName} title={iconName} arrow>
-        <Box sx={{ textAlign: 'center', cursor: 'pointer', mb: 2 }}>
-          <IconComponent style={{ width: '26px', height: '26px' }} />
-        </Box>
-      </Tooltip>
-    ))}
-  </Box>
+  <Title title="Setas" icons={arrows} />
+  <Title title="Hora e Data" icons={calendar} />
+  <Title title="Editor" icons={edit} />
+  <Title title="Usuários" icons={users} />
+  <Title title="Interface" icons={Object.keys(Icons).filter((iconName) => ![...arrows, ...calendar, ...edit, ...users].includes(iconName))} />
+
 </details>

@@ -4,7 +4,7 @@ import { FunctionComponent, useId } from 'react';
 import { Box, InputLabel, Select } from '@mui/material';
 import { FormControl, SelectMenuItem } from './SelectField.styled';
 import { Checkbox } from '../Checkbox';
-import { ChevronDownIcon } from '../../icons';
+import { DownIcon } from '../../icons';
 
 export const SelectField: FunctionComponent<SelectFieldProps> = (props) => {
   const { label, items, required, onChange, multiple, value, disabled, variant, ...selectProps } =
@@ -32,7 +32,7 @@ export const SelectField: FunctionComponent<SelectFieldProps> = (props) => {
         onChange={onChange}
         multiple={multiple}
         disabled={disabled}
-        IconComponent={ChevronDownIcon}
+        IconComponent={DownIcon}
         renderValue={multiple ? (selected) => (selected as string[]).join(', ') : undefined}
         variant={variant}
         {...selectProps}
