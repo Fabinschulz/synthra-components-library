@@ -10,13 +10,13 @@
 Primeiro, execute o servidor de desenvolvimento:
 
 ```bash
-npm run dev
+npm run storybook
 # or
-yarn dev
+yarn storybook
 # or
-pnpm dev
+pnpm storybook
 # or
-bun dev
+bun storybook
 ```
 
 Abra [http://localhost:3000](http://localhost:3000) com seu navegador para ver o resultado.
