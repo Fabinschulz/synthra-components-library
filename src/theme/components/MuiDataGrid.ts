@@ -43,7 +43,7 @@ export const MuiDataGrid: DataGridComponents['MuiDataGrid'] = {
       border: 'none',
       '& .MuiDataGrid-columnHeaders': {
         color: palette.neutral.darkest,
-        ...typography.sm,
+        ...typography.body2,
         lineHeight: '19px',
         minHeight: 'auto!important'
       },
@@ -97,7 +97,7 @@ export const MuiDataGrid: DataGridComponents['MuiDataGrid'] = {
       padding: 0
     },
     cell: {
-      ...typography.xs,
+      ...typography.caption,
       lineHeight: '14px',
       padding: '0px 24px',
       border: 'none',
@@ -108,7 +108,7 @@ export const MuiDataGrid: DataGridComponents['MuiDataGrid'] = {
     },
     footerContainer: {
       border: 'none',
-      ...typography.xs
+      ...typography.caption
     }
   }
 };

@@ -39,7 +39,7 @@ export type AutocompleteBaseProps = {
    * @param event - Objeto de evento do React para a alteração no campo.
    * @type (event: React.ChangeEvent<HTMLInputElement>) => void
    */
-  onChangeTextField: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeTextField?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 
   /**
    * Nome identificador único do campo.

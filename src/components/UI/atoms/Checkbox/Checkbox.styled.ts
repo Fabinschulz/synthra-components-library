@@ -1,25 +1,21 @@
 import { alpha, styled } from '@mui/material/styles';
 import { Checkbox, FormControlLabel } from '@mui/material';
 
-const colorBlue = '#EC0000';
-const colorDisabled = '#CCCCCC';
-export const StyledFormControlLabel = styled(FormControlLabel)(() => {
-  const color = '#111827';
-  return {
-    '& .MuiFormControlLabel-label': {
-      fontSize: '16px',
-      lineHeight: 1.2,
-      color,
-      '&.Mui-disabled': {
-        color: colorDisabled
-      }
+export const StyledFormControlLabel = styled(FormControlLabel)(({ theme }) => ({
+  '& .MuiFormControlLabel-label': {
+    ...theme.typography.body2,
+    lineHeight: 1.2,
+    color: theme.palette.neutral.darkest,
+    '&.Mui-disabled': {
+      color: theme.palette.neutral.light
     }
-  };
-});
+  }
+}));
 
 export const StyledCheckbox = styled(Checkbox)(({ theme, size }) => ({
   padding: size === 'small' ? '6.675px' : '8px',
   margin: size === 'small' ? '3px' : undefined,
+  color: theme.palette.neutral.dark,
   '& .MuiSvgIcon-root': {
     borderRadius: '6px',
     fontSize: '24px',
@@ -28,14 +24,14 @@ export const StyledCheckbox = styled(Checkbox)(({ theme, size }) => ({
     }
   },
   '&.Mui-disabled': {
-    color: colorDisabled
+    color: theme.palette.neutral.light
   },
   '&:not(.Mui-disabled)': {
     '&.Mui-checked, &.MuiCheckbox-indeterminate': {
       '&.MuiCheckbox-colorPrimary': {
-        color: colorBlue,
+        color: theme.palette.primary.main,
         '&:hover': {
-          backgroundColor: alpha(colorBlue, 0.05)
+          backgroundColor: alpha(theme.palette.secondary.dark, 0.08)
         }
       },
       '&.MuiCheckbox-colorSecondary': {
@@ -44,11 +40,6 @@ export const StyledCheckbox = styled(Checkbox)(({ theme, size }) => ({
           backgroundColor: alpha(theme.palette.error.light, 0.08)
         }
       }
-    }
-  },
-  '&.Mui-checked': {
-    '&, & + .MuiFormControlLabel-label': {
-      color: '#b91c1c'
     }
   }
 }));

@@ -9,23 +9,23 @@ import { CodeFieldProps } from './CodeField.interface';
 interface IFieldCode {
   handleChange: (event: string) => void;
   props: ReactCodeInputProps;
+  fields: number;
 }
 
 const theme = activeTheme();
 
-const FieldCode = ({ handleChange, props }: IFieldCode) => {
+const FieldCode = ({ handleChange, fields, props }: IFieldCode) => {
   return (
     <ReactCodeInput
-      className="text-field-code"
       onChange={handleChange}
       type="number"
-      fields={6}
+      fields={fields}
       {...props}
     />
   );
 };
 
-export const CodeField: React.FC<CodeFieldProps> = ({ name, toggle }) => {
+export const CodeField: React.FC<CodeFieldProps> = ({ name, toggle, fields = 6 }) => {
   const { setValue, validationErrors } = useFormContext();
   let error = validationErrors && getObjectPropertyValue(name, validationErrors)?.message;
 
@@ -52,7 +52,7 @@ export const CodeField: React.FC<CodeFieldProps> = ({ name, toggle }) => {
 
   return (
     <Stack justifyContent="center">
-      <FieldCode handleChange={onChangeField} props={dinamicProps} />
+      <FieldCode handleChange={onChangeField} props={dinamicProps} fields={fields} />
       {!!error && (
         <Typography variant="body1" color={theme.palette.error.dark}>
           <>{error}</>

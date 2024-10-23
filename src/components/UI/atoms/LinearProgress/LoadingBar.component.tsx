@@ -2,12 +2,12 @@
 import type { FunctionComponent } from 'react';
 import type { LoadingBarProps } from './LoadingBar.interface';
 
-import { Box, LinearProgress } from '@mui/material';
+import { Box, LinearProgress as LinearProgressMui } from '@mui/material';
 
 export const LoadingBar: FunctionComponent<LoadingBarProps> = ({ ...props }) => {
   return (
     <Box sx={{ width: '100%' }}>
-      <LinearProgress {...props} />
+      <LinearProgressMui {...props} />
     </Box>
   );
 };

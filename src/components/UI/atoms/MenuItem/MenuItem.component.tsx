@@ -1,16 +1,14 @@
-'use client';
 import type { MenuItemProps } from './MenuItem.interface';
-import React, { FunctionComponent } from 'react';
+import React from 'react';
+import clsx from 'clsx';
+
 import { StyledMenuItem } from './MenuItem.styled';
 
-export const MenuItem: FunctionComponent<MenuItemProps> = (props, ref) => {
-  const { children, size, className, ...rest } = props;
-
-  const combinedClassName = `${size ? size : ''} ${className ? className : ''}`.trim();
-
+export const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>((props, ref) => {
+  const { children, size, className, ...menuItemProps } = props;
   return (
-    <StyledMenuItem ref={ref} {...rest} className={combinedClassName}>
+    <StyledMenuItem ref={ref} {...menuItemProps} className={clsx(size, className)}>
       {children}
     </StyledMenuItem>
   );
-};
+});

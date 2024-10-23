@@ -7,7 +7,7 @@ const typography = typographyOptions! as Typography;
 export const MuiBreadcrumbs: Components['MuiBreadcrumbs'] = {
   styleOverrides: {
     root: {
-      ...typography.xs
+      ...typography.caption
     }
   }
 };

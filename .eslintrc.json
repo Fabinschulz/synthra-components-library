@@ -17,6 +17,7 @@
     "react/react-in-jsx-scope": "off",
     "no-undef": "off",
     "prefer-const": "off",
-    "sonarjs/no-duplicate-string": "off"
+    "sonarjs/no-duplicate-string": "off",
+    "react/display-name": "off"
   }
 }

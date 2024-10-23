@@ -13,4 +13,11 @@ export interface CodeFieldProps {
    */
 
   toggle: boolean;
+
+  /**
+   * Determina a quantidade de campos
+   * @default 6
+   * @type number
+   */
+  fields?: number;
 }

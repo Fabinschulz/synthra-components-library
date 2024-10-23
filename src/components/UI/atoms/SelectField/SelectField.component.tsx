@@ -5,6 +5,8 @@ import { Box, InputLabel, Select } from '@mui/material';
 import { FormControl, SelectMenuItem } from './SelectField.styled';
 import { Checkbox } from '../Checkbox';
 import { DownIcon } from '../../icons';
+import { MenuItem } from '../MenuItem';
+import { Typography } from '../Typography';
 
 export const SelectField: FunctionComponent<SelectFieldProps> = (props) => {
   const { label, items, required, onChange, multiple, value, disabled, variant, ...selectProps } =
@@ -43,15 +45,17 @@ export const SelectField: FunctionComponent<SelectFieldProps> = (props) => {
         }}
       >
         {items?.map((item, index) => (
-          <SelectMenuItem dense={!multiple} value={item} key={index} color="primary">
+          <MenuItem dense={!multiple} value={item} key={index} color="primary">
             {multiple ? (
               <Box sx={{ pointerEvents: 'none' }}>
                 <Checkbox size="small" label={item} checked={arrayValue.indexOf(item) > -1} />
               </Box>
             ) : (
-              item
+              <Typography variant="body1" fontWeight={500} color="neutral.dark">
+                {item}
+              </Typography>
             )}
-          </SelectMenuItem>
+          </MenuItem>
         ))}
       </Select>
     </FormControl>

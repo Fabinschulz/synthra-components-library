@@ -1,6 +1,6 @@
 {
   "name": "@synthra.io/ui-kit",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": false,
   "license": "MIT",
   "author": "Synthra",
@@ -25,6 +25,7 @@
     "@mui/x-data-grid": "^7.21.0",
     "@storybook/addon-a11y": "^8.3.6",
     "autoprefixer": "^10.4.20",
+    "clsx": "^2.1.1",
     "next": "14.2.14",
     "react-code-input": "^3.10.1",
     "react-hook-form": "^7.53.1"

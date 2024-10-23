@@ -36,6 +36,14 @@ export const palette: ThemeOptions['palette'] = {
     }
   },
 
+  brand: {
+    lightest: '#E0F2FF',
+    light: '#3968D0',
+    medium: '#0762ED',
+    dark: '#005BB5',
+    darkest: '#192B66'
+  },
+
   divider: alpha('#000000', 0.12),
 
   error: {
