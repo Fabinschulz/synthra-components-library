@@ -66,7 +66,7 @@ const meta: Meta<StoryProps> = {
     required: {
       description: 'Determina se o autocomplete é obrigatório'
     }
-  },
+  }
 };
 
 export default meta;

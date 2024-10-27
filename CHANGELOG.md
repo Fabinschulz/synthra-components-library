@@ -1,5 +1,11 @@
 # @synthra.io/ui-kit
 
+## 0.2.1
+
+### Patch Changes
+
+- components documentation completed
+
 ## 0.2.0
 
 ### Minor Changes

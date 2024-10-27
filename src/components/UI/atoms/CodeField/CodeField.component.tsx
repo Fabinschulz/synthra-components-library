@@ -15,14 +15,7 @@ interface IFieldCode {
 const theme = activeTheme();
 
 const FieldCode = ({ handleChange, fields, props }: IFieldCode) => {
-  return (
-    <ReactCodeInput
-      onChange={handleChange}
-      type="number"
-      fields={fields}
-      {...props}
-    />
-  );
+  return <ReactCodeInput onChange={handleChange} type="number" fields={fields} {...props} />;
 };
 
 export const CodeField: React.FC<CodeFieldProps> = ({ name, toggle, fields = 6 }) => {

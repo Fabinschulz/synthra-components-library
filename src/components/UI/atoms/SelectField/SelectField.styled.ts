@@ -59,7 +59,7 @@ export const FormControl = styled(MuiFormControl)(({ theme }) => ({
       borderRadius: '4px 4px 0 0',
       '&:hover, &:active, &:focus, &.Mui-focused': {
         background: theme.palette.common.white,
-        borderRadius: '4px 4px 0 0',
+        borderRadius: '4px 4px 0 0'
       }
     }
   }

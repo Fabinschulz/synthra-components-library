@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { ComponentProps, useState } from 'react';
 import { SelectField } from './SelectField.component';
 import { SelectChangeEvent } from '@mui/material';
@@ -31,14 +31,11 @@ const meta: Meta<StoryProps> = {
 export default meta;
 
 export const Template = ({ onChange, ...props }: StoryProps) => {
-    const [value, setValue] = useState<string | string[] | null>(null);
-  
-    const handleChange = (event: SelectChangeEvent<unknown>) => {
-      setValue(event.target.value as string | string[]);
-    };
-  
-    return <SelectField value={value} onChange={handleChange} {...props} />;
+  const [value, setValue] = useState<string | string[] | null>(null);
+
+  const handleChange = (event: SelectChangeEvent<unknown>) => {
+    setValue(event.target.value as string | string[]);
   };
 
-
-
+  return <SelectField value={value} onChange={handleChange} {...props} />;
+};

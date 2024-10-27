@@ -27,7 +27,7 @@ export const TabBar: FunctionComponent<TabBarProps> = ({
   orientation,
   children
 }) => {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? '';
   const [value, setValue] = useState(0);
   const target = tabs?.[0].href ?? '';
 

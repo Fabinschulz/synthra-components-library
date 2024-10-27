@@ -22,6 +22,6 @@ export const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
   },
   '& .MuiOutlinedInput-root': {
     paddingTop: '0px',
-    paddingBottom: '0px',
+    paddingBottom: '0px'
   }
 }));

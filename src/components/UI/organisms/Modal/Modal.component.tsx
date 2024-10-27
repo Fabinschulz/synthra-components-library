@@ -27,13 +27,18 @@ export const Modal: FunctionComponent<ModalProps> = ({
 }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
+  const sizeSx = {
+    width: '100%',
+    maxWidth: sizeModal === 'large' ? 900 : sizeModal === 'medium' ? 646 : 460
+  };
+
   return (
     <StyledDialog
       open={open}
       onClose={onClose}
       maxWidth="lg"
       PaperProps={{
-        sx: { width: sizeModal === 'large' ? 550 : 460, maxWidth: '100%' }
+        sx: sizeSx
       }}
     >
       <StyledDialogTitle>

@@ -14,9 +14,9 @@ export const StyledMenuItem = styled(MuiMenuItem)(({ theme }) => ({
     background: theme.palette.neutral.primaryShade?.['20']
   },
   '&.small': {
-    padding: '6px 16px',
+    padding: '6px 16px'
   },
   '&.medium': {
-    padding: '14px 16px',
+    padding: '14px 16px'
   }
-}))
+}));
