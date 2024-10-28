@@ -1,5 +1,11 @@
 # @synthra.io/ui-kit
 
+## 0.3.0
+
+### Minor Changes
+
+- add news components
+
 ## 0.2.1
 
 ### Patch Changes

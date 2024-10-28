@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
-import { Modal } from './Modal.component';
-import { fn } from '@storybook/test';
+import { Menu } from './Menu.component';
+import { menuMock } from './Menu.mock';
 
-type StoryProps = ComponentProps<typeof Modal>;
+type StoryProps = ComponentProps<typeof Menu>;
 
 const meta: Meta<StoryProps> = {
-  title: 'UI/organisms/Modal',
-  component: Modal,
+  title: 'UI/organisms/Menu',
+  component: Menu,
   tags: ['autodocs'],
   parameters: {
     design: {
@@ -22,9 +22,5 @@ export default meta;
 type Story = StoryObj<StoryProps>;
 
 export const Template: Story = {
-  args: {
-    open: false,
-    onClose: fn,
-    children: 'Modal content'
-  }
+  args: menuMock
 };

@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
 import { DataTable } from './DataTable.component';
 import { columnsMock, rowsMock } from './DataTable.mock';
@@ -6,7 +6,7 @@ import { columnsMock, rowsMock } from './DataTable.mock';
 type StoryProps = ComponentProps<typeof DataTable>;
 
 const meta: Meta<StoryProps> = {
-  title: 'UI/Organisms/DataTable',
+  title: 'UI/organisms/DataTable',
   component: DataTable,
   tags: ['autodocs'],
   parameters: {
@@ -19,16 +19,16 @@ const meta: Meta<StoryProps> = {
 
 export default meta;
 
-export const Template = () => {
-  return (
-    <DataTable
-      columns={columnsMock}
-      rows={rowsMock}
-      page={0}
-      rowCount={0}
-      rowsPerPage={0}
-      setPage={() => {}}
-      setRowsPerPage={() => {}}
-    />
-  );
+type Story = StoryObj<StoryProps>;
+
+export const Template: Story = {
+  args: {
+    columns: columnsMock,
+    rows: rowsMock,
+    page: 0,
+    rowCount: 0,
+    rowsPerPage: 0,
+    setPage: () => {},
+    setRowsPerPage: () => {}
+  }
 };

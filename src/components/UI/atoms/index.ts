@@ -1,4 +1,5 @@
 export * from './Autocomplete';
+export * from './Avatar';
 export * from './Button';
 export * from './Checkbox';
 export * from './Divider';
