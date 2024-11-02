@@ -1,2 +1,2 @@
-export * from './LoadingBar.component';
+export { default as LoadingBar } from './LoadingBar.component';
 export * from './LoadingBar.interface';

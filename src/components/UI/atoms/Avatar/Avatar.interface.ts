@@ -21,7 +21,7 @@ export interface AvatarProps {
    * @type {string}
    * @example 'Software Engineer'
    */
-  subtitle: string;
+  subtitle?: string;
 
   /**
    * Texto alternativo para a imagem do avatar

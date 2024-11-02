@@ -2,7 +2,6 @@ import {
   Accordion,
   AccordionDetails,
   Box,
-  Button,
   Divider,
   Drawer as MuiDrawer,
   ListItem,
@@ -15,25 +14,37 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import { styled } from '@mui/material/styles';
 import Link from 'next/link';
 
-export const StyledDrawer = styled(MuiDrawer)(({ theme }) => ({
-  borderRadius: '0 50% 50% 0',
-  background: theme.palette.common.white,
-  border: '0.5px solid #BABFD0',
-  transform: 'matrix(1, 0, 0, -1, 0, 0)'
-}));
-
 export const StyledListItemIcon = styled(ListItemIcon)(() => ({
   minWidth: 0,
   justifyContent: 'center'
 }));
 
-export const StyledListItem = styled(ListItem)(({ theme }) => ({
+type ListItemProps = {
+  openMenu: boolean;
+};
+
+export const StyledListItem = styled(ListItem)<ListItemProps>(({ theme, openMenu }) => ({
   display: 'block',
-  borderRadius: '10px',
+  // marginBottom: '65px',
   '& svg': {
-    color: theme.palette.neutral.medium
+    color: theme.palette?.neutral?.medium
   },
   '&.active': {
+    '.MuiTouchRipple-root': {
+      background: theme.palette?.primary.shade?.[10]
+    },
+    '& svg': {
+      color: openMenu ? theme.palette?.common?.white : theme.palette.primary.main,
+      '& path': {
+        stroke: openMenu ? theme.palette?.common?.white : theme.palette.primary.main
+      }
+    },
+    '& .title > .MuiTypography-root': {
+      color: theme.palette?.common?.white,
+      fontWeight: 700
+    }
+  },
+  '&:hover': {
     '.MuiTouchRipple-root': {
       background: theme.palette.primary.shade?.[10]
     },
@@ -50,15 +61,6 @@ export const StyledListItem = styled(ListItem)(({ theme }) => ({
   }
 }));
 
-export const StyledButton = styled(Button)(({ theme }) => ({
-  border: `2px solid ${theme.palette.neutral.light}`,
-  ...theme.typography.caption,
-  color: theme.palette.neutral.medium,
-  borderRadius: '48px',
-  padding: '8px 0',
-  lineHeight: '19px'
-}));
-
 export const StyledListItemButton = styled(ListItemButton)(() => ({
   padding: '15px 40px',
   borderRadius: '10px',
@@ -69,17 +71,17 @@ export const StyledListItemButton = styled(ListItemButton)(() => ({
   }
 }));
 
-export const StyledListItemText = styled(ListItemText)(({ theme }) => ({
+export const StyledListItemText = styled(ListItemText)(({ theme, color }) => ({
   '& .MuiTypography-root': {
     ...theme.typography.body1,
-    color: theme.palette.neutral.medium,
+    color: color ?? theme.palette?.neutral?.medium,
     lineHeight: '19px',
     minWidth: '159px'
   }
 }));
 
 export const StyledDivider = styled(Divider)(({ theme }) => ({
-  borderColor: theme.palette.neutral.light,
+  borderColor: theme.palette?.neutral?.light,
   borderRadius: '4px',
   marginTop: '15px'
 }));
@@ -129,13 +131,13 @@ export const StyledAccordionDetails = styled(AccordionDetails)(() => ({
 
 export const StyledLink = styled(Link)(({ theme }) => ({
   ...theme.typography.body2,
-  color: theme.palette.neutral.medium,
+  color: theme.palette?.neutral?.medium,
   lineHeight: '19px',
   '&.active': {
-    color: theme.palette.primary.main
+    color: theme.palette?.primary?.main
   },
   '&:hover': {
-    color: theme.palette.primary.main
+    color: theme.palette?.primary?.main
   },
   textDecoration: 'none'
 }));
@@ -168,7 +170,7 @@ export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 
       borderRadius: '0 10px 10px 0',
       border: '0.5px solid rgba(186, 191, 208, 0.5)',
       padding: '35px 11px',
-      width: open ? 280 : 98,
+      width: open ? 240 : 90,
       transition: 'width 0.1s ease-in-out',
       overflowX: 'hidden'
     }

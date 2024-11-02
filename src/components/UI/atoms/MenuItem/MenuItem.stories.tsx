@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
-import { MenuItem } from './MenuItem.component';
+import MenuItem from './MenuItem.component';
 
 type StoryProps = ComponentProps<typeof MenuItem>;
 

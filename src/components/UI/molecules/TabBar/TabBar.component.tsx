@@ -21,12 +21,7 @@ const TabPanel: FunctionComponent<TabPanelProps> = ({ children, value, index, ..
   );
 };
 
-export const TabBar: FunctionComponent<TabBarProps> = ({
-  tabs,
-  variant,
-  orientation,
-  children
-}) => {
+const TabBar: FunctionComponent<TabBarProps> = ({ tabs, variant, orientation, children }) => {
   const pathname = usePathname() ?? '';
   const [value, setValue] = useState(0);
   const target = tabs?.[0].href ?? '';
@@ -81,3 +76,5 @@ export const TabBar: FunctionComponent<TabBarProps> = ({
     </Box>
   );
 };
+
+export default TabBar;

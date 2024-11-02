@@ -2,7 +2,7 @@ import type { FunctionComponent } from 'react';
 import type { MenuProps } from './Menu.interface';
 import { useState, useEffect, useRef } from 'react';
 import Box from '@mui/material/Box';
-import { IconButton, Skeleton, Stack, Typography } from '@mui/material';
+import { IconButton, Skeleton, Stack, styled, Typography } from '@mui/material';
 import {
   Drawer,
   LogoBox,
@@ -15,7 +15,7 @@ import {
 import { useOnClickOutside } from '@/utils';
 import { CustomMenu } from './CustomMenu';
 import { LeftIcon, RightIcon, SignInIcon } from '../../icons';
-import { Avatar as AvatarMenu } from '../../atoms';
+import { Avatar } from '../../atoms';
 
 type TitleMenuProps = {
   title: string;
@@ -30,7 +30,7 @@ const TitleMenu = ({ title, open }: TitleMenuProps) => {
         color: '#666666',
         fontWeight: 500,
         fontSize: '0.85rem',
-        mt: 2,
+        my: 2,
         textAlign: open ? 'left' : 'center'
       }}
     >
@@ -39,14 +39,16 @@ const TitleMenu = ({ title, open }: TitleMenuProps) => {
   );
 };
 
-export const Menu: FunctionComponent<MenuProps> = ({
+const Menu: FunctionComponent<MenuProps> = ({
   items,
   logoIcon,
   drawerWidthMain,
   onClickLogout,
   closeDelay = 200,
   activateAutoOutsideMenu = false,
-  isLoading = false
+  isLoading = false,
+  avatarTitle,
+  avatarSubtitle
 }) => {
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef(null);
@@ -67,7 +69,7 @@ export const Menu: FunctionComponent<MenuProps> = ({
   };
 
   useEffect(() => {
-    drawerWidthMain?.(open ? 290 : 98);
+    drawerWidthMain?.(open ? 270 : 105);
   }, [drawerWidthMain, open]);
 
   const iconSx = {
@@ -75,25 +77,30 @@ export const Menu: FunctionComponent<MenuProps> = ({
     height: '20px'
   };
 
+  const CustomIconButton = styled(IconButton)({
+    position: 'absolute',
+    right: '-15px',
+    padding: 0,
+    '&:hover': {
+      backgroundColor: 'transparent'
+    },
+    '&:active': {
+      backgroundColor: 'transparent'
+    }
+  });
+
   return (
     <Box ref={wrapperRef} sx={{ display: 'flex', position: 'relative' }}>
       <Drawer variant="permanent" open={open}>
         <LogoBox>
           {logoIcon}
-          <IconButton
-            size="small"
-            onClick={handleDrawerOpen}
-            sx={{
-              position: 'absolute',
-              right: '-15px'
-            }}
-          >
+          <CustomIconButton size="small" onClick={handleDrawerOpen}>
             {open ? (
               <LeftIcon htmlColor="#666666" sx={iconSx} />
             ) : (
               <RightIcon htmlColor="#666666" sx={iconSx} />
             )}
-          </IconButton>
+          </CustomIconButton>
         </LogoBox>
 
         <StyledDivider />
@@ -132,7 +139,7 @@ export const Menu: FunctionComponent<MenuProps> = ({
         <StyledDivider />
         <TitleMenu title="Conta" open={open} />
 
-        <StyledListItem disablePadding>
+        <StyledListItem disablePadding openMenu={open}>
           {onClickLogout && (
             <StyledListItemButton
               sx={{
@@ -156,11 +163,15 @@ export const Menu: FunctionComponent<MenuProps> = ({
               />
             </StyledListItemButton>
           )}
-          <Stack alignItems={open ? 'flex-start' : 'center'} sx={{ mt: 2 }}>
-            <AvatarMenu title="Usuário" subtitle="Administrador" showText={open} />
-          </Stack>
+          {avatarTitle && (
+            <Stack alignItems={open ? 'flex-start' : 'center'} sx={{ mt: 2 }}>
+              <Avatar title={avatarTitle} subtitle={avatarSubtitle} showText={open} />
+            </Stack>
+          )}
         </StyledListItem>
       </Drawer>
     </Box>
   );
 };
+
+export default Menu;

@@ -1,6 +1,20 @@
 import { ReactNode } from 'react';
 
 export interface MenuProps {
+  /**
+   * Determina o titulo do avatar
+   */
+  avatarTitle?: string;
+
+  /**
+   * Determina o subtitulo do avatar
+   */
+
+  avatarSubtitle?: string;
+
+  /*
+   * Determina se o menu esta aberto
+   */
   open?: boolean;
 
   /**

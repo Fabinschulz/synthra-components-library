@@ -1,4 +1,4 @@
-export * from './TextFormField';
-export * from './SelectFormField';
-export * from './CheckboxFormField';
-export * from './AutocompleteField';
+export { default as TextFormField } from './TextFormField';
+export { default as SelectFormField } from './SelectFormField';
+export { default as CheckboxFormField } from './CheckboxFormField';
+export { default as AutocompleteField } from './AutocompleteField';

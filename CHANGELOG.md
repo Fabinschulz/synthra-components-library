@@ -1,5 +1,11 @@
 # @synthra.io/ui-kit
 
+## 0.3.1
+
+### Patch Changes
+
+- feat: change from tsup to rollup
+
 ## 0.3.0
 
 ### Minor Changes

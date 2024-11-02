@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import dynamic from 'next/dynamic';
 
 const DynamicTheme = dynamic(() => import('@/utils/configs/mui/theme-registry'), {
@@ -7,7 +7,7 @@ const DynamicTheme = dynamic(() => import('@/utils/configs/mui/theme-registry'),
 });
 
 type RootLayoutProps = Readonly<{ children: React.ReactNode }>;
-const GlobalTagsContainer = ({ children }: RootLayoutProps) => {
+const GlobalLayoutContainer = ({ children }: RootLayoutProps) => {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body>
@@ -17,4 +17,4 @@ const GlobalTagsContainer = ({ children }: RootLayoutProps) => {
   );
 };
 
-export default GlobalTagsContainer;
+export default GlobalLayoutContainer;

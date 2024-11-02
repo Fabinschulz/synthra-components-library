@@ -18,7 +18,7 @@ const NoOverlayMsg = (message: string) => {
   );
 };
 
-export const DataTable: FunctionComponent<DataTableProps> = ({
+const DataTable: FunctionComponent<DataTableProps> = ({
   NoRowsOverlayNew = 'Nenhum resultado encontrado',
   NoResultsOverlayNew = 'Nenhum resultado encontrado',
   rows,
@@ -57,53 +57,52 @@ export const DataTable: FunctionComponent<DataTableProps> = ({
   const pageSizeOptions = [5, 10, 15, 20];
 
   return (
-    <>
-      <MainBox>
-        <StyledDataGrid
-          autoHeight
-          rows={rows}
-          columns={columns}
-          rowCount={rowCount}
-          rowHeight={40}
-          pageSizeOptions={pageSizeOptions}
-          pagination
-          paginationMode={paginationMode}
-          paginationModel={paginationModel}
-          onPaginationModelChange={handleChangePaginationModel}
-          disableColumnMenu
-          isCellEditable={isCellEditable}
-          isRowSelectable={isRowSelectable}
-          rowSelection={false}
-          getRowId={getRowId}
-          disableColumnFilter
-          disableRowSelectionOnClick
-          disableColumnSelector
-          hideFooter={hideFooterSelectedRowCount}
-          checkboxSelection={checkboxSelection}
-          onRowSelectionModelChange={onSelectionModelChange}
-          rowSelectionModel={rowSelectionModel}
-          keepNonExistentRowsSelected={keepNonExistentRowsSelected}
-          hideFooterPagination={rows?.length === 0}
-          hideFooterSelectedRowCount={rows?.length === 0}
-          filterModel={filterModel}
-          onFilterModelChange={handleFilterModelChange}
-          loading={isLoading}
-          initialState={{
-            pagination: {
-              paginationModel: { page: page, pageSize: rowsPerPage }
-            }
-          }}
-          slotProps={{
-            pagination: {
-              labelRowsPerPage: 'Linha por páginas'
-            }
-          }}
-          slots={{
-            noRowsOverlay: () => NoOverlayMsg(NoRowsOverlayNew)
-          }}
-          {...props}
-        />
-      </MainBox>
-    </>
+    <MainBox height={Math.max(rowsPerPage * 35 + 190, 350)}>
+      <StyledDataGrid
+        rows={rows}
+        columns={columns}
+        rowCount={rowCount}
+        rowHeight={40}
+        pageSizeOptions={pageSizeOptions}
+        pagination
+        paginationMode={paginationMode}
+        paginationModel={paginationModel}
+        onPaginationModelChange={handleChangePaginationModel}
+        disableColumnMenu
+        isCellEditable={isCellEditable}
+        isRowSelectable={isRowSelectable}
+        rowSelection={false}
+        getRowId={getRowId}
+        disableColumnFilter
+        disableRowSelectionOnClick
+        disableColumnSelector
+        hideFooter={hideFooterSelectedRowCount}
+        checkboxSelection={checkboxSelection}
+        onRowSelectionModelChange={onSelectionModelChange}
+        rowSelectionModel={rowSelectionModel}
+        keepNonExistentRowsSelected={keepNonExistentRowsSelected}
+        hideFooterPagination={rows?.length === 0}
+        hideFooterSelectedRowCount={rows?.length === 0}
+        filterModel={filterModel}
+        onFilterModelChange={handleFilterModelChange}
+        loading={isLoading}
+        initialState={{
+          pagination: {
+            paginationModel: { page: page, pageSize: rowsPerPage }
+          }
+        }}
+        slotProps={{
+          pagination: {
+            labelRowsPerPage: 'Linha por páginas'
+          }
+        }}
+        slots={{
+          noRowsOverlay: () => NoOverlayMsg(NoRowsOverlayNew)
+        }}
+        {...props}
+      />
+    </MainBox>
   );
 };
+
+export default DataTable;

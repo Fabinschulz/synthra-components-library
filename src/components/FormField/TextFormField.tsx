@@ -10,7 +10,7 @@ interface TextFormFieldProps extends ITextFieldProps {
 }
 
 const theme = activeTheme();
-export const TextFormField = (props: TextFormFieldProps) => {
+const TextFormField = (props: TextFormFieldProps) => {
   const { name, ...rest } = props;
   const { register, control, validationErrors } = useFormContext();
 
@@ -24,10 +24,12 @@ export const TextFormField = (props: TextFormFieldProps) => {
         control={control}
       />
       {!!errorsMessage && (
-        <Typography mt={0.5} variant="body1" color={theme.palette.error.dark}>
-          <>{errorsMessage}</>
+        <Typography mt={0.5} variant="body1" color={theme.palette?.error?.dark}>
+          {errorsMessage}
         </Typography>
       )}
     </>
   );
 };
+
+export default TextFormField;

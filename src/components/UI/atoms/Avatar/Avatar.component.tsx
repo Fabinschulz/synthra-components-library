@@ -38,7 +38,7 @@ function stringAvatar(name: string) {
   };
 }
 
-export const Avatar: React.FC<AvatarProps> = ({
+const Avatar: React.FC<AvatarProps> = ({
   imageSrc,
   title,
   subtitle,
@@ -57,11 +57,15 @@ export const Avatar: React.FC<AvatarProps> = ({
       {showText && (
         <Box ml={2}>
           <Typography variant="subtitle2">{title}</Typography>
-          <Typography variant="body2" color="textSecondary">
-            {subtitle}
-          </Typography>
+          {subtitle && (
+            <Typography variant="body2" color="textSecondary">
+              {subtitle}
+            </Typography>
+          )}
         </Box>
       )}
     </Box>
   );
 };
+
+export default Avatar;

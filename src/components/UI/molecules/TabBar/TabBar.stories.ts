@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
-import { TabBar } from './TabBar.component';
+import TabBar from './TabBar.component';
 import { tabBarMock } from './TabBar.mock';
 
 type StoryProps = ComponentProps<typeof TabBar>;

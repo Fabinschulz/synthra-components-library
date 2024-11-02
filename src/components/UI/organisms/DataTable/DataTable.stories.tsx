@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
-import { DataTable } from './DataTable.component';
+import DataTable from './DataTable.component';
 import { columnsMock, rowsMock } from './DataTable.mock';
 
 type StoryProps = ComponentProps<typeof DataTable>;

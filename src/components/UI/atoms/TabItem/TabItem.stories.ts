@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
-import { TabItem } from './TabItem.component';
+import TabItem from './TabItem.component';
 
 type StoryProps = ComponentProps<typeof TabItem>;
 

@@ -18,7 +18,7 @@ const FieldCode = ({ handleChange, fields, props }: IFieldCode) => {
   return <ReactCodeInput onChange={handleChange} type="number" fields={fields} {...props} />;
 };
 
-export const CodeField: React.FC<CodeFieldProps> = ({ name, toggle, fields = 6 }) => {
+const CodeField: React.FC<CodeFieldProps> = ({ name, toggle, fields = 6 }) => {
   const { setValue, validationErrors } = useFormContext();
   let error = validationErrors && getObjectPropertyValue(name, validationErrors)?.message;
 
@@ -47,10 +47,11 @@ export const CodeField: React.FC<CodeFieldProps> = ({ name, toggle, fields = 6 }
     <Stack justifyContent="center">
       <FieldCode handleChange={onChangeField} props={dinamicProps} fields={fields} />
       {!!error && (
-        <Typography variant="body1" color={theme.palette.error.dark}>
+        <Typography variant="body1" color={theme.palette?.error?.dark}>
           <>{error}</>
         </Typography>
       )}
     </Stack>
   );
 };
+export default CodeField;

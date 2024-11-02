@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import { StyledMenuItem } from './MenuItem.styled';
 
-export const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>((props, ref) => {
+const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>((props, ref) => {
   const { children, size, className, ...menuItemProps } = props;
   return (
     <StyledMenuItem ref={ref} {...menuItemProps} className={clsx(size, className)}>
@@ -12,3 +12,5 @@ export const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>((props, r
     </StyledMenuItem>
   );
 });
+
+export default MenuItem;

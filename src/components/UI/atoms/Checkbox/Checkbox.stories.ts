@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Checkbox } from './Checkbox.component';
+import Checkbox from './Checkbox.component';
 import { ComponentProps } from 'react';
 import { checkboxMock } from './Checkbox.mock';
 

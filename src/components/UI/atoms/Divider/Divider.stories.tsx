@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Divider } from './Divider.component';
+import Divider from './Divider.component';
 import { ComponentProps } from 'react';
 import { dividerHorizontalProps, dividerVerticalProps } from './Divider.mock';
 

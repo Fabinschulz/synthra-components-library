@@ -3,7 +3,7 @@ import type { IAlertProps } from './Alert.interface';
 import { AlertTitle, Alert as MuiAlert, useTheme } from '@mui/material';
 import { alertBaseStyle } from './Alert.styled';
 
-export const Alert: FunctionComponent<IAlertProps> = ({ description, title, type, ...props }) => {
+const Alert: FunctionComponent<IAlertProps> = ({ description, title, type, ...props }) => {
   const theme = useTheme();
   return (
     <MuiAlert
@@ -18,3 +18,5 @@ export const Alert: FunctionComponent<IAlertProps> = ({ description, title, type
     </MuiAlert>
   );
 };
+
+export default Alert;

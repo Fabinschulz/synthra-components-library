@@ -1,2 +1,2 @@
-export * from './Drawer.component';
+export { default as Drawer } from './Drawer.component';
 export * from './Drawer.interface';

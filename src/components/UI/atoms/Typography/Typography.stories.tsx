@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
-import { Typography } from './Typography.component';
+import Typography from './Typography.component';
 import { typographyArgs } from './Typography.mock';
 import { fonts, fontWeights } from '@/theme';
 

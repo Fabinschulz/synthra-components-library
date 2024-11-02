@@ -34,6 +34,9 @@ export const CustomMenu = ({
   return (
     <StyledList>
       {itemsList?.map((item, index) => {
+        const isActived = !!item.active;
+        const isOpenned = open && isActived;
+
         if (item.submenu) {
           return (
             <StyledAccordion expanded={activeIndex === index} key={index}>
@@ -42,6 +45,7 @@ export const CustomMenu = ({
                 key={item.title}
                 disablePadding
                 className={clsx(item.active && 'active')}
+                openMenu={open}
               >
                 <AccordionSummary
                   expandIcon={<DownIcon />}
@@ -147,6 +151,7 @@ export const CustomMenu = ({
                 key={item.title}
                 disablePadding
                 className={clsx(item.active && 'active')}
+                openMenu={open}
               >
                 <StyledListItemButton
                   onClick={() => (open ? null : setOpen(true))}
@@ -154,7 +159,11 @@ export const CustomMenu = ({
                     minHeight: 48,
                     justifyContent: open ? 'initial' : 'center',
                     px: 2.5,
-                    marginBottom: '2px'
+                    marginBottom: '2px',
+
+                    backgroundColor: isOpenned
+                      ? (theme) => theme.palette.primary.main
+                      : 'transparent'
                   }}
                 >
                   <StyledListItemIcon
@@ -167,7 +176,9 @@ export const CustomMenu = ({
 
                   <StyledListItemText
                     primary={item.title}
-                    sx={{ display: open ? 'block' : 'none' }}
+                    sx={{
+                      display: open ? 'block' : 'none'
+                    }}
                     className="title"
                   />
                 </StyledListItemButton>

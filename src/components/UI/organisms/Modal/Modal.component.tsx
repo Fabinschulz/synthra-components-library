@@ -14,7 +14,7 @@ import { activeTheme } from '@/utils';
 import { CloseIcon } from '../../icons';
 
 const theme = activeTheme();
-export const Modal: FunctionComponent<ModalProps> = ({
+const Modal: FunctionComponent<ModalProps> = ({
   title,
   description,
   icon,
@@ -72,3 +72,5 @@ export const Modal: FunctionComponent<ModalProps> = ({
     </StyledDialog>
   );
 };
+
+export default Modal;

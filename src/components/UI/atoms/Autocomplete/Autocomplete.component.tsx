@@ -1,13 +1,13 @@
 'use client';
 import { FunctionComponent } from 'react';
-import { CircularProgress, IconButton, InputAdornment, Typography } from '@mui/material';
+import { CircularProgress, IconButton, InputAdornment } from '@mui/material';
 import Link from 'next/link';
 import { AutocompleteBaseProps } from './Autocomplete.interface';
 import { StyledAutocomplete } from './Autocomplete.styled';
 import { TextField } from '../TextField';
-import React from 'react';
 import { SearchIcon } from '../../icons';
 import { activeTheme } from '@/utils';
+import { Typography } from '../Typography';
 
 type EndAdornmenProps = {
   endIconType: 'link' | 'submit' | undefined;
@@ -15,7 +15,7 @@ type EndAdornmenProps = {
 };
 
 const theme = activeTheme();
-export const Autocomplete: FunctionComponent<AutocompleteBaseProps> = (props) => {
+const Autocomplete: FunctionComponent<AutocompleteBaseProps> = (props) => {
   const {
     options = [],
     onChange,
@@ -79,6 +79,7 @@ export const Autocomplete: FunctionComponent<AutocompleteBaseProps> = (props) =>
     />
   );
 };
+export default Autocomplete;
 
 const renderOption = (props: object, option: any) => {
   const { label } = option;

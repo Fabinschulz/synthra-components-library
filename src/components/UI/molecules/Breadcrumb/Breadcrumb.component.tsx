@@ -4,7 +4,7 @@ import { Breadcrumbs as MuiBreadcrumbs } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { StyledLink } from './Breadcrumb.styled';
 
-export const Breadcrumb: FunctionComponent<BreadcrumbProps> = ({ separator, links }) => {
+const Breadcrumb: FunctionComponent<BreadcrumbProps> = ({ separator, links }) => {
   const theme = useTheme();
   return (
     <MuiBreadcrumbs aria-label="breadcrumb" separator={separator}>
@@ -20,3 +20,5 @@ export const Breadcrumb: FunctionComponent<BreadcrumbProps> = ({ separator, link
     </MuiBreadcrumbs>
   );
 };
+
+export default Breadcrumb;

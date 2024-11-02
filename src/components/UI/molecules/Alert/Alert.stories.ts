@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
-import { Alert } from './Alert.component';
+import Alert from './Alert.component';
 
 type StoryProps = ComponentProps<typeof Alert>;
 

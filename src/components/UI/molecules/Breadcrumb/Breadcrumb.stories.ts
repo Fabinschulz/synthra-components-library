@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
-import { Breadcrumb } from './Breadcrumb.component';
+import Breadcrumb from './Breadcrumb.component';
+import { breadcrumbMock } from './Breadcrumb.mock';
 
 type StoryProps = ComponentProps<typeof Breadcrumb>;
 
@@ -27,16 +28,5 @@ export default meta;
 type Story = StoryObj<StoryProps>;
 
 export const Template: Story = {
-  args: {
-    items: [
-      {
-        label: 'Home',
-        href: '/'
-      },
-      {
-        label: 'Breadcrumb',
-        href: '/breadcrumb'
-      }
-    ]
-  }
+  args: breadcrumbMock
 };

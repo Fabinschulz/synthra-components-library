@@ -1,13 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
-import Menu from './Menu.component';
-import { menuMock } from './Menu.mock';
+import Drawer from './Drawer.component';
 
-type StoryProps = ComponentProps<typeof Menu>;
+type StoryProps = ComponentProps<typeof Drawer>;
 
 const meta: Meta<StoryProps> = {
-  title: 'UI/organisms/Menu',
-  component: Menu,
+  title: 'UI/organisms/Drawer',
+  component: Drawer,
   tags: ['autodocs'],
   parameters: {
     design: {
@@ -21,6 +20,4 @@ export default meta;
 
 type Story = StoryObj<StoryProps>;
 
-export const Template: Story = {
-  args: menuMock
-};
+export const Template: Story = {};

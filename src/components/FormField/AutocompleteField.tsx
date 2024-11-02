@@ -2,7 +2,6 @@
 import { useFormContext } from '@/contexts/formContext';
 import { Autocomplete, AutocompleteBaseProps, Typography } from '../UI';
 import { activeTheme, getObjectPropertyValue } from '@/utils';
-import React from 'react';
 
 type AutocompleteFieldProps = {
   name: string;
@@ -30,8 +29,8 @@ export default function AutocompleteField(props: AutocompleteFieldProps) {
         onChange={onChange}
       />
       {!!errorsMessage && (
-        <Typography mt={0.5} variant="body1" color={theme.palette.error.dark}>
-          <>{errorsMessage}</>
+        <Typography mt={0.5} variant="body1" color={theme.palette?.error?.dark}>
+          {errorsMessage}
         </Typography>
       )}
     </>

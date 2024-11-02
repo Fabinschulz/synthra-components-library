@@ -4,6 +4,7 @@ import type { SwitchProps } from './Switch.interface';
 
 import { Switch as MuiSwitch } from '@mui/material';
 
-export const Switch: FunctionComponent<SwitchProps> = ({ ...props }) => {
+const Switch: FunctionComponent<SwitchProps> = ({ ...props }) => {
   return <MuiSwitch {...props} />;
 };
+export default Switch;

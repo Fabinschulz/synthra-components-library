@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Autocomplete } from './Autocomplete.component';
+import Autocomplete from './Autocomplete.component';
 import { ComponentProps } from 'react';
 import { autocompletMock } from './Autocomplete.mock';
 

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
-import { LoadingBar } from './LoadingBar.component';
+import LoadingBar from './LoadingBar.component';
 
 type StoryProps = ComponentProps<typeof LoadingBar>;
 

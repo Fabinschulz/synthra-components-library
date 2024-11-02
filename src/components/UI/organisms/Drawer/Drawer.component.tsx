@@ -6,7 +6,7 @@ import { CloseButton, DrawerContent, DrawerHeader } from './Drawer.styled';
 import { Typography } from '../../atoms';
 import { CloseIcon } from '../../icons';
 
-export const Drawer: FunctionComponent<DrawerProps> = ({
+const Drawer: FunctionComponent<DrawerProps> = ({
   title,
   description,
   children,
@@ -54,3 +54,5 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
     </MuiDrawer>
   );
 };
+
+export default Drawer;

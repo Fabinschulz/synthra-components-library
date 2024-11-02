@@ -4,6 +4,8 @@ import type { DividerProps } from './Divider.interface';
 
 import { Divider as MuiDivider } from '@mui/material';
 
-export const Divider: FunctionComponent<DividerProps> = ({ ...props }) => {
+const Divider: FunctionComponent<DividerProps> = ({ ...props }) => {
   return <MuiDivider {...props} />;
 };
+
+export default Divider;

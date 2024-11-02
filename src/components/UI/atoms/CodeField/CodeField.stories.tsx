@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
-import { CodeField } from './CodeField.component';
+import CodeField from './CodeField.component';
 
 type StoryProps = ComponentProps<typeof CodeField>;
 

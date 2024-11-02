@@ -8,35 +8,6 @@ const typography = typographyOptions! as Typography;
 const palette = paletteOptions! as Palette;
 
 export const MuiDataGrid: DataGridComponents['MuiDataGrid'] = {
-  defaultProps: {
-    initialState: {
-      pagination: {
-        paginationModel: {
-          pageSize: 10
-        }
-      }
-    },
-    pageSizeOptions: [10, 50, 100, 200]
-    // slotProps: {
-    //   columnHeaders: {
-    //     style: {
-    //       borderColor: 'rgba(181, 185, 201, 0.40)',
-    //       marginBottom: '24px'
-    //     }
-    //   },
-    //   cell: {
-    //     style: {
-    //       ...typography.xs,
-    //       lineHeight: '14px',
-    //       padding: '0px 24px',
-    //       border: 'none',
-    //       '&:focus, &:focus-within': {
-    //         outline: 'none'
-    //       }
-    //     }
-    //   }
-    // }
-  },
   styleOverrides: {
     root: {
       borderRadius: 0,

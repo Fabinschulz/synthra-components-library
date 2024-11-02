@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react';
 import { ComponentProps, useState } from 'react';
-import { SelectField } from './SelectField.component';
+import SelectField from './SelectField.component';
 import { SelectChangeEvent } from '@mui/material';
 import { selectMock } from './SelectField.mock';
 

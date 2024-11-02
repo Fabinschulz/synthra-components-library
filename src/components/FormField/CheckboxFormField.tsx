@@ -12,10 +12,7 @@ export interface CheckboxFormFieldProps extends CheckboxProps {
 }
 
 const theme = activeTheme();
-export const CheckboxFormField: FunctionComponent<CheckboxFormFieldProps> = ({
-  label,
-  ...props
-}) => {
+const CheckboxFormField: FunctionComponent<CheckboxFormFieldProps> = ({ label, ...props }) => {
   const name = props.name;
   let value = undefined;
   let { validationErrors, watch, setValue } = useFormContext();
@@ -43,10 +40,12 @@ export const CheckboxFormField: FunctionComponent<CheckboxFormFieldProps> = ({
         {...props}
       />
       {!!errorsMessage && (
-        <Typography mt={0.5} variant="body1" color={theme.palette.error.dark}>
-          <>{errorsMessage}</>
+        <Typography mt={0.5} variant="body1" color={theme.palette?.error?.dark}>
+          {errorsMessage}
         </Typography>
       )}
     </>
   );
 };
+
+export default CheckboxFormField;

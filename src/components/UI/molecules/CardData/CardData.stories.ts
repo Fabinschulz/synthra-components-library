@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
-import { CardData } from './CardData.component';
+import CardData from './CardData.component';
 import { cardDataMock } from './CardData.mock';
 
 type StoryProps = ComponentProps<typeof CardData>;

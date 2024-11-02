@@ -1,2 +1,2 @@
 export * from './Autocomplete.interface';
-export * from './Autocomplete.component';
+export { default as Autocomplete } from './Autocomplete.component';

@@ -2,20 +2,22 @@
 import type { SelectFieldProps } from './SelectField.interface';
 import { FunctionComponent, useId } from 'react';
 import { Box, InputLabel, Select } from '@mui/material';
-import { FormControl, SelectMenuItem } from './SelectField.styled';
+import { FormControl } from './SelectField.styled';
 import { Checkbox } from '../Checkbox';
 import { DownIcon } from '../../icons';
 import { MenuItem } from '../MenuItem';
 import { Typography } from '../Typography';
+import { activeTheme } from '@/utils';
 
-export const SelectField: FunctionComponent<SelectFieldProps> = (props) => {
+const theme = activeTheme()?.palette;
+const SelectField: FunctionComponent<SelectFieldProps> = (props) => {
   const { label, items, required, onChange, multiple, value, disabled, variant, ...selectProps } =
     props;
   const id = useId();
   const isFilled = variant === 'filled';
 
   const arrayValue = Array.isArray(value) ? value : (!!value && [value]) || [];
-  const total = arrayValue.length;
+  const total = arrayValue?.length;
 
   return (
     <FormControl fullWidth disabled={disabled} required={required} variant={variant}>
@@ -51,7 +53,7 @@ export const SelectField: FunctionComponent<SelectFieldProps> = (props) => {
                 <Checkbox size="small" label={item} checked={arrayValue.indexOf(item) > -1} />
               </Box>
             ) : (
-              <Typography variant="body1" fontWeight={500} color="neutral.dark">
+              <Typography variant="body1" fontWeight={500} color={theme?.neutral?.dark}>
                 {item}
               </Typography>
             )}
@@ -61,3 +63,5 @@ export const SelectField: FunctionComponent<SelectFieldProps> = (props) => {
     </FormControl>
   );
 };
+
+export default SelectField;
