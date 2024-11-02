@@ -18,13 +18,13 @@ export const MuiButton: Components['MuiButton'] = {
     },
     sizeMedium: {
       padding: '8px 16px',
-      ...typography.md,
+      ...typography?.subtitle2,
       '& svg': {
         fontSize: '16px!important'
       }
     },
     sizeLarge: {
-      ...typography.lg,
+      ...typography?.subtitle1,
       padding: '12px 16px',
       '& svg': {
         fontSize: '18px!important'
