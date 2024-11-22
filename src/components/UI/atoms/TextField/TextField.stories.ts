@@ -23,10 +23,6 @@ const meta: Meta<StoryProps> = {
       control: 'boolean',
       description: 'Determina se o campo é obrigatório'
     },
-    maxLength: {
-      control: 'number',
-      description: 'Número máximo de caracteres'
-    },
     fullWidth: {
       control: 'boolean',
       description: 'Determina se o campo deve ocupar toda a largura'
@@ -63,7 +59,6 @@ export const Template: Story = {
   args: {
     label: 'Nome',
     required: true,
-    maxLength: 50,
     fullWidth: false,
     disabled: false,
     placeholder: 'Digite seu nome'

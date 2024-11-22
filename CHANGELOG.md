@@ -1,5 +1,17 @@
 # @synthra.io/ui-kit
 
+## 0.3.3
+
+### Patch Changes
+
+- add husky
+
+## 0.3.2
+
+### Patch Changes
+
+- updated icon
+
 ## 0.3.1
 
 ### Patch Changes

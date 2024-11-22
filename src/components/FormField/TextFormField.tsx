@@ -1,13 +1,12 @@
 'use client';
-import React from 'react';
 import { Controller } from 'react-hook-form';
 import { activeTheme, getObjectPropertyValue } from '@/utils';
 import { useFormContext } from '@/contexts/formContext';
 import { ITextFieldProps, TextField, Typography } from '../UI';
 
-interface TextFormFieldProps extends ITextFieldProps {
+type TextFormFieldProps = ITextFieldProps & {
   name: string;
-}
+};
 
 const theme = activeTheme();
 const TextFormField = (props: TextFormFieldProps) => {
