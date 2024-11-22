@@ -2,32 +2,37 @@ import type { FunctionComponent } from 'react';
 import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
-export const LogoutIcon: FunctionComponent<SvgIconProps> = (props) => {
+export const ShieldErrorIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
     <SvgIcon {...props}>
       <path
-        d="M18 9L21 12M21 12L18 15M21 12H9"
+        d="M19.5 10.875L20.9642 8.89839C21.558 8.09664 21.477 6.96823 20.7042 6.3371C15.2562 1.88763 8.74382 1.88763 3.29579 6.3371C2.52302 6.96823 2.44195 8.09664 3.03584 8.89839L10.3929 18.8304C11.1924 19.9098 12.8076 19.9098 13.6071 18.8304L14.2222 18"
         stroke={htmlColor}
         strokeWidth="2"
         strokeLinecap="round"
-        strokeLinejoin="round"
         fill="none"
       />
       <path
-        d="M15 7.5V7C15 4.79086 13.2091 3 11 3H7C4.79086 3 3 4.79086 3 7V17C3 19.2091 4.79086 21 7 21H11C13.2091 21 15 19.2091 15 17V16.5"
+        d="M21.2427 14L17 18.2426"
         stroke={htmlColor}
         strokeWidth="2"
         strokeLinecap="round"
-        strokeLinejoin="round"
+        fill="none"
+      />
+      <path
+        d="M17 14L21.2426 18.2426"
+        stroke={htmlColor}
+        strokeWidth="2"
+        strokeLinecap="round"
         fill="none"
       />
     </SvgIcon>
   );
 };
 
-LogoutIcon.defaultProps = {
+ShieldErrorIcon.defaultProps = {
   viewBox: '0 0 24 24',
   fill: 'none',
   height: '24px',

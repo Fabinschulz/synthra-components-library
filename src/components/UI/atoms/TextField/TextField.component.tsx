@@ -7,7 +7,7 @@ const TextField: FunctionComponent<ITextFieldProps> = ({
   label,
   required,
   dataTestId,
-  maxLength,
+  variant = 'outlined',
   ...props
 }) => {
   const labelWithRequired = required ? `${label} *` : label;
@@ -15,8 +15,8 @@ const TextField: FunctionComponent<ITextFieldProps> = ({
   return (
     <StyledTextField
       label={labelWithRequired}
-      slotProps={{ htmlInput: { maxLength } }}
       data-testId={dataTestId}
+      variant={variant}
       {...props}
     />
   );

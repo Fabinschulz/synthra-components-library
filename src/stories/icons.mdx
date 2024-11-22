@@ -29,6 +29,15 @@ export const Title = ({ title, icons = [] }) => (
 
 export const arrows = [
   'ArrowExchangeIcon',
+  'ExpandIcon',
+  'IntersectingArrowsIcon',
+  'UpdateIcon',
+  'ReloadCircleIcon',
+  'ReloadArrowIcon',
+  'RedoRectangleIcon',
+  'RedoCircleIcon',
+  'MaximizeLeftIcon',
+  'MaximizeArrowIcon',
   'LeftIcon',
   'RightIcon',
   'UpIcon',
@@ -88,7 +97,41 @@ export const arrows = [
   'NextArrowIcon'
 ];
 
-export const calendar = ['CalendarIcon', 'FilledTime', 'WaitingTimeIcon'];
+export const calendar = [
+  'CalendarIcon',
+  'CalendarMinusIcon',
+  'FilledTime',
+  'WaitingTimeIcon',
+  'AlarmAddIcon',
+  'AlarmCheckIcon',
+  'AlarmDeleteIcon',
+  'AlarmIcon',
+  'AlarmMinusIcon',
+  'Time10Icon',
+  'Time24Icon',
+  'Time60Icon',
+  'TimeAddIcon',
+  'TimeCheckIcon',
+  'TimeDeleteIcon',
+  'TimeFastIcon',
+  'TimeForwardIcon',
+  'TimeMinusIcon',
+  'TimeHalfPastIcon',
+  'TimeQuarterIcon',
+  'TimeQuarterPasterIcon',
+  'TimeOClockIcon',
+  'StopWathAddIcon',
+  'StopWathCheckIcon',
+  'StopWathDeleteIcon',
+  'StopWathMinusIcon',
+  'StopWathIcon',
+  'CalendarAddIcon',
+  'CalendarCheckIcon',
+  'CalendarDeleteIcon',
+  'HourglassIcon',
+  'HourglassEndIcon',
+  'HourglassStartIcon'
+];
 
 export const users = [
   'LegalPersonIcon',
@@ -118,12 +161,217 @@ export const edit = [
   'DraftIcon'
 ];
 
-<details>
-  <summary style={{ marginBottom: '3rem' }}>Ver ícones</summary>
-  <Title title="Setas" icons={arrows} />
-  <Title title="Hora e Data" icons={calendar} />
-  <Title title="Editor" icons={edit} />
-  <Title title="Usuários" icons={users} />
-  <Title title="Interface" icons={Object.keys(Icons).filter((iconName) => ![...arrows, ...calendar, ...edit, ...users].includes(iconName))} />
+export const comunication = [
+  'EmailIcon',
+  'MailIcon',
+  'MailSlientIcon',
+  'MailFastIcon',
+  'MailCancelIcon',
+  'MailBlockIcon',
+  'MailDelayIcon',
+  'MailFavoriteIcon',
+  'MailLeftIcon',
+  'MailArrowDownIcon',
+  'MailArrowUpIcon',
+  'MailNegativeIcon',
+  'MailPlusIcon',
+  'MailRightIcon',
+  'MailBoxIcon',
+  'VoiceMailIcon',
+  'WifiIcon',
+  'CallingIcon',
+  'CallArrowDownIcon',
+  'CallArrowUpIcon',
+  'CallBlockIcon',
+  'CallIcon',
+  'CallInIcon',
+  'CallLoveIcon',
+  'CallOutIcon',
+  'CallUserIcon',
+  'CallVoiceMailIcon',
+  'ChatAcceptIcon',
+  'ChatArrowDownIcon',
+  'ChatArrowUpIcon',
+  'ChatBlockIcon',
+  'ChatClockIcon',
+  'ChatCloseIcon',
+  'ChatFavouriteIcon',
+  'ChatIcon',
+  'ChatInformationIcon',
+  'ChatLineIcon',
+  'ChatLoveIcon',
+  'ChatNegativeIcon',
+  'ChatPlusIcon',
+  'ChatSadIcon',
+  'ChatSearchIcon',
+  'ChatSilientIcon',
+  'ChatUserIcon',
+  'ChattingIcon',
+  'FeatherIcon',
+  'SignalIcon',
+  'CompleteIcon',
+  'ComplianceIcon',
+  'IdCardIcon',
+  'BroadCastIcon',
+  'ChartNotificationIcon'
+];
 
-</details>
+export const grid = [
+  'LayoutBottomLineIcon',
+  'LayoutCenterLineIcon',
+  'LayoutCenterVerticalLineIcon',
+  'LayoutCenterVerticalLineIcon',
+  'LayoutCenterIcon',
+  'LayoutDividerIcon',
+  'LayoutIcon',
+  'LayoutLeftIcon',
+  'LayoutLeftLineIcon',
+  'LayoutRightLineIcon',
+  'LayoutTopIcon',
+  'LayoutTopLineIcon',
+  'AppsIcon',
+  'LandscapeVerticalIcon',
+  'LandscapeHorizontalIcon',
+  'LandscapeIcon',
+  'GridDinamicIcon',
+  'GridIcon',
+  'DisplaycenterHorizontalIcon',
+  'DisplayCenterIcon',
+  'DisplayLeftIcon',
+  'DisplayRightIcon',
+  'PortraitIcon',
+  'PixelGridRectangleIcon',
+  'PixelGridCircleIcon'
+];
+
+export const study = [
+  'BackPackIcon',
+  'PhysicsIcon',
+  'PenIcon',
+  'NibIcon',
+  'BookAddIcon',
+  'BookCheckIcon',
+  'BookDownloadIcon',
+  'BookUploadIcon',
+  'BookFavouriteIcon',
+  'BookHelpIcon',
+  'BookInfoIcon',
+  'BookIcon',
+  'BookRejectIcon',
+  'BookRemoveIcon',
+  'BookSearchIcon',
+  'BookWithTicketIcon',
+  'GlobeIcon',
+  'GraduationCapIcon',
+  'StudentIcon',
+  'StudentsIcon',
+  'TestTubeIcon',
+  'QuizIcon',
+  'ELearningIcon',
+  'GlassesIcon',
+  'CarteslanIcon',
+  'AddIcon',
+  'ClearRectangleIcon',
+  'HelpRectangleIcon',
+  'HelpIcon',
+  'HelpCircleIcon',
+  'SquareRootIcon',
+  'RulerIcon',
+  'ProtractorIcon',
+  'CheckCircleIcon',
+  'ClearCircleIcon',
+  'AddCircleIcon',
+  'CloseIcon',
+  'RemoveRectangleIcon',
+  'SystemCalculationIcon',
+  'BellSchoolIcon',
+  'PaintBucketIcon'
+];
+
+export const business = [
+  'ChartArrowUpWithBarIcon',
+  'ChartArrowDownWithBarIcon',
+  'BarChartIcon',
+  'ChartArrowUpBoxIcon',
+  'ChartWaveIcon',
+  'ChartWaveRectangleIcon',
+  'LowGraphIcon',
+  'GraphicWithBarIcon',
+  'BriefcaseIcon',
+  'BriefcaseLineIcon',
+  'BriefcaseWithDraftsIcon',
+  'DealIcon',
+  'LikeInverse',
+  'DiscountIcon',
+  'DonateIcon',
+  'SimulationIcon',
+  'ChartPizzaIcon',
+  'ChartPieIcon',
+  'ChartBarIcon',
+  'GraphicWithLineIcon',
+  'ArchiveIcon',
+  'PresentationIcon'
+];
+
+export const menu = [
+  'AppCircleIcon',
+  'OverflowIcon',
+  'MoreOptionsIcon',
+  'MenuLineHorizontalIcon',
+  'MenuUserIcon',
+  'MenuLineChangedIcon',
+  'MenuLineCenterChangedIcon',
+  'MenuHomeIcon',
+  'DashboardIcon'
+];
+
+export const dispositivos = [
+  'LightIcon',
+  'DarkIcon',
+  'NotebookSmartFoneIcon',
+  'WiFiSignalIcon',
+  'NoNetworkIcon',
+  'ShieldAlertIcon',
+  'ShieldErrorIcon',
+  'ShieldBrokenIcon',
+  'ShieldIcon',
+  'StarBadgeIcon',
+  'StarBadgeOffIcon',
+  'BluetoothIcon',
+  'BluetoothOffIcon',
+  'USBIcon',
+  'ShowIcon',
+  'HideIcon',
+  'SecureLockIcon',
+  'CellphoneIcon',
+  'MonitorIcon'
+];
+
+<Title title="Setas" icons={arrows} />
+<Title title="Hora e Data" icons={calendar} />
+<Title title="Editor" icons={edit} />
+<Title title="Usuários" icons={users} />
+<Title title="Comunicação" icons={comunication} />
+<Title title="Grid" icons={grid} />
+<Title title="Estudo" icons={study} />
+<Title title="Negócios" icons={business} />
+<Title title="Menu" icons={menu} />
+<Title title="Dispositivos" icons={dispositivos} />
+<Title
+  title="Interface"
+  icons={Object.keys(Icons).filter(
+    (iconName) =>
+      ![
+        ...arrows,
+        ...calendar,
+        ...edit,
+        ...users,
+        ...comunication,
+        ...grid,
+        ...study,
+        ...business,
+        ...menu,
+        ...dispositivos
+      ].includes(iconName)
+  )}
+/>

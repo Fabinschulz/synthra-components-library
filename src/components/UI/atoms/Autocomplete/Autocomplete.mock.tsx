@@ -1,7 +1,7 @@
 import { AutocompleteBaseProps } from './Autocomplete.interface';
 import { fn } from '@storybook/test';
 
-export const autocompletMock: AutocompleteBaseProps = {
+export const autocompletMock: Omit<AutocompleteBaseProps, 'renderInput'> = {
   name: 'autocomplete',
   required: false,
   options: [
@@ -11,6 +11,5 @@ export const autocompletMock: AutocompleteBaseProps = {
   ],
   label: 'Autocomplete',
   value: { label: 'Opção 1', value: '1' },
-  onChange: fn(),
-  renderInput: () => <></>
+  onChange: fn()
 };

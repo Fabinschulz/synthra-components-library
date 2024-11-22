@@ -2,15 +2,15 @@ import type { FunctionComponent } from 'react';
 import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
-export const UpdateIcon: FunctionComponent<SvgIconProps> = (props) => {
+export const IntersectingArrowsIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
     <SvgIcon {...props}>
       <path
-        d="M3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C8.66873 3 5.76018 4.80989 4.20404 7.5M4.20404 7.5V3M4.20404 7.5H8.625"
+        d="M20 4L13 11M4 20L11 13M13 11H18M13 11V6M11 13V18M11 13H6"
         stroke={htmlColor}
-        strokeWidth="2"
+        strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
@@ -19,9 +19,9 @@ export const UpdateIcon: FunctionComponent<SvgIconProps> = (props) => {
   );
 };
 
-UpdateIcon.defaultProps = {
+IntersectingArrowsIcon.defaultProps = {
   viewBox: '0 0 24 24',
-  width: '24',
-  height: '24',
-  fill: 'none'
+  fill: 'none',
+  height: '24px',
+  width: '24px'
 };

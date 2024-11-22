@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/no-duplicate-string */
 import type { FunctionComponent } from 'react';
 import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
@@ -8,95 +7,27 @@ export const HideIcon: FunctionComponent<SvgIconProps> = (props) => {
 
   return (
     <SvgIcon {...props}>
-      <g transform="matrix(1 0 0 1 540 540)" id="a6edb7a6-565b-4ab8-8d46-e60f60709085">
-        <rect
-          style={{
-            stroke: htmlColor,
-            strokeWidth: '1',
-            strokeDasharray: 'none',
-            strokeLinecap: 'butt',
-            strokeDashoffset: '0',
-            strokeLinejoin: 'miter',
-            strokeMiterlimit: '4',
-            fill: 'none',
-            fillRule: 'nonzero',
-            opacity: '1',
-            visibility: 'hidden'
-          }}
-          vectorEffect="non-scaling-stroke"
-          x="-540"
-          y="-540"
-          rx="0"
-          ry="0"
-          width="1080"
-          height="1080"
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M4 4L20 20" stroke={htmlColor} strokeWidth="2" strokeLinecap="round" />
+        <path
+          d="M14 14.2361C13.4692 14.7111 12.7684 15 12 15C10.3431 15 9 13.6569 9 12C9 11.2316 9.28885 10.5308 9.76389 10"
+          stroke={htmlColor}
+          strokeWidth="2"
+          strokeLinecap="round"
         />
-      </g>
-      <g transform="matrix(49.09 0 0 49.09 540 540)">
-        <g>
-          <g transform="matrix(1 0 0 1 0 1.83)">
-            <circle
-              style={{
-                stroke: htmlColor,
-                strokeWidth: '2',
-                strokeDasharray: 'none',
-                strokeLinecap: 'butt',
-                strokeDashoffset: '0',
-                strokeLinejoin: 'miter',
-                strokeMiterlimit: '4',
-                fill: 'none',
-                fillRule: 'nonzero',
-                opacity: '1'
-              }}
-              vectorEffect="non-scaling-stroke"
-              cx="0"
-              cy="0"
-              r="4.5"
-            />
-          </g>
-          <g transform="matrix(1 0 0 1 0 -2.75)">
-            <path
-              style={{
-                stroke: htmlColor,
-                strokeWidth: '2',
-                strokeDasharray: 'none',
-                strokeLinecap: 'round',
-                strokeDashoffset: '0',
-                strokeLinejoin: 'round',
-                strokeMiterlimit: '4',
-                fill: 'none',
-                fillRule: 'nonzero',
-                opacity: '1'
-              }}
-              vectorEffect="non-scaling-stroke"
-              transform=" translate(-11, -8.25)"
-              d="M 20.1668 12.8333 C 20.1668 12.8333 19.1483 3.66666 11.0002 3.66666 C 2.85201 3.66666 1.8335 12.8333 1.8335 12.8333"
-              strokeLinecap="round"
-            />
-          </g>
-          <g transform="matrix(1 0 0 1 0 1.92)">
-            <line
-              style={{
-                stroke: htmlColor,
-                strokeWidth: '2',
-                strokeDasharray: 'none',
-                strokeLinecap: 'round',
-                strokeDashoffset: '0',
-                strokeLinejoin: 'miter',
-                strokeMiterlimit: '4',
-                fill: 'none',
-                fillRule: 'nonzero',
-                opacity: '1'
-              }}
-              vectorEffect="non-scaling-stroke"
-              x1="5.416665"
-              y1="0"
-              x2="-5.416665"
-              y2="0"
-            />
-          </g>
-        </g>
-      </g>
+        <path
+          d="M19.6078 15.6077C20.1791 15.1103 20.6902 14.6099 21.1303 14.1469C22.2899 12.9268 22.2899 11.0732 21.1303 9.8531C19.1745 7.79533 15.8155 5 12 5C11.1086 5 10.2422 5.15256 9.4127 5.41264M6.5 6.80338C5.04144 7.73444 3.79764 8.87678 2.86971 9.8531C1.7101 11.0732 1.7101 12.9268 2.86971 14.1469C4.82549 16.2047 8.18448 19 12 19C13.8681 19 15.6267 18.3299 17.1648 17.4044"
+          stroke={htmlColor}
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+      </svg>
     </SvgIcon>
   );
 };

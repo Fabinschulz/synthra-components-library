@@ -25,7 +25,8 @@
     "build-storybook": "storybook build",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "rollup -c --bundleConfigAsCjs && changeset publish"
+    "release": "rollup -c --bundleConfigAsCjs && changeset publish",
+    "prepare": "husky"
   },
   "dependencies": {
     "@emotion/cache": "^11.13.1",

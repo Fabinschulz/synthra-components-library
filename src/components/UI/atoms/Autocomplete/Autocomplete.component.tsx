@@ -1,13 +1,20 @@
 'use client';
 import { FunctionComponent } from 'react';
-import { CircularProgress, IconButton, InputAdornment } from '@mui/material';
+import {
+  CircularProgress,
+  IconButton,
+  InputAdornment,
+  SxProps,
+  TextFieldVariants,
+  Theme,
+  Typography
+} from '@mui/material';
 import Link from 'next/link';
-import { AutocompleteBaseProps } from './Autocomplete.interface';
+import type { AutocompleteBaseProps } from './Autocomplete.interface';
 import { StyledAutocomplete } from './Autocomplete.styled';
 import { TextField } from '../TextField';
 import { SearchIcon } from '../../icons';
 import { activeTheme } from '@/utils';
-import { Typography } from '../Typography';
 
 type EndAdornmenProps = {
   endIconType: 'link' | 'submit' | undefined;
@@ -15,7 +22,12 @@ type EndAdornmenProps = {
 };
 
 const theme = activeTheme();
-const Autocomplete: FunctionComponent<AutocompleteBaseProps> = (props) => {
+interface AutocompleteProps extends Omit<AutocompleteBaseProps, 'renderInput'> {
+  variant?: TextFieldVariants;
+  sxTextField?: SxProps<Theme>;
+}
+
+const Autocomplete: FunctionComponent<AutocompleteProps> = (props) => {
   const {
     options = [],
     onChange,
@@ -29,12 +41,15 @@ const Autocomplete: FunctionComponent<AutocompleteBaseProps> = (props) => {
     onChangeTextField,
     name,
     required,
+    variant = 'outlined',
+    sxTextField,
     ...rest
   } = props;
   const arrayValue = Array.isArray(value) && !!multiple ? value : !multiple ? value : [];
 
   return (
     <StyledAutocomplete
+      renderOption={renderOption}
       {...rest}
       options={options}
       multiple={multiple}
@@ -51,34 +66,33 @@ const Autocomplete: FunctionComponent<AutocompleteBaseProps> = (props) => {
       noOptionsText="Nenhum registro encontrado"
       filterSelectedOptions
       clearOnEscape
-      renderOption={renderOption}
       value={arrayValue}
       renderInput={(params) => (
         <TextField
-          variant="outlined"
+          variant={variant}
           error={error}
           {...params}
+          sx={sxTextField}
           required={required}
           name={`autocomplete-${name}`}
           label={label}
-          slotProps={{
+          InputProps={{
             ...params.InputProps,
-            input: {
-              endAdornment: (
-                <>
-                  {loading ? <CircularProgress color="inherit" size={20} /> : null}
-                  {params.InputProps.endAdornment}
-                  <EndAdornmen link={link} endIconType={endIconType} />
-                </>
-              ),
-              onChange: onChangeTextField
-            }
+            endAdornment: (
+              <>
+                {loading ? <CircularProgress color="inherit" size={20} /> : null}
+                {params.InputProps.endAdornment}
+                <EndAdornmen link={link} endIconType={endIconType} />
+              </>
+            ),
+            onChange: onChangeTextField
           }}
         />
       )}
     />
   );
 };
+
 export default Autocomplete;
 
 const renderOption = (props: object, option: any) => {

@@ -62,7 +62,7 @@ export const CustomMenu = ({
                       minHeight: 48,
                       justifyContent: open ? 'initial' : 'center',
                       px: 2.5,
-                      marginBottom: '2px'
+                      marginBottom: '.60rem'
                     }}
                     onClick={() => {
                       if (activeIndex === index) {
@@ -159,7 +159,7 @@ export const CustomMenu = ({
                     minHeight: 48,
                     justifyContent: open ? 'initial' : 'center',
                     px: 2.5,
-                    marginBottom: '2px',
+                    marginBottom: '.60rem',
 
                     backgroundColor: isOpenned
                       ? (theme) => theme.palette.primary.main

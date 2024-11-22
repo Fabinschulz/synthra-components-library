@@ -1,14 +1,13 @@
-import { OutlinedTextFieldProps } from '@mui/material';
+import { TextFieldProps } from '@mui/material';
 
 /**
- * Interface que estende as propriedades de `OutlinedTextFieldProps`,
+ * Interface que estende as propriedades de `TextFieldProps`,
  *
  * @interface TextFieldProps
- * @extends {OutlinedTextFieldProps}
+ * @extends {TextFieldProps}
  * @property {string} dataTestId - Atributo de teste automatizado.
- * @property {number} maxLength - Tamanho máximo de caracteres.
  */
-export interface ITextFieldProps extends OutlinedTextFieldProps {
+export type ITextFieldProps = TextFieldProps & {
   /**
    * Atributo de teste automatizado.
    * @default ''
@@ -16,11 +15,4 @@ export interface ITextFieldProps extends OutlinedTextFieldProps {
    * @example <TextField dataTestId="input" />
    */
   dataTestId?: string;
-  /**
-   * Tamanho máximo de caracteres.
-   * @default 0
-   * @type {number}
-   * @example <TextField maxLength={10} />
-   */
-  maxLength?: number;
-}
+};

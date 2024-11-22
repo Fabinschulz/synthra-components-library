@@ -25,6 +25,15 @@ function App() {
 }
 ```
 
+# Fluxo de Pull Request
+
+Antes de criar um PR, siga os seguintes passos:
+
+1. Execute o comando `changeset`
+2. Execute o comando `version-packages`
+3. Adicione e commite as mudanças
+4. Dê push para o repositório
+
 ## Licença
 
 ### Este projeto é licenciado sob a licença MIT.

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo " Validando commit..."
+
+# Verifica se há alterações no diretório .changeset
+if [ -z "$(git status --porcelain .changeset)" ]; then
+    echo "🚨 Error: Você precisa executar o comando 'changeset' antes de fazer commit."
+    exit 1
+else
+    pnpm version-packages
+    echo "✅ Changeset detectado."
+    echo " Executando comando 'version-packages'..."
+    pnpm version-packages
+
+fi
+
+echo "✅ Validação concluída com sucesso!"
+# Pre-commit
+pnpm release

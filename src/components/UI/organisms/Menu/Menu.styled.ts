@@ -25,7 +25,6 @@ type ListItemProps = {
 
 export const StyledListItem = styled(ListItem)<ListItemProps>(({ theme, openMenu }) => ({
   display: 'block',
-  // marginBottom: '65px',
   '& svg': {
     color: theme.palette?.neutral?.medium
   },
@@ -62,7 +61,7 @@ export const StyledListItem = styled(ListItem)<ListItemProps>(({ theme, openMenu
 }));
 
 export const StyledListItemButton = styled(ListItemButton)(() => ({
-  padding: '15px 40px',
+  padding: '10px',
   borderRadius: '10px',
   position: 'relative',
   '& > div > svg': {

@@ -7,28 +7,29 @@ export const SignInIcon: FunctionComponent<SvgIconProps> = (props) => {
 
   return (
     <SvgIcon {...props}>
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
+      <path
+        d="M12 9L9 12M9 12L12 15M9 12H21"
+        stroke={htmlColor}
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M18 9L21 12M21 12L18 15M21 12H9"
-          stroke={htmlColor}
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M15 7.5V7C15 4.79086 13.2091 3 11 3H7C4.79086 3 3 4.79086 3 7V17C3 19.2091 4.79086 21 7 21H11C13.2091 21 15 19.2091 15 17V16.5"
-          stroke={htmlColor}
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+      />
+      <path
+        d="M15 7.5V7C15 4.79086 13.2091 3 11 3H7C4.79086 3 3 4.79086 3 7V17C3 19.2091 4.79086 21 7 21H11C13.2091 21 15 19.2091 15 17V16.5"
+        stroke={htmlColor}
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
     </SvgIcon>
   );
+};
+
+SignInIcon.defaultProps = {
+  viewBox: '0 0 24 24',
+  fill: 'none',
+  height: '24px',
+  width: '24px'
 };

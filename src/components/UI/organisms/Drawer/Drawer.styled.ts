@@ -5,9 +5,7 @@ export const DrawerContent = styled(Stack)(() => ({
   padding: '32px 24px'
 }));
 
-export const DrawerHeader = styled(Stack)(() => ({
-  marginBottom: '24px'
-}));
+export const DrawerHeader = styled(Stack)(() => ({}));
 
 export const CloseButton = styled(IconButton)(({ theme }) => ({
   marginRight: '-8px',

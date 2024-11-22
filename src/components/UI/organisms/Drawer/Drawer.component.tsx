@@ -31,16 +31,24 @@ const Drawer: FunctionComponent<DrawerProps> = ({
         <DrawerHeader>
           <Stack>
             <Typography
-              variant="xxl"
+              variant="h1"
               color="neutral.dark"
-              lineHeight="34px"
+              lineHeight="2rem"
+              fontSize="1.5rem"
               mb={1}
               fontWeight={700}
             >
               {title}
             </Typography>
             {description && (
-              <Typography variant="caption" color="neutral.medium" lineHeight="19px" mb={3}>
+              <Typography
+                variant="h2"
+                fontSize="1rem"
+                color="neutral.medium"
+                lineHeight="1.5rem"
+                fontWeight={400}
+                mb={3}
+              >
                 {description}
               </Typography>
             )}

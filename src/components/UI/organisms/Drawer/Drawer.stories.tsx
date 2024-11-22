@@ -20,4 +20,13 @@ export default meta;
 
 type Story = StoryObj<StoryProps>;
 
-export const Template: Story = {};
+export const Template: Story = {
+  args: {
+    open: true,
+    title: 'Title',
+    description: 'homus sum, et nihil humani a me alienum',
+    anchor: 'left',
+    toggleDrawer: false,
+    children: <div>Drawer Content</div>
+  }
+};
