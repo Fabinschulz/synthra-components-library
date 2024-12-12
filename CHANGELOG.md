@@ -1,5 +1,11 @@
 # @synthra.io/ui-kit
 
+## 0.3.4
+
+### Patch Changes
+
+- feat: add new icon
+
 ## 0.3.3
 
 ### Patch Changes

@@ -1,4 +1,5 @@
 export { AddIcon } from './AddIcon';
+export { UserAdd2Icon } from './UserAdd2Icon';
 export { AddCircleIcon } from './AddCircleIcon';
 export { AppsIcon } from './AppsIcon';
 export { AppsRemoveIcon } from './AppsRemoveIcon';
