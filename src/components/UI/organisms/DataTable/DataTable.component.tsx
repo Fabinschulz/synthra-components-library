@@ -7,6 +7,7 @@ import { Stack } from '@mui/material';
 import { useState } from 'react';
 import { MainBox, StyledDataGrid } from './DataTable.styled';
 import { Typography } from '../../atoms';
+import { ListSkeleton } from './ListSkeleton';
 
 const NoOverlayMsg = (message: string) => {
   return (
@@ -38,7 +39,7 @@ const DataTable: FunctionComponent<DataTableProps> = ({
   isCellEditable = () => false,
   paginationMode = 'client',
   getRowId = (row) => row?.id ?? Math.random(),
-  isLoading,
+  isLoading = false,
   ...props
 }: DataTableProps) => {
   const [filterModel, setFilterModel] = useState<GridFilterModel | undefined>(undefined);
@@ -57,51 +58,53 @@ const DataTable: FunctionComponent<DataTableProps> = ({
   const pageSizeOptions = [5, 10, 15, 20];
 
   return (
-    <MainBox height={Math.max(rowsPerPage * 35 + 190, 350)}>
-      <StyledDataGrid
-        rows={rows}
-        columns={columns}
-        rowCount={rowCount}
-        rowHeight={40}
-        pageSizeOptions={pageSizeOptions}
-        pagination
-        paginationMode={paginationMode}
-        paginationModel={paginationModel}
-        onPaginationModelChange={handleChangePaginationModel}
-        disableColumnMenu
-        isCellEditable={isCellEditable}
-        isRowSelectable={isRowSelectable}
-        rowSelection={false}
-        getRowId={getRowId}
-        disableColumnFilter
-        disableRowSelectionOnClick
-        disableColumnSelector
-        hideFooter={hideFooterSelectedRowCount}
-        checkboxSelection={checkboxSelection}
-        onRowSelectionModelChange={onSelectionModelChange}
-        rowSelectionModel={rowSelectionModel}
-        keepNonExistentRowsSelected={keepNonExistentRowsSelected}
-        hideFooterPagination={rows?.length === 0}
-        hideFooterSelectedRowCount={rows?.length === 0}
-        filterModel={filterModel}
-        onFilterModelChange={handleFilterModelChange}
-        loading={isLoading}
-        initialState={{
-          pagination: {
-            paginationModel: { page: page, pageSize: rowsPerPage }
-          }
-        }}
-        slotProps={{
-          pagination: {
-            labelRowsPerPage: 'Linha por páginas'
-          }
-        }}
-        slots={{
-          noRowsOverlay: () => NoOverlayMsg(NoRowsOverlayNew)
-        }}
-        {...props}
-      />
-    </MainBox>
+    <ListSkeleton isLoading={isLoading} rowsPerPage={rowsPerPage}>
+      <MainBox height={Math.max(rowsPerPage * 35 + 190, 350)}>
+        <StyledDataGrid
+          rows={rows}
+          columns={columns}
+          rowCount={rowCount}
+          rowHeight={40}
+          pageSizeOptions={pageSizeOptions}
+          pagination
+          paginationMode={paginationMode}
+          paginationModel={paginationModel}
+          onPaginationModelChange={handleChangePaginationModel}
+          disableColumnMenu
+          isCellEditable={isCellEditable}
+          isRowSelectable={isRowSelectable}
+          rowSelection={false}
+          getRowId={getRowId}
+          disableColumnFilter
+          disableRowSelectionOnClick
+          disableColumnSelector
+          hideFooter={hideFooterSelectedRowCount}
+          checkboxSelection={checkboxSelection}
+          onRowSelectionModelChange={onSelectionModelChange}
+          rowSelectionModel={rowSelectionModel}
+          keepNonExistentRowsSelected={keepNonExistentRowsSelected}
+          hideFooterPagination={rows?.length === 0}
+          hideFooterSelectedRowCount={rows?.length === 0}
+          filterModel={filterModel}
+          onFilterModelChange={handleFilterModelChange}
+          loading={isLoading}
+          initialState={{
+            pagination: {
+              paginationModel: { page: page, pageSize: rowsPerPage }
+            }
+          }}
+          slotProps={{
+            pagination: {
+              labelRowsPerPage: 'Linha por páginas'
+            }
+          }}
+          slots={{
+            noRowsOverlay: () => NoOverlayMsg(NoRowsOverlayNew)
+          }}
+          {...props}
+        />
+      </MainBox>
+    </ListSkeleton>
   );
 };
 

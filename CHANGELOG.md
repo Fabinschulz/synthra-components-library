@@ -1,5 +1,11 @@
 # @synthra.io/ui-kit
 
+## 0.3.5
+
+### Patch Changes
+
+- create skeleton to data table
+
 ## 0.3.4
 
 ### Patch Changes

@@ -3,7 +3,7 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const BankIcon: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#666666' } = props;
+  const { htmlColor = '#373737' } = props;
 
   return (
     <SvgIcon {...props}>
