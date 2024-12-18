@@ -15,6 +15,7 @@ import { StyledAutocomplete } from './Autocomplete.styled';
 import { TextField } from '../TextField';
 import { SearchIcon } from '../../icons';
 import { activeTheme } from '@/utils';
+import { AutocompleteSkeleton } from './Autocomplete.skeleton';
 
 type EndAdornmenProps = {
   endIconType: 'link' | 'submit' | undefined;
@@ -22,7 +23,7 @@ type EndAdornmenProps = {
 };
 
 const theme = activeTheme();
-interface AutocompleteProps extends Omit<AutocompleteBaseProps, 'renderInput'> {
+export interface AutocompleteProps extends Omit<AutocompleteBaseProps, 'renderInput'> {
   variant?: TextFieldVariants;
   sxTextField?: SxProps<Theme>;
 }
@@ -43,53 +44,56 @@ const Autocomplete: FunctionComponent<AutocompleteProps> = (props) => {
     required,
     variant = 'outlined',
     sxTextField,
+    isLoading = false,
     ...rest
   } = props;
   const arrayValue = Array.isArray(value) && !!multiple ? value : !multiple ? value : [];
 
   return (
-    <StyledAutocomplete
-      renderOption={renderOption}
-      {...rest}
-      options={options}
-      multiple={multiple}
-      disableCloseOnSelect={multiple}
-      onChange={(event, value, reason, details) => {
-        if (multiple) {
-          onChange && onChange(event, value, reason, details);
-        } else {
-          onChange && onChange(event, value, reason, details);
-        }
-      }}
-      clearText="Remover"
-      loadingText="Carregando"
-      noOptionsText="Nenhum registro encontrado"
-      filterSelectedOptions
-      clearOnEscape
-      value={arrayValue}
-      renderInput={(params) => (
-        <TextField
-          variant={variant}
-          error={error}
-          {...params}
-          sx={sxTextField}
-          required={required}
-          name={`autocomplete-${name}`}
-          label={label}
-          InputProps={{
-            ...params.InputProps,
-            endAdornment: (
-              <>
-                {loading ? <CircularProgress color="inherit" size={20} /> : null}
-                {params.InputProps.endAdornment}
-                <EndAdornmen link={link} endIconType={endIconType} />
-              </>
-            ),
-            onChange: onChangeTextField
-          }}
-        />
-      )}
-    />
+    <AutocompleteSkeleton isLoading={isLoading}>
+      <StyledAutocomplete
+        renderOption={renderOption}
+        {...rest}
+        options={options}
+        multiple={multiple}
+        disableCloseOnSelect={multiple}
+        onChange={(event, value, reason, details) => {
+          if (multiple) {
+            onChange && onChange(event, value, reason, details);
+          } else {
+            onChange && onChange(event, value, reason, details);
+          }
+        }}
+        clearText="Remover"
+        loadingText="Carregando"
+        noOptionsText="Nenhum registro encontrado"
+        filterSelectedOptions
+        clearOnEscape
+        value={arrayValue}
+        renderInput={(params) => (
+          <TextField
+            variant={variant}
+            error={error}
+            {...params}
+            sx={sxTextField}
+            required={required}
+            name={`autocomplete-${name}`}
+            label={label}
+            InputProps={{
+              ...params.InputProps,
+              endAdornment: (
+                <>
+                  {loading ? <CircularProgress color="inherit" size={20} /> : null}
+                  {params.InputProps.endAdornment}
+                  <EndAdornmen link={link} endIconType={endIconType} />
+                </>
+              ),
+              onChange: onChangeTextField
+            }}
+          />
+        )}
+      />
+    </AutocompleteSkeleton>
   );
 };
 

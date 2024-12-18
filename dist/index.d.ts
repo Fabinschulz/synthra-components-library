@@ -55,6 +55,13 @@ type AutocompleteBaseProps = {
      * @type boolean
      */
     required?: boolean;
+    /**
+     *  Determina se o skeleton do autocomplete deve ser exibido.
+     * @default false
+     * @type {boolean}
+     * @example <Autocomplete isLoading />
+     */
+    isLoading?: boolean;
 } & AutocompleteProps$1<unknown, boolean | undefined, boolean | undefined, boolean | undefined, React.ElementType<any, keyof React.JSX.IntrinsicElements>>;
 
 interface AutocompleteProps extends Omit<AutocompleteBaseProps, 'renderInput'> {
@@ -105,6 +112,13 @@ interface AvatarProps {
      * @see https://mui.com/system/the-sx-prop/
      */
     sx?: SxProps$1<Theme$1>;
+    /**
+     * Determina se o skeleton do avatar deve ser exibido.
+     * @default true
+     * @type {boolean}
+     * @example <Avatar isLoading />
+     */
+    isLoading?: boolean;
 }
 
 declare const Avatar: React$1.FC<AvatarProps>;
@@ -226,6 +240,13 @@ type ITextFieldProps = TextFieldProps & {
      * @example <TextField dataTestId="input" />
      */
     dataTestId?: string;
+    /**
+     * Determina se o skeleton do TextField deve ser exibido.
+     * @default false
+     * @type {boolean}
+     * @example <TextField isLoading />
+     */
+    isLoading?: boolean;
 };
 
 declare const TextField: FunctionComponent<ITextFieldProps>;
@@ -287,6 +308,14 @@ interface BreadcrumbProps extends BreadcrumbsProps {
         url: string;
         title: string;
     }[];
+    /**
+     * Determina se o skeleton do breadcrumb deve ser exibido.
+     * @default false
+     * @type {boolean}
+     * @example <Breadcrumb isLoading />
+     * @see BreadcrumbProps
+     */
+    isLoading?: boolean;
 }
 
 declare const Breadcrumb: FunctionComponent<BreadcrumbProps>;

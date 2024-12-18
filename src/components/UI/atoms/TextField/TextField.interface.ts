@@ -15,4 +15,12 @@ export type ITextFieldProps = TextFieldProps & {
    * @example <TextField dataTestId="input" />
    */
   dataTestId?: string;
+
+  /**
+   * Determina se o skeleton do TextField deve ser exibido.
+   * @default false
+   * @type {boolean}
+   * @example <TextField isLoading />
+   */
+  isLoading?: boolean;
 };

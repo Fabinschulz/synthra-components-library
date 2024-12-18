@@ -37,6 +37,15 @@ type Story = StoryObj<StoryProps>;
 export const Template: Story = {
   args: {
     title: 'John Doe',
+    subtitle: 'Software Engineer',
+    showText: true
+  }
+};
+
+export const AvatarWithSkeleton: Story = {
+  args: {
+    isLoading: true,
+    title: 'John Doe',
     subtitle: 'Software Engineer'
   }
 };

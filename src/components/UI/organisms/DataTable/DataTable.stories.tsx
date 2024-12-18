@@ -27,7 +27,7 @@ export const Template: Story = {
     rows: rowsMock,
     page: 0,
     rowCount: 0,
-    rowsPerPage: 0,
+    rowsPerPage: 5,
     setPage: () => {},
     setRowsPerPage: () => {}
   }

@@ -21,4 +21,13 @@ export interface BreadcrumbProps extends MuiBreadcrumb {
     url: string;
     title: string;
   }[];
+
+  /**
+   * Determina se o skeleton do breadcrumb deve ser exibido.
+   * @default false
+   * @type {boolean}
+   * @example <Breadcrumb isLoading />
+   * @see BreadcrumbProps
+   */
+  isLoading?: boolean;
 }

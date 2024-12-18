@@ -13,7 +13,7 @@ const Checkbox: FunctionComponent<CheckboxProps> = (props) => {
         sx={{ ...formControlSX }}
         control={<StyledCheckbox {...rest} />}
         label={label}
-        data-testid={name}
+        data-testId={`${name}-chekbox`}
         name={name}
       />
     </FormGroup>

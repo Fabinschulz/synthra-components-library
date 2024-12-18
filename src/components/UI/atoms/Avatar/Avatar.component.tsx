@@ -2,6 +2,7 @@ import React from 'react';
 import { Avatar as AvatarMui, Box } from '@mui/material';
 import { AvatarProps } from './Avatar.interface';
 import { Typography } from '../Typography';
+import AvatarSkeleton from './Avatar.skeleton';
 
 // Função para gerar uma cor baseada em uma string
 function stringToColor(string: string) {
@@ -44,27 +45,30 @@ const Avatar: React.FC<AvatarProps> = ({
   subtitle,
   altText,
   showText,
-  sx = {}
+  sx = {},
+  isLoading = false
 }) => {
   return (
-    <Box display="flex" alignItems="center">
-      <AvatarMui
-        src={imageSrc}
-        alt={altText}
-        {...(!imageSrc && title ? stringAvatar(title) : {})}
-        sx={{ ...sx, ...(imageSrc ? {} : stringAvatar(title).sx) }}
-      />
-      {showText && (
-        <Box ml={2}>
-          <Typography variant="subtitle2">{title}</Typography>
-          {subtitle && (
-            <Typography variant="body2" color="textSecondary">
-              {subtitle}
-            </Typography>
-          )}
-        </Box>
-      )}
-    </Box>
+    <AvatarSkeleton isLoading={isLoading} showText={showText}>
+      <Box display="flex" alignItems="center">
+        <AvatarMui
+          src={imageSrc}
+          alt={altText}
+          {...(!imageSrc && title ? stringAvatar(title) : {})}
+          sx={{ ...sx, ...(imageSrc ? {} : stringAvatar(title).sx) }}
+        />
+        {showText && (
+          <Box ml={2}>
+            <Typography variant="subtitle2">{title}</Typography>
+            {subtitle && (
+              <Typography variant="body2" color="textSecondary">
+                {subtitle}
+              </Typography>
+            )}
+          </Box>
+        )}
+      </Box>
+    </AvatarSkeleton>
   );
 };
 

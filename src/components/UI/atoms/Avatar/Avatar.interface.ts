@@ -46,4 +46,12 @@ export interface AvatarProps {
    * @see https://mui.com/system/the-sx-prop/
    */
   sx?: SxProps<Theme>;
+
+  /**
+   * Determina se o skeleton do avatar deve ser exibido.
+   * @default true
+   * @type {boolean}
+   * @example <Avatar isLoading />
+   */
+  isLoading?: boolean;
 }

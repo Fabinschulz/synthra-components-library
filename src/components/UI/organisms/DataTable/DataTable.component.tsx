@@ -7,7 +7,7 @@ import { Stack } from '@mui/material';
 import { useState } from 'react';
 import { MainBox, StyledDataGrid } from './DataTable.styled';
 import { Typography } from '../../atoms';
-import { ListSkeleton } from './ListSkeleton';
+import { DataTableSkeleton } from './DataTable.skeleton';
 
 const NoOverlayMsg = (message: string) => {
   return (
@@ -58,7 +58,7 @@ const DataTable: FunctionComponent<DataTableProps> = ({
   const pageSizeOptions = [5, 10, 15, 20];
 
   return (
-    <ListSkeleton isLoading={isLoading} rowsPerPage={rowsPerPage}>
+    <DataTableSkeleton isLoading={isLoading} rowsPerPage={rowsPerPage}>
       <MainBox height={Math.max(rowsPerPage * 35 + 190, 350)}>
         <StyledDataGrid
           rows={rows}
@@ -104,7 +104,7 @@ const DataTable: FunctionComponent<DataTableProps> = ({
           {...props}
         />
       </MainBox>
-    </ListSkeleton>
+    </DataTableSkeleton>
   );
 };
 

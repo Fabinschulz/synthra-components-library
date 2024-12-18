@@ -53,6 +53,14 @@ export type AutocompleteBaseProps = {
    * @type boolean
    */
   required?: boolean;
+
+  /**
+   *  Determina se o skeleton do autocomplete deve ser exibido.
+   * @default false
+   * @type {boolean}
+   * @example <Autocomplete isLoading />
+   */
+  isLoading?: boolean;
 } & AutocompletePropsMUI<
   unknown,
   boolean | undefined,

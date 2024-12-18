@@ -42,7 +42,7 @@ const Modal: FunctionComponent<ModalProps> = ({
       }}
     >
       <StyledDialogTitle>
-        <StyledIconButton aria-label="Fechar Modal" data-testid="close-button" onClick={onClose}>
+        <StyledIconButton aria-label="Fechar Modal" data-testId="close-button" onClick={onClose}>
           <CloseIcon />
         </StyledIconButton>
       </StyledDialogTitle>

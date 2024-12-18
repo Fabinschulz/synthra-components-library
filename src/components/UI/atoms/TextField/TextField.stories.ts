@@ -47,6 +47,11 @@ const meta: Meta<StoryProps> = {
       control: 'text',
       description:
         'Propriedade data-testid, usada para testes automatizados, como: e2e, unitários e integração'
+    },
+    isLoading: {
+      description: 'Determina se o skeleton do textfield deve ser exibido',
+      control: 'boolean',
+      defaultValue: false
     }
   }
 };
@@ -59,8 +64,15 @@ export const Template: Story = {
   args: {
     label: 'Nome',
     required: true,
-    fullWidth: false,
+    fullWidth: true,
     disabled: false,
+    isLoading: false,
     placeholder: 'Digite seu nome'
+  }
+};
+
+export const TextFieldWithSkeleton: Story = {
+  args: {
+    isLoading: true
   }
 };

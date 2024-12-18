@@ -6,7 +6,11 @@ type ListSkeletonProps = {
   children: React.ReactNode;
 };
 
-export const ListSkeleton: React.FC<ListSkeletonProps> = ({ isLoading, children, rowsPerPage }) => {
+export const DataTableSkeleton: React.FC<ListSkeletonProps> = ({
+  isLoading,
+  children,
+  rowsPerPage
+}) => {
   if (!isLoading) <>{children}</>;
 
   const height: { [key: number]: number } = {

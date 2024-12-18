@@ -2,23 +2,27 @@
 import type { FunctionComponent } from 'react';
 import { StyledTextField } from './TextField.styled';
 import type { ITextFieldProps } from './TextField.interface';
+import { TextFieldSkeleton } from './TextField.skeleton';
 
 const TextField: FunctionComponent<ITextFieldProps> = ({
   label,
   required,
   dataTestId,
   variant = 'outlined',
+  isLoading = false,
   ...props
 }) => {
   const labelWithRequired = required ? `${label} *` : label;
 
   return (
-    <StyledTextField
-      label={labelWithRequired}
-      data-testId={dataTestId}
-      variant={variant}
-      {...props}
-    />
+    <TextFieldSkeleton isLoading={isLoading}>
+      <StyledTextField
+        label={labelWithRequired}
+        data-testId={`${dataTestId}-textField`}
+        variant={variant}
+        {...props}
+      />
+    </TextFieldSkeleton>
   );
 };
 

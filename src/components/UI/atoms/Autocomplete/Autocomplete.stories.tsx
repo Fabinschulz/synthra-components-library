@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Autocomplete from './Autocomplete.component';
 import { ComponentProps } from 'react';
-import { autocompletMock } from './Autocomplete.mock';
+import { autocompletMock, autocompletWithSkeleton } from './Autocomplete.mock';
 
 type StoryProps = ComponentProps<typeof Autocomplete>;
 
@@ -65,6 +65,11 @@ const meta: Meta<StoryProps> = {
     },
     required: {
       description: 'Determina se o autocomplete é obrigatório'
+    },
+    isLoading: {
+      description: 'Determina se o skeleton do autocomplete deve ser exibido',
+      control: 'boolean',
+      defaultValue: false
     }
   }
 };
@@ -75,4 +80,8 @@ type Story = StoryObj<StoryProps>;
 
 export const Template: Story = {
   args: autocompletMock
+};
+
+export const AutocompleteWithSkeleton: Story = {
+  args: autocompletWithSkeleton
 };
