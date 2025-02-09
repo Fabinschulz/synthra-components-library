@@ -1,5 +1,5 @@
 # UI Kit - ReactJS & MUI
-![Componente React](assets/react-component-libraries.webp)
+![Componente React](./assets/react-component-libraries.webp)
 
 ## Overview
 
