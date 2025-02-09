@@ -56,3 +56,10 @@ type Story = StoryObj<StoryProps>;
 export const Template: Story = {
   args: checkboxMock
 };
+
+export const CheckboxWithSkeleton: Story = {
+  args: {
+    ...checkboxMock,
+    isLoading: true
+  }
+};

@@ -201,6 +201,8 @@ export { InfoIcon } from './InfoIcon';
 export { InvoiceReceivableIcon } from './InvoiceReceivableIcon';
 export { InformationRectangleIcon } from './InformationRectangleIcon';
 export { IntersectingArrowsIcon } from './IntersectingArrowsIcon';
+export { JumpToStartIcon } from './JumpToStartIcon';
+export { JumpToEndIcon } from './JumpToEndIcon';
 export { KeyIcon } from './KeyIcon';
 export { LeftIcon } from './LeftIcon';
 export { LegalPersonIcon } from './LegalPersonIcon';

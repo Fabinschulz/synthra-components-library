@@ -1,5 +1,11 @@
 # @synthra.io/ui-kit
 
+## 0.3.7
+
+### Patch Changes
+
+- add loading state components
+
 ## 0.3.6
 
 ### Patch Changes

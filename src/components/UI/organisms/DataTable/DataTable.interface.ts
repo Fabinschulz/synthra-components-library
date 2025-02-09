@@ -159,7 +159,14 @@ export interface DataTableProps extends DataGridProps {
    * @memberof DataTableProps
    * @description  Exibe um loader na tabela
    * @default false
-   * @example true
    */
   isLoading?: boolean;
+
+  /**
+   * @type {boolean}
+   * @memberof DataTableProps
+   * @description  Ativa a funcionalidade de pular para o início ou fim da tabela
+   * @default false
+   */
+  enableJumpToPage?: boolean;
 }

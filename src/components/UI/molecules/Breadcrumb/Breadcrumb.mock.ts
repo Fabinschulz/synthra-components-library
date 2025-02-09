@@ -20,5 +20,5 @@ export const breadcrumbMock: BreadcrumbProps = {
 };
 
 export const breadcrumbWithSkeleton: BreadcrumbProps = {
-  isLoading: true,
+  isLoading: true
 };

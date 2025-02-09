@@ -64,3 +64,10 @@ export const Template: Story = {
 
 export const IconeADireita = { args: iconeADireitaProps };
 export const IconeAEsquerda = { args: iconeAEsquerdaProps };
+
+export const ButtonWithSkeleton = {
+  args: {
+    ...argsProps,
+    isLoading: true
+  }
+};

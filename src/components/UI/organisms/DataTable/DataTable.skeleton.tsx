@@ -11,8 +11,6 @@ export const DataTableSkeleton: React.FC<ListSkeletonProps> = ({
   children,
   rowsPerPage
 }) => {
-  if (!isLoading) <>{children}</>;
-
   const height: { [key: number]: number } = {
     1: 50,
     5: 400,
@@ -26,37 +24,43 @@ export const DataTableSkeleton: React.FC<ListSkeletonProps> = ({
   };
 
   return (
-    <Stack>
-      <Stack
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: 'auto auto',
-          gap: 1,
-          mb: 1
-        }}
-      >
-        <Skeleton
-          variant="rectangular"
-          width="100%"
-          height={height[1]}
-          animation="wave"
-          sx={borderSx}
-        />
-        <Skeleton
-          variant="rectangular"
-          height={height[1]}
-          width="100%"
-          animation="wave"
-          sx={borderSx}
-        />
-      </Stack>
-      <Skeleton
-        variant="rectangular"
-        height={height[rowsPerPage]}
-        width="100%"
-        animation="wave"
-        sx={borderSx}
-      />
-    </Stack>
+    <>
+      {isLoading ? (
+        <Stack>
+          <Stack
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: 'auto auto',
+              gap: 1,
+              mb: 1
+            }}
+          >
+            <Skeleton
+              variant="rectangular"
+              width="100%"
+              height={height[1]}
+              animation="wave"
+              sx={borderSx}
+            />
+            <Skeleton
+              variant="rectangular"
+              height={height[1]}
+              width="100%"
+              animation="wave"
+              sx={borderSx}
+            />
+          </Stack>
+          <Skeleton
+            variant="rectangular"
+            height={height[rowsPerPage]}
+            width="100%"
+            animation="wave"
+            sx={borderSx}
+          />
+        </Stack>
+      ) : (
+        <>{children}</>
+      )}
+    </>
   );
 };

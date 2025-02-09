@@ -34,4 +34,3 @@ export const Template: Story = {
 export const BreadcrumbWithSkeleton: Story = {
   args: breadcrumbWithSkeleton
 };
-

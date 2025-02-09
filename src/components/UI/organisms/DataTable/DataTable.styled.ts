@@ -1,12 +1,12 @@
-import { Box, IconButton } from '@mui/material';
+import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { DataGrid } from '@mui/x-data-grid';
 
 export const MainBox = styled(Box)(({ theme }) => ({
   width: '100%',
-  padding: '10px',
   background: theme.palette?.common?.white,
-  borderRadius: '8px'
+  borderRadius: '8px',
+  position: 'relative'
 }));
 
 export const StyledDataGrid = styled(DataGrid)(({ theme }) => {
@@ -22,7 +22,6 @@ export const StyledDataGrid = styled(DataGrid)(({ theme }) => {
     },
     '& .MuiDataGrid-cell': {
       fontSize,
-      // lineHeight: '16.48px',
       fontWeight: 400
     },
     '& .MuiDataGrid-columnHeader, .MuiDataGrid-cell': {
@@ -64,18 +63,25 @@ export const StyledDataGrid = styled(DataGrid)(({ theme }) => {
     },
     '& .MuiDataGrid-virtualScrollerRenderZone': {
       marginTop: '0'
+    },
+    '& .MuiTablePagination-toolbar': {
+      paddingRight: '2.5rem'
+    },
+    '& .Mui-disabled': {
+      color: '#BDBDBD',
+      backgroundColor: 'transparent'
     }
   };
 });
 
-export const ArrowButtonLeft = styled(IconButton)(() => ({
+export const ArrowButtonLeftSx = {
   position: 'absolute',
-  bottom: 5.8,
-  right: 4 * 27
-}));
+  bottom: 2.6,
+  right: 4 * 25
+};
 
-export const ArrowButtonRight = styled(IconButton)(() => ({
+export const ArrowButtonRightSx = {
   position: 'absolute',
-  bottom: 5.8,
-  left: 'calc(100% - 70px)'
-}));
+  bottom: -3.5,
+  left: 'calc(100% - 55px)'
+};

@@ -68,5 +68,41 @@ export const rowsMock = [
     fullName: 'Michael Johnson',
     email: 'michael.johnson@example.com',
     phone: '(21) 9999-0000'
+  },
+  {
+    id: 4,
+    firstName: 'Emma',
+    lastName: 'Williams',
+    age: 28,
+    fullName: 'Emma Williams',
+    email: 'williams@gmail.com',
+    phone: '(21) 8888-1111'
+  },
+  {
+    id: 5,
+    firstName: 'Olivia',
+    lastName: 'Brown',
+    age: 40,
+    fullName: 'Olivia Brown',
+    email: 'olivi@teste.com',
+    phone: '(21) 7777-2222'
+  },
+  {
+    id: 6,
+    firstName: 'James',
+    lastName: 'Jones',
+    age: 45,
+    fullName: 'James Jones',
+    email: 'jame@rodrigures.co',
+    phone: '(21) 6666-3333'
+  },
+  {
+    id: 7,
+    firstName: 'Sophia',
+    lastName: 'Garcia',
+    age: 50,
+    fullName: 'Sophia Garcia',
+    email: 'sophy@teste.co',
+    phone: '(21) 5555-4444'
   }
 ];
