@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { ComponentProps, useState } from 'react';
 import { columnsMock, rowsMock } from './DataTable.mock';
 import DataTable from './DataTable.component';

@@ -37,8 +37,10 @@ const Modal: FunctionComponent<ModalProps> = ({
       open={open}
       onClose={onClose}
       maxWidth="lg"
-      PaperProps={{
-        sx: sizeSx
+      slotProps={{
+        paper: {
+          sx: sizeSx
+        }
       }}
     >
       <StyledDialogTitle>
@@ -49,17 +51,17 @@ const Modal: FunctionComponent<ModalProps> = ({
 
       <StyledDialogContent>
         <Stack>
-          <Stack direction={direction} mb={2}>
+          <Stack direction={direction} sx={{ mb: 2 }}>
             {icon && <BoxIcon style={{ display: isMobile ? 'none' : 'flex' }}>{icon}</BoxIcon>}
             <Stack direction="column" sx={{ width: '100%' }}>
               {title && (
-                <Typography variant="h3" mb={1} textAlign={align}>
+                <Typography variant="h3" sx={{ mb: 1, textAlign: align }}>
                   {title}
                 </Typography>
               )}
 
               {description && (
-                <Typography variant="body2" textAlign={align}>
+                <Typography variant="body2" sx={{ textAlign: align }}>
                   {description}
                 </Typography>
               )}

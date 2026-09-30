@@ -4,7 +4,7 @@ import { SvgIcon } from '@mui/material';
 
 export const SeverityErrorIcon: FunctionComponent<SvgIconProps> = (props) => {
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 56 56" width="26" height="26" {...props}>
       <rect width="56" height="56" rx="8" fill="#F44336" />
       <path
         d="M37.3334 37.3332L18.6667 18.6667"
@@ -22,10 +22,4 @@ export const SeverityErrorIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-SeverityErrorIcon.defaultProps = {
-  viewBox: '0 0 56 56',
-  width: '26',
-  height: '26'
 };

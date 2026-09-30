@@ -6,7 +6,7 @@ export const AddressIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <path
         d="M14.2221 8.66667C14.2221 9.89397 13.2272 10.8889 11.9999 10.8889C10.7726 10.8889 9.7777 9.89397 9.7777 8.66667C9.7777 7.43937 10.7726 6.44444 11.9999 6.44444C13.2272 6.44444 14.2221 7.43937 14.2221 8.66667Z"
         stroke={htmlColor}
@@ -28,11 +28,4 @@ export const AddressIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-AddressIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  width: '24',
-  height: '24',
-  fill: 'none'
 };

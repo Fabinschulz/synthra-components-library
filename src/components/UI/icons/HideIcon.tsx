@@ -6,7 +6,7 @@ export const HideIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 1080 1080" width="1080" height="1080" fill="none" {...props}>
       <svg
         width="24"
         height="24"
@@ -30,11 +30,4 @@ export const HideIcon: FunctionComponent<SvgIconProps> = (props) => {
       </svg>
     </SvgIcon>
   );
-};
-
-HideIcon.defaultProps = {
-  viewBox: '0 0 1080 1080',
-  width: '1080',
-  height: '1080',
-  fill: 'none'
 };

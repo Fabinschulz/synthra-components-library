@@ -2,7 +2,7 @@
 
 import type { FunctionComponent } from 'react';
 import type { DataTableProps } from './DataTable.interface';
-import { GridFilterModel, GridPaginationModel } from '@mui/x-data-grid';
+import { GridFilterModel, GridPaginationModel, GridRowSelectionModel } from '@mui/x-data-grid';
 import { Stack } from '@mui/material';
 import { useState } from 'react';
 import { ArrowButtonLeftSx, ArrowButtonRightSx, MainBox, StyledDataGrid } from './DataTable.styled';
@@ -13,13 +13,15 @@ import JumpButton from './JumpButton';
 
 const NoOverlayMsg = (message: string) => {
   return (
-    <Stack height="auto" alignItems="center" justifyContent="center">
-      <Typography variant="body2" color="black" lineHeight="29px">
+    <Stack sx={{ height: 'auto', alignItems: 'center', justifyContent: 'center' }}>
+      <Typography variant="body2" color="black" sx={{ lineHeight: '29px' }}>
         {message}
       </Typography>
     </Stack>
   );
 };
+
+const emptyRowSelectionModel: GridRowSelectionModel = { type: 'include', ids: new Set() };
 
 const iconSx = {
   width: 33,
@@ -41,7 +43,7 @@ const DataTable: FunctionComponent<DataTableProps> = ({
   rowCount,
   loading = false,
   checkboxSelection = false,
-  rowSelectionModel = [],
+  rowSelectionModel = emptyRowSelectionModel,
   isRowSelectable = () => false,
   isCellEditable = () => false,
   paginationMode = 'client',
@@ -76,7 +78,7 @@ const DataTable: FunctionComponent<DataTableProps> = ({
 
   return (
     <DataTableSkeleton isLoading={isLoading} rowsPerPage={rowsPerPage}>
-      <MainBox height={Math.max(rowsPerPage * 35 + 190, 350)}>
+      <MainBox sx={{ height: Math.max(rowsPerPage * 35 + 190, 350) }}>
         <StyledDataGrid
           rows={rows}
           columns={columns}

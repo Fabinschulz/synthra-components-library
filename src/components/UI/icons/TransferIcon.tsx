@@ -6,7 +6,7 @@ export const TransferIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 23 24" width="23" height="24" fill="none" {...props}>
       <rect
         x="22.0811"
         y="16.6733"
@@ -45,11 +45,4 @@ export const TransferIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-TransferIcon.defaultProps = {
-  viewBox: '0 0 23 24',
-  width: '23',
-  height: '24',
-  fill: 'none'
 };

@@ -5,7 +5,7 @@ import { SvgIcon } from '@mui/material';
 export const StudentsIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <path
         d="M15.4383 11.8281V10.7844L16.6483 11.3286C17.1783 11.5669 17.7858 11.5629 18.3126 11.3177L19.5579 10.738V11.8281C19.5579 12.9656 18.6357 13.8878 17.4981 13.8879C16.3605 13.8879 15.4383 12.9657 15.4383 11.8281Z"
         stroke={htmlColor}
@@ -74,11 +74,4 @@ export const StudentsIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-StudentsIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  width: '24',
-  height: '24',
-  fill: 'none'
 };

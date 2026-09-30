@@ -6,7 +6,7 @@ export const LightIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" fill="none" height="24px" width="24px" {...props}>
       <circle cx="12" cy="12" r="5" stroke={htmlColor} strokeWidth="2" fill="none" />
       <path d="M12 2V4" stroke={htmlColor} strokeWidth="2" strokeLinecap="round" fill="none" />
       <path d="M12 20V22" stroke={htmlColor} strokeWidth="2" strokeLinecap="round" fill="none" />
@@ -40,11 +40,4 @@ export const LightIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-LightIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  height: '24px',
-  width: '24px'
 };

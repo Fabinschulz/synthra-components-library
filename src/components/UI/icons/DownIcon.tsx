@@ -6,7 +6,7 @@ export const DownIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <path
         d="M7 10L12 14L17 10"
         fill="none"
@@ -17,11 +17,4 @@ export const DownIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-DownIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  width: '24',
-  height: '24',
-  fill: 'none'
 };

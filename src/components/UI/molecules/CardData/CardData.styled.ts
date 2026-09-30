@@ -7,18 +7,18 @@ export const Card = styled(Stack)(({ theme }) => ({
   borderRadius: '8px',
   padding: '24px',
   maxWidth: '100%',
-  marginBottom: '32px'
-}));
-
-Card.defaultProps = {
+  marginBottom: '32px',
   alignItems: 'center'
-};
+}));
 
 export const ListItem = styled(Stack)(({ theme }) => ({
   borderBottom: `2px solid ${theme.palette.neutral.primaryShade?.['30']}`,
   borderRadius: '2px',
   padding: '16px 0',
   width: '100%',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
   whiteSpace: 'pre-wrap',
   overflow: 'auto',
   textAlign: 'right',
@@ -47,12 +47,6 @@ export const ListItem = styled(Stack)(({ theme }) => ({
     alignItems: 'flex-start'
   }
 }));
-
-ListItem.defaultProps = {
-  direction: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center'
-};
 
 export const TooltipIcon = styled(Box)(({ theme, color }: any) => {
   const backgroundColor =

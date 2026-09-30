@@ -6,7 +6,7 @@ export const LogoutIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" fill="none" height="24px" width="24px" {...props}>
       <path
         d="M18 9L21 12M21 12L18 15M21 12H9"
         stroke={htmlColor}
@@ -25,11 +25,4 @@ export const LogoutIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-LogoutIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  height: '24px',
-  width: '24px'
 };

@@ -6,7 +6,7 @@ export const UpdateLimitsIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 26 24" width="26" height="24" fill="none" {...props}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="26"
@@ -61,11 +61,4 @@ export const UpdateLimitsIcon: FunctionComponent<SvgIconProps> = (props) => {
       </svg>
     </SvgIcon>
   );
-};
-
-UpdateLimitsIcon.defaultProps = {
-  viewBox: '0 0 26 24',
-  width: '26',
-  height: '24',
-  fill: 'none'
 };

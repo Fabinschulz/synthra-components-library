@@ -6,7 +6,7 @@ export const LineIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#D04D27' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 190 2" width="190" height="2" fill="none" {...props}>
       <line
         x1="1"
         y1="1"
@@ -19,11 +19,4 @@ export const LineIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-LineIcon.defaultProps = {
-  viewBox: '0 0 190 2',
-  width: '190',
-  height: '2',
-  fill: 'none'
 };

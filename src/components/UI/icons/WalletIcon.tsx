@@ -6,7 +6,7 @@ export const WalletIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <path
         d="M23 5H5C2.79086 5 1 6.79086 1 9V19C1 21.2091 2.79086 23 5 23H19C21.2091 23 23 21.2091 23 19V5Z"
         stroke={htmlColor}
@@ -30,11 +30,4 @@ export const WalletIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-WalletIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  width: '24',
-  height: '24',
-  fill: 'none'
 };

@@ -5,18 +5,13 @@ const config: StorybookConfig = {
   addons: [
     '@storybook/addon-onboarding',
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
+    '@storybook/addon-docs',
     '@chromatic-com/storybook',
-    '@storybook/addon-interactions',
-    '@storybook/addon-a11y',
-    'storybook-addon-theme-provider'
+    '@storybook/addon-a11y'
   ],
   framework: {
     name: '@storybook/nextjs',
     options: {}
-  },
-  docs: {
-    autodocs: 'tag'
   }
 };
 export default config;

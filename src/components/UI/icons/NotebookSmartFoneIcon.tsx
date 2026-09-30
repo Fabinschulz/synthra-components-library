@@ -6,7 +6,7 @@ export const NotebookSmartFoneIcon: FunctionComponent<SvgIconProps> = (props) =>
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" fill="none" height="24px" width="24px" {...props}>
       <rect
         x="14"
         y="7"
@@ -33,11 +33,4 @@ export const NotebookSmartFoneIcon: FunctionComponent<SvgIconProps> = (props) =>
       />
     </SvgIcon>
   );
-};
-
-NotebookSmartFoneIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  height: '24px',
-  width: '24px'
 };

@@ -6,7 +6,7 @@ export const SimulationIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <path
         stroke={htmlColor}
         d="M20 22H4C2.34315 22 1 20.6569 1 19V5C1 3.34315 2.34315 2 4 2H20C21.6569 2 23 3.34315 23 5V19C23 20.6569 21.6569 22 20 22Z"
@@ -22,11 +22,4 @@ export const SimulationIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-SimulationIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  width: '24',
-  height: '24',
-  fill: 'none'
 };

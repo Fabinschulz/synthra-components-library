@@ -6,7 +6,7 @@ export const BluetoothOffIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" fill="none" height="24px" width="24px" {...props}>
       <path d="M20 20L4 4" stroke={htmlColor} strokeWidth="2" strokeLinecap="round" fill="none" />
       <path
         fill-rule="evenodd"
@@ -16,11 +16,4 @@ export const BluetoothOffIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-BluetoothOffIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  height: '24px',
-  width: '24px'
 };

@@ -6,7 +6,7 @@ export const ArrowLeftIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 25" width="24" height="25" fill="none" {...props}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -24,11 +24,4 @@ export const ArrowLeftIcon: FunctionComponent<SvgIconProps> = (props) => {
       </svg>
     </SvgIcon>
   );
-};
-
-ArrowLeftIcon.defaultProps = {
-  viewBox: '0 0 24 25',
-  width: '24',
-  height: '25',
-  fill: 'none'
 };

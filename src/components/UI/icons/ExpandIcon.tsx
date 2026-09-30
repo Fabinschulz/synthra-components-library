@@ -6,7 +6,7 @@ export const ExpandIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" fill="none" height="24px" width="24px" {...props}>
       <path
         d="M13.5 6H18M18 6V10.5M18 6L6 18M6 18V13.5M6 18H10.5"
         stroke={htmlColor}
@@ -17,11 +17,4 @@ export const ExpandIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-ExpandIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  height: '24px',
-  width: '24px'
 };

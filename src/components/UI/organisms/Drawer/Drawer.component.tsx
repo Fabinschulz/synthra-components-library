@@ -20,10 +20,12 @@ const Drawer: FunctionComponent<DrawerProps> = ({
       open={open}
       onClose={onClose}
       anchor={anchor}
-      PaperProps={{
-        sx: {
-          width: toggleDrawer ? 500 : 612,
-          maxWidth: '100%'
+      slotProps={{
+        paper: {
+          sx: {
+            width: toggleDrawer ? 500 : 612,
+            maxWidth: '100%'
+          }
         }
       }}
     >
@@ -32,22 +34,26 @@ const Drawer: FunctionComponent<DrawerProps> = ({
           <Stack>
             <Typography
               variant="h1"
-              color="neutral.dark"
-              lineHeight="2rem"
-              fontSize="1.5rem"
-              mb={1}
-              fontWeight={700}
+              sx={{
+                color: 'neutral.dark',
+                lineHeight: '2rem',
+                fontSize: '1.5rem',
+                mb: 1,
+                fontWeight: 700
+              }}
             >
               {title}
             </Typography>
             {description && (
               <Typography
                 variant="h2"
-                fontSize="1rem"
-                color="neutral.medium"
-                lineHeight="1.5rem"
-                fontWeight={400}
-                mb={3}
+                sx={{
+                  fontSize: '1rem',
+                  color: 'neutral.medium',
+                  lineHeight: '1.5rem',
+                  fontWeight: 400,
+                  mb: 3
+                }}
               >
                 {description}
               </Typography>

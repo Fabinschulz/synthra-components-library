@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/nextjs';
 import { ComponentProps, useState } from 'react';
 import SelectField from './SelectField.component';
 import { SelectChangeEvent } from '@mui/material';

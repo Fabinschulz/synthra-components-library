@@ -1,5 +1,5 @@
 import { Components } from '@mui/material';
-import { Typography } from '@mui/material/styles/createTypography';
+import { TypographyVariants as Typography } from '@mui/material/styles';
 import { typography as typographyOptions } from '../typography';
 
 const typography = typographyOptions! as Typography;

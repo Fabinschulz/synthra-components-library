@@ -6,7 +6,7 @@ export const BookFavouriteIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -24,11 +24,4 @@ export const BookFavouriteIcon: FunctionComponent<SvgIconProps> = (props) => {
       </svg>
     </SvgIcon>
   );
-};
-
-BookFavouriteIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  width: '24',
-  height: '24',
-  fill: 'none'
 };

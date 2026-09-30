@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import Button from './Button.component';
 import { argsProps, iconeADireitaProps, iconeAEsquerdaProps } from './Button.mock';
 import { ComponentProps } from 'react';
-import { fn } from '@storybook/test';
+import { fn } from 'storybook/test';
 
 type StoryProps = ComponentProps<typeof Button>;
 

@@ -6,7 +6,7 @@ export const CalendarIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <path d="M16 1V4" stroke={htmlColor} strokeWidth="2" strokeLinecap="round" fill="none" />
       <path d="M8 1V4" stroke={htmlColor} strokeWidth="2" strokeLinecap="round" fill="none" />
       <path
@@ -18,11 +18,4 @@ export const CalendarIcon: FunctionComponent<SvgIconProps> = (props) => {
       <path d="M2 9H22" stroke={htmlColor} strokeWidth="2" strokeLinecap="round" fill="none" />
     </SvgIcon>
   );
-};
-
-CalendarIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  width: '24',
-  height: '24',
-  fill: 'none'
 };

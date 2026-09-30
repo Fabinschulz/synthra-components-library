@@ -7,7 +7,8 @@ export const argsProps: IButtonProps = {
   children: 'Submit',
   size: 'medium',
   fullWidth: false,
-  disabled: false
+  disabled: false,
+  isLoading: false
 };
 
 export const iconeADireitaProps: IButtonProps = {
@@ -17,7 +18,8 @@ export const iconeADireitaProps: IButtonProps = {
   children: 'Submit',
   size: 'medium',
   fullWidth: false,
-  disabled: false
+  disabled: false,
+  isLoading: false
 };
 
 export const iconeAEsquerdaProps: IButtonProps = {
@@ -27,5 +29,6 @@ export const iconeAEsquerdaProps: IButtonProps = {
   children: 'Submit',
   size: 'medium',
   fullWidth: false,
-  disabled: false
+  disabled: false,
+  isLoading: false
 };

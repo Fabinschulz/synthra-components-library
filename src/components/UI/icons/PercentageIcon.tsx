@@ -6,7 +6,7 @@ export const PercentageIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <path
         d="M8 5C8 6.65685 6.65685 8 5 8C3.34315 8 2 6.65685 2 5C2 3.34315 3.34315 2 5 2C6.65685 2 8 3.34315 8 5Z"
         fill={htmlColor}
@@ -18,11 +18,4 @@ export const PercentageIcon: FunctionComponent<SvgIconProps> = (props) => {
       <path d="M4 20L19 5" stroke={htmlColor} strokeWidth="2" strokeLinecap="round" />
     </SvgIcon>
   );
-};
-
-PercentageIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  width: '24',
-  height: '24',
-  fill: 'none'
 };
