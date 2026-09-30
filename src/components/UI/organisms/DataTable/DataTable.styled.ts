@@ -25,18 +25,12 @@ export const StyledDataGrid = styled(DataGrid)(({ theme }) => {
       fontSize,
       fontWeight: 400
     },
-    '& .MuiDataGrid-columnHeader, .MuiDataGrid-cell': {
-      borderRight: '1px solid',
-      ...theme.applyStyles('light', {
-        borderRightColor: alpha(theme.palette.neutral.light, 0.35)
-      })
+    '& .MuiDataGrid-columnHeader, & .MuiDataGrid-cell': {
+      borderRight: `1px solid ${alpha(theme.palette.neutral.light, 0.35)}`
     },
     '& .MuiDataGrid-columnHeaderTitle': {
       fontSize,
-      fontWeight: 700,
-      whiteSpace: 'normal',
-      lineHeight: 'normal',
-      wordWrap: 'break-word'
+      fontWeight: 700
     },
     '& .MuiDataGrid-columnHeaderTitleContainer .MuiDataGrid-sortIcon': {
       color
@@ -61,9 +55,6 @@ export const StyledDataGrid = styled(DataGrid)(({ theme }) => {
       height: '24px',
       width: '24px',
       paddingBottom: '2px'
-    },
-    '& .MuiDataGrid-virtualScrollerRenderZone': {
-      marginTop: '0'
     },
     '& .MuiTablePagination-toolbar': {
       paddingRight: '2.5rem'

@@ -4,7 +4,7 @@ import type { DataTableProps } from './DataTable.interface';
 import type { GridRowIdGetter, GridValidRowModel } from '@mui/x-data-grid';
 import { GridFilterModel, GridPaginationModel, GridRowSelectionModel } from '@mui/x-data-grid';
 import { Stack } from '@mui/material';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { MainBox, StyledDataGrid } from './DataTable.styled';
 import { Typography } from '../../atoms';
 import { DataTableSkeleton } from './DataTable.skeleton';
@@ -71,17 +71,24 @@ const DataTable = <R extends GridValidRowModel = any>({
     setRowsPerPage(newModel.pageSize);
   };
 
+  const centeredColumns = useMemo(
+    () => columns.map((column) => ({ align: 'center' as const, headerAlign: 'center' as const, ...column })),
+    [columns]
+  );
+
   const pageSizeOptions = [5, 10, 15, 20];
   const hasRows = rows?.length > 0;
 
   return (
     <DataTableSkeleton skeleton={skeleton} rowsPerPage={rowsPerPage}>
-      <MainBox sx={{ height: Math.max(rowsPerPage * 35 + 190, 350) }}>
+      <MainBox>
         <StyledDataGrid
           rows={rows}
-          columns={columns}
+          columns={centeredColumns}
           rowCount={rowCount}
           rowHeight={40}
+          columnHeaderHeight={48}
+          autoHeight
           pageSizeOptions={pageSizeOptions}
           pagination
           paginationMode={paginationMode}
