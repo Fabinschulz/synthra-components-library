@@ -15,10 +15,9 @@ export interface TabItemProps extends TabProps {
   component?: React.ElementType;
 
   /**
-   * Determina o link da tab
-   * @default ''
-   * @type {string}
-   * @example <TabItem to="/tab1" />
+   * Link de navegação. Renderizado com o `LinkComponent` do tema
+   * (ex.: `next/link` via `@synthra.io/ui-kit/next`).
+   * @example <TabItem href="/tab1" />
    */
-  to?: string;
+  href?: string;
 }

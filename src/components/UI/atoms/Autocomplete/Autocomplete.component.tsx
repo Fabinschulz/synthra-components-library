@@ -1,28 +1,26 @@
 'use client';
-import { FunctionComponent } from 'react';
 import {
-  CircularProgress,
-  IconButton,
-  InputAdornment,
-  SxProps,
-  TextFieldVariants,
-  Theme,
-  Typography
+    CircularProgress,
+    IconButton,
+    InputAdornment,
+    SxProps,
+    TextFieldVariants,
+    Theme,
+    Typography
 } from '@mui/material';
-import Link from 'next/link';
-import type { AutocompleteBaseProps } from './Autocomplete.interface';
-import { StyledAutocomplete } from './Autocomplete.styled';
-import { TextField } from '../TextField';
+import { FunctionComponent } from 'react';
 import { SearchIcon } from '../../icons';
-import { activeTheme } from '@/utils';
+import { TextField } from '../TextField';
+import type { AutocompleteBaseProps } from './Autocomplete.interface';
 import { AutocompleteSkeleton } from './Autocomplete.skeleton';
+import { StyledAutocomplete } from './Autocomplete.styled';
 
-type EndAdornmenProps = {
+type EndAdornmentProps = {
   endIconType: 'link' | 'submit' | undefined;
   link: string | undefined;
+  label: string;
 };
 
-const theme = activeTheme();
 export interface AutocompleteProps extends Omit<AutocompleteBaseProps, 'renderInput'> {
   variant?: TextFieldVariants;
   sxTextField?: SxProps<Theme>;
@@ -31,53 +29,49 @@ export interface AutocompleteProps extends Omit<AutocompleteBaseProps, 'renderIn
 const Autocomplete: FunctionComponent<AutocompleteProps> = (props) => {
   const {
     options = [],
-    onChange,
     label,
     multiple = false,
     value,
     error,
+    helperText,
     loading,
     link,
     endIconType,
+    endIconLabel = 'Pesquisar',
     onChangeTextField,
     name,
     required,
     variant = 'outlined',
     sxTextField,
-    isLoading = false,
+    skeleton = false,
     ...rest
   } = props;
   const arrayValue = Array.isArray(value) && !!multiple ? value : !multiple ? value : [];
 
   return (
-    <AutocompleteSkeleton isLoading={isLoading}>
+    <AutocompleteSkeleton skeleton={skeleton}>
       <StyledAutocomplete
         renderOption={renderOption}
-        {...rest}
-        options={options}
-        multiple={multiple}
-        disableCloseOnSelect={multiple}
-        onChange={(event, value, reason, details) => {
-          if (multiple) {
-            onChange && onChange(event, value, reason, details);
-          } else {
-            onChange && onChange(event, value, reason, details);
-          }
-        }}
         clearText="Remover"
         loadingText="Carregando"
         noOptionsText="Nenhum registro encontrado"
         filterSelectedOptions
         clearOnEscape
+        {...rest}
+        loading={loading}
+        options={options}
+        multiple={multiple}
+        disableCloseOnSelect={multiple}
         value={arrayValue}
         renderInput={(params) => (
           <TextField
             variant={variant}
             error={error}
+            helperText={helperText}
             {...params}
             sx={sxTextField}
             required={required}
-            name={`autocomplete-${name}`}
+            name={name}
             label={label}
             slotProps={{
               ...params.slotProps,
@@ -87,7 +81,7 @@ const Autocomplete: FunctionComponent<AutocompleteProps> = (props) => {
                   <>
                     {loading ? <CircularProgress color="inherit" size={20} /> : null}
                     {params.slotProps.input.endAdornment}
-                    <EndAdornmen link={link} endIconType={endIconType} />
+                    <EndAdornment link={link} endIconType={endIconType} label={endIconLabel} />
                   </>
                 ),
                 onChange: onChangeTextField
@@ -105,30 +99,26 @@ export default Autocomplete;
 const renderOption = (props: object, option: any) => {
   const { label } = option;
   return (
-    <Typography {...props} variant="subtitle1" sx={{ fontFamily: 'Lato, sans-serif' }}>
+    <Typography {...props} variant="subtitle1">
       {label}
     </Typography>
   );
 };
 
-const Search = () => (
-  <SearchIcon
-    htmlColor={theme.palette.primary.main}
-    style={{ display: 'inline-block', width: 21, height: 21 }}
-  />
-);
+const searchIconSx = { display: 'inline-block', width: 21, height: 21 };
 
-const EndAdornmen = ({ link = '', endIconType }: EndAdornmenProps) => {
+const EndAdornment = ({ link = '', endIconType, label }: EndAdornmentProps) => {
+  if (!endIconType) return null;
+
   return (
     <InputAdornment position="end" sx={{ pr: 0.5, justifyContent: 'center', mt: 0.2 }}>
-      {endIconType === 'link' && (
-        <Link href={link} style={{ cursor: 'pointer' }}>
-          <Search />
-        </Link>
-      )}
-      {endIconType === 'submit' && (
-        <IconButton type="submit">
-          <Search />
+      {endIconType === 'link' ? (
+        <IconButton href={link} aria-label={label} size="small">
+          <SearchIcon color="primary" sx={searchIconSx} />
+        </IconButton>
+      ) : (
+        <IconButton type="submit" aria-label={label} size="small">
+          <SearchIcon color="primary" sx={searchIconSx} />
         </IconButton>
       )}
     </InputAdornment>

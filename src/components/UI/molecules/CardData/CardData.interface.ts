@@ -17,6 +17,7 @@ export interface Item {
    * @required
    */
   id: string;
+
   /**
    * Determina o titulo
    * @type {string | React.ReactNode}
@@ -24,6 +25,7 @@ export interface Item {
    * @example 'Total de vendas'
    */
   title?: string | React.ReactNode;
+
   /**
    * Determina o valor referente ao titulo
    * @type {string | React.ReactNode}
@@ -45,6 +47,5 @@ export interface Item {
    * @default 'medium'
    * @example 'success'
    */
-
   color?: 'success' | 'warning' | 'info' | 'error' | 'medium';
 }

@@ -8,12 +8,6 @@ const meta: Meta<StoryProps> = {
   title: 'UI/atoms/LinearProgress',
   component: LoadingBar,
   tags: ['autodocs'],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: ''
-    }
-  },
   argTypes: {
     color: {
       options: ['inherit', 'primary', 'secondary'],

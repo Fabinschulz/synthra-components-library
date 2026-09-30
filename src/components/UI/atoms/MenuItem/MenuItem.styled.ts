@@ -1,3 +1,4 @@
+'use client';
 import { styled } from '@mui/material/styles';
 import { MenuItem as MuiMenuItem } from '@mui/material';
 
@@ -8,7 +9,7 @@ export const StyledMenuItem = styled(MuiMenuItem)(({ theme }) => ({
   maxWidth: '100%',
   '&:hover': {
     color: theme.palette.primary.main,
-    background: theme.palette.primary.shade?.['10']
+    background: theme.palette.action.hover
   },
   '&.Mui-selected': {
     background: theme.palette.neutral.primaryShade?.['20']

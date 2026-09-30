@@ -9,12 +9,6 @@ const meta: Meta<StoryProps> = {
   title: 'UI/atoms/Divider',
   component: Divider,
   tags: ['autodocs'],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: ''
-    }
-  },
   argTypes: {
     variant: {
       options: ['fullWidth', 'inset', 'middle'],

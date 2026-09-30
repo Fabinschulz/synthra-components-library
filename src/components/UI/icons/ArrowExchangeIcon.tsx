@@ -3,8 +3,6 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const ArrowExchangeIcon: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#373737' } = props;
-
   return (
     <SvgIcon {...props}>
       <svg
@@ -16,14 +14,14 @@ export const ArrowExchangeIcon: FunctionComponent<SvgIconProps> = (props) => {
       >
         <path
           d="M15 18L12 21M12 21L9 18M12 21L12 3M12 3L15 6M12 3L9 6"
-          stroke={htmlColor}
+          stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
           d="M6 15L3 12M3 12L6 9M3 12L21 12M21 12L18 15M21 12L18 9"
-          stroke={htmlColor}
+          stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"

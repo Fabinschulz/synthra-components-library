@@ -9,12 +9,6 @@ const meta: Meta<StoryProps> = {
   title: 'UI/molecules/CardData',
   component: CardData,
   tags: ['autodocs'],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: ''
-    }
-  },
   argTypes: {
     listItem: {
       control: { type: 'object' },

@@ -16,12 +16,6 @@ const meta: Meta<StoryProps> = {
       </MenuList>
     )
   ],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: ''
-    }
-  },
   argTypes: {
     children: {
       control: { type: 'text' },

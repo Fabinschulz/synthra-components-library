@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 export interface DrawerProps {
   /**
-   * Determina o titulo do drawer
+   * Determina o titulo do drawer (também usado como nome acessível do painel)
    */
   title?: string;
 
@@ -22,7 +22,7 @@ export interface DrawerProps {
   open: boolean;
 
   /**
-   * Onde o menu estará ancorado
+   * Chamado ao fechar (tecla Esc, clique fora ou botão fechar). Sem ele, o botão fechar não é exibido.
    */
   onClose?: () => void;
 
@@ -37,4 +37,10 @@ export interface DrawerProps {
    * Quando definido como false, o segundo drawer terá a largura padrão.
    */
   toggleDrawer?: boolean;
+
+  /**
+   * Nome acessível do botão fechar.
+   * @default 'Fechar'
+   */
+  closeLabel?: string;
 }

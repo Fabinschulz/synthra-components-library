@@ -1,3 +1,4 @@
+'use client';
 import type { FunctionComponent } from 'react';
 import type { TypographyProps } from './Typography.interface';
 import { Typography as MuiTypography } from '@mui/material';

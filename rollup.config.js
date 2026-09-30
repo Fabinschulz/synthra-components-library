@@ -1,57 +1,57 @@
-import resolve from '@rollup/plugin-node-resolve';
 import cjs from '@rollup/plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
-import dts from 'rollup-plugin-dts';
-import cssOnly from 'rollup-plugin-css-only';
 import { defineConfig } from 'rollup';
-import terser from '@rollup/plugin-terser';
+import dts from 'rollup-plugin-dts';
+import preserveDirectives from 'rollup-plugin-preserve-directives';
 
 const packageJson = require('./package.json');
 
-const external = [
-  'react',
-  'react-dom',
-  '@mui/material',
-  '@emotion/react',
-  '@emotion/styled',
-  '@hookform/resolvers',
-  '@mui/x-data-grid',
-  'react-hook-form',
-  /\.css$/
+const externalPackages = [
+  ...Object.keys(packageJson.dependencies ?? {}),
+  ...Object.keys(packageJson.peerDependencies ?? {})
 ];
+const external = (id) =>
+  externalPackages.some((pkg) => id === pkg || id.startsWith(`${pkg}/`)) ||
+  /^@mui\//.test(id) ||
+  /^@emotion\//.test(id);
+
+const input = {
+  index: 'src/index.ts',
+  'next/index': 'src/next/index.ts'
+};
 
 export default defineConfig([
   {
-    input: 'src/index.ts',
-    external: external,
-    output: [
-      {
-        dir: 'dist',
-        format: 'esm',
-        sourcemap: true,
-        dynamicImportInCjs: true
-      }
-    ],
+    input,
+    external,
+    output: {
+      dir: 'dist',
+      format: 'esm',
+      sourcemap: true,
+      preserveModules: true,
+      preserveModulesRoot: 'src',
+      entryFileNames: '[name].js'
+    },
     plugins: [
-      typescript({ tsconfig: './tsconfig.json' }),
-      resolve({
-        ignoreGlobal: false,
-        skip: external,
-        ignore: [/\/node_modules\/@mui\/material\/.*\/"use client"/]
-      }),
+      resolve(),
       cjs(),
-      cssOnly(),
-      terser()
-    ]
+      typescript({ tsconfig: './tsconfig.json', exclude: ['**/*.stories.*', '**/*.mock.*'] }),
+      (preserveDirectives.default ?? preserveDirectives)()
+    ],
+    onwarn(warning, warn) {
+      if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes('use client')) return;
+      warn(warning);
+    }
   },
   {
-    input: 'src/index.ts',
-    output: [
-      {
-        file: packageJson.types,
-        format: 'es'
-      }
-    ],
+    input,
+    external,
+    output: {
+      dir: 'dist',
+      format: 'es',
+      entryFileNames: '[name].d.ts'
+    },
     plugins: [
       dts.default({
         compilerOptions: {
@@ -61,7 +61,6 @@ export default defineConfig([
           noEmitOnError: false
         }
       })
-    ],
-    external: external
+    ]
   }
 ]);

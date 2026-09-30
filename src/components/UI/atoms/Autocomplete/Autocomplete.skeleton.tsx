@@ -1,16 +1,17 @@
+'use client';
 import React from 'react';
 import { Box, Skeleton } from '@mui/material';
 
 type AutocompleteSkeletonProps = {
-  isLoading: boolean;
+  skeleton: boolean;
   children: React.ReactNode;
 };
 
 export const AutocompleteSkeleton: React.FC<AutocompleteSkeletonProps> = ({
-  isLoading,
+  skeleton,
   children
 }) => {
-  if (!isLoading) return <>{children}</>;
+  if (!skeleton) return <>{children}</>;
 
   return (
     <Box sx={{ width: '100%' }}>

@@ -3,8 +3,6 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const CharMenuIcon: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#373737' } = props;
-
   return (
     <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <svg
@@ -16,13 +14,13 @@ export const CharMenuIcon: FunctionComponent<SvgIconProps> = (props) => {
       >
         <path
           d="M13 3H11C6.02944 3 2 7.02944 2 12V17C2 19.2091 3.79086 21 6 21H13C17.9706 21 22 16.9706 22 12C22 7.02944 17.9706 3 13 3Z"
-          stroke={htmlColor}
+          stroke="currentColor"
           strokeWidth="2"
           strokeLinejoin="round"
         />
-        <circle cx="12" cy="12" r="1" fill={htmlColor} />
-        <circle cx="16" cy="12" r="1" fill={htmlColor} />
-        <circle cx="8" cy="12" r="1" fill={htmlColor} />
+        <circle cx="12" cy="12" r="1" fill="currentColor" />
+        <circle cx="16" cy="12" r="1" fill="currentColor" />
+        <circle cx="8" cy="12" r="1" fill="currentColor" />
       </svg>
     </SvgIcon>
   );

@@ -1,4 +1,6 @@
+'use client';
 import type { MenuItems } from './Menu.interface';
+import { useId } from 'react';
 import {
   StyledAccordion,
   StyledAccordionDetails,
@@ -13,7 +15,6 @@ import {
 import { AccordionSummary, Stack } from '@mui/material';
 import { DownIcon } from '../../icons';
 import clsx from 'clsx';
-import Link from 'next/link';
 import { SubMenu } from './SubMenu';
 
 type CustomMenuProps = {
@@ -31,26 +32,39 @@ export const CustomMenu = ({
   setActiveIndex,
   setOpen
 }: CustomMenuProps) => {
+  const baseId = useId();
+
   return (
     <StyledList>
       {itemsList?.map((item, index) => {
-        const isActived = !!item.active;
-        const isOpenned = open && isActived;
+        const isActive = !!item.active;
+        const isHighlighted = open && isActive;
+        const key = item.href ?? item.title ?? index;
 
         if (item.submenu) {
+          const headerId = `${baseId}-menu-${index}-header`;
+          const panelId = `${baseId}-menu-${index}-panel`;
+
           return (
-            <StyledAccordion expanded={activeIndex === index} key={index}>
-              <StyledListItem
-                onClick={() => (open ? null : setOpen(true))}
-                key={item.title}
-                disablePadding
-                className={clsx(item.active && 'active')}
-                openMenu={open}
+            <StyledListItem
+              key={key}
+              disablePadding
+              className={clsx(isActive && 'active')}
+              openMenu={open}
+            >
+              <StyledAccordion
+                expanded={activeIndex === index}
+                onChange={() => {
+                  setActiveIndex(activeIndex === index ? -1 : index);
+                  if (!open) setOpen(true);
+                }}
+                slotProps={{ region: { id: panelId, 'aria-labelledby': headerId } }}
               >
                 <AccordionSummary
                   expandIcon={<DownIcon />}
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
+                  aria-controls={panelId}
+                  id={headerId}
+                  aria-label={open ? undefined : item.title}
                   sx={{
                     '& .MuiAccordionSummary-expandIconWrapper': {
                       display: open ? 'block' : 'none'
@@ -58,28 +72,18 @@ export const CustomMenu = ({
                   }}
                 >
                   <StyledListItemButton
+                    component="div"
+                    tabIndex={-1}
+                    disableRipple
                     sx={{
                       minHeight: 48,
                       justifyContent: open ? 'initial' : 'center',
                       px: 2.5,
-                      marginBottom: '.60rem'
-                    }}
-                    onClick={() => {
-                      if (activeIndex === index) {
-                        setActiveIndex(-1);
-                      } else {
-                        setActiveIndex(index);
-                      }
-                      if (!open) setOpen(true);
+                      marginBottom: '.60rem',
+                      width: '100%'
                     }}
                   >
-                    <StyledListItemIcon
-                      sx={{
-                        mr: open ? 2 : 0
-                      }}
-                    >
-                      {item.icon}
-                    </StyledListItemIcon>
+                    <StyledListItemIcon sx={{ mr: open ? 2 : 0 }}>{item.icon}</StyledListItemIcon>
 
                     <StyledListItemText
                       primary={item.title}
@@ -88,103 +92,88 @@ export const CustomMenu = ({
                     />
                   </StyledListItemButton>
                 </AccordionSummary>
-              </StyledListItem>
 
-              <StyledAccordionDetails sx={{ display: open ? 'block' : 'none' }}>
-                <StyledStack>
-                  {item.submenu.map((link) => {
-                    if (!!link?.subSubmenu && link?.subSubmenu?.length > 0) {
+                <StyledAccordionDetails sx={{ display: open ? 'block' : 'none' }}>
+                  <StyledStack component="ul">
+                    {item.submenu.map((link) => {
+                      if (!!link?.subSubmenu && link?.subSubmenu?.length > 0) {
+                        return (
+                          <li
+                            key={link.href ?? link.title}
+                            className={clsx(link.active && 'active')}
+                            style={{ listStyle: 'none' }}
+                          >
+                            <StyledLink
+                              href={link.href}
+                              aria-current={link.active ? 'page' : undefined}
+                              sx={{
+                                fontStyle: 'italic',
+                                display: 'block',
+                                marginLeft: '-16px',
+                                marginBottom: '1px'
+                              }}
+                            >
+                              {link.title}
+                            </StyledLink>
+                            <Stack
+                              component="ul"
+                              sx={{ display: 'block', marginLeft: '10px', padding: '10px 0 3px 0' }}
+                            >
+                              {link.subSubmenu.map((subItem) => (
+                                <SubMenu link={subItem} key={subItem.href ?? subItem.title} />
+                              ))}
+                            </Stack>
+                          </li>
+                        );
+                      }
+
                       return (
-                        <li
-                          key={link.title}
-                          className={clsx(link.active && 'active')}
-                          style={{ listStyle: 'none' }}
-                        >
+                        <li key={link.href ?? link.title} className={clsx(link.active && 'active')}>
                           <StyledLink
                             href={link.href}
-                            style={{
-                              textDecoration: 'none',
-                              fontStyle: 'italic',
-                              color: '#666666',
-                              display: 'block',
-                              marginLeft: -16,
-                              marginBottom: 1
-                            }}
+                            className={clsx(link.active && 'active')}
+                            aria-current={link.active ? 'page' : undefined}
                           >
                             {link.title}
                           </StyledLink>
-                          <Stack
-                            sx={{ display: 'block', marginLeft: '10px', padding: '10px 0 3px 0' }}
-                          >
-                            {!!link?.subSubmenu &&
-                              link?.subSubmenu?.length > 0 &&
-                              link?.subSubmenu.map((i) => {
-                                return <SubMenu link={i} key={i.title} />;
-                              })}
-                          </Stack>
                         </li>
                       );
-                    }
-
-                    return (
-                      <li key={link.title} className={clsx(link.active && 'active')}>
-                        <StyledLink
-                          href={link.href}
-                          style={{ textDecoration: 'none' }}
-                          className={clsx(link.active && 'active')}
-                        >
-                          {link.title}
-                        </StyledLink>
-                      </li>
-                    );
-                  })}
-                </StyledStack>
-              </StyledAccordionDetails>
-            </StyledAccordion>
+                    })}
+                  </StyledStack>
+                </StyledAccordionDetails>
+              </StyledAccordion>
+            </StyledListItem>
           );
         }
 
         return (
-          <>
-            <Link href={item.href} style={{ textDecoration: 'none' }}>
-              <StyledListItem
-                key={item.title}
-                disablePadding
-                className={clsx(item.active && 'active')}
-                openMenu={open}
-              >
-                <StyledListItemButton
-                  onClick={() => (open ? null : setOpen(true))}
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                    marginBottom: '.60rem',
+          <StyledListItem
+            key={key}
+            disablePadding
+            className={clsx(isActive && 'active')}
+            openMenu={open}
+          >
+            <StyledListItemButton
+              href={item.href}
+              aria-current={isActive ? 'page' : undefined}
+              aria-label={open ? undefined : item.title}
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2.5,
+                marginBottom: '.60rem',
+                backgroundColor: isHighlighted ? 'primary.main' : 'transparent'
+              }}
+            >
+              <StyledListItemIcon sx={{ mr: open ? 2 : 0 }}>{item.icon}</StyledListItemIcon>
 
-                    backgroundColor: isOpenned
-                      ? (theme) => theme.palette.primary.main
-                      : 'transparent'
-                  }}
-                >
-                  <StyledListItemIcon
-                    sx={{
-                      mr: open ? 2 : 0
-                    }}
-                  >
-                    {item.icon}
-                  </StyledListItemIcon>
-
-                  <StyledListItemText
-                    primary={item.title}
-                    sx={{
-                      display: open ? 'block' : 'none'
-                    }}
-                    className="title"
-                  />
-                </StyledListItemButton>
-              </StyledListItem>
-            </Link>
-          </>
+              <StyledListItemText
+                primary={item.title}
+                sx={{ display: open ? 'block' : 'none' }}
+                className="title"
+              />
+            </StyledListItemButton>
+          </StyledListItem>
         );
       })}
     </StyledList>

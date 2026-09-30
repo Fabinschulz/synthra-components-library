@@ -3,8 +3,6 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const LiquidateIcon: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#373737' } = props;
-
   return (
     <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <rect
@@ -14,7 +12,7 @@ export const LiquidateIcon: FunctionComponent<SvgIconProps> = (props) => {
         height="14"
         rx="2"
         transform="rotate(90 21 3)"
-        stroke={htmlColor}
+        stroke="currentColor"
         strokeWidth="2"
         fill="none"
       />
@@ -25,7 +23,7 @@ export const LiquidateIcon: FunctionComponent<SvgIconProps> = (props) => {
         height="14"
         rx="2"
         transform="rotate(90 21 12)"
-        stroke={htmlColor}
+        stroke="currentColor"
         strokeWidth="2"
         fill="none"
       />
@@ -36,7 +34,7 @@ export const LiquidateIcon: FunctionComponent<SvgIconProps> = (props) => {
         height="14"
         rx="2.5"
         transform="rotate(90 17 7)"
-        stroke={htmlColor}
+        stroke="currentColor"
         strokeWidth="2"
         fill="none"
       />
@@ -47,7 +45,7 @@ export const LiquidateIcon: FunctionComponent<SvgIconProps> = (props) => {
         height="14"
         rx="2.5"
         transform="rotate(90 18 16)"
-        stroke={htmlColor}
+        stroke="currentColor"
         strokeWidth="2"
         fill="none"
       />

@@ -1,10 +1,9 @@
-import { styled } from '@mui/material';
-import Link from 'next/link';
+'use client';
+import { Link, styled } from '@mui/material';
 
-export const StyledLink = styled(Link)(({ theme, color }) => ({
+export const StyledLink = styled(Link)(({ theme }) => ({
   fontSize: theme.typography.body1!.fontSize ?? '1rem',
   textDecoration: 'none',
-  color,
   '&:hover': {
     textDecoration: 'underline'
   }

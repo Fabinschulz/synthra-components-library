@@ -1,33 +1,36 @@
 'use client';
-import { Controller } from 'react-hook-form';
-import { activeTheme, getObjectPropertyValue } from '@/utils';
 import { useFormContext } from '@/contexts/formContext';
-import { ITextFieldProps, TextField, Typography } from '../UI';
+import { getObjectPropertyValue } from '@/utils';
+import { Controller } from 'react-hook-form';
+import { TextField, TextFieldProps } from '../UI';
 
-type TextFormFieldProps = ITextFieldProps & {
+type TextFormFieldProps = TextFieldProps & {
   name: string;
 };
 
-const theme = activeTheme();
 const TextFormField = (props: TextFormFieldProps) => {
-  const { name, ...rest } = props;
-  const { register, control, validationErrors } = useFormContext();
+  const { name, helperText, ...rest } = props;
+  const { control, validationErrors, readOnly } = useFormContext();
 
-  const errorsMessage = validationErrors && getObjectPropertyValue(name, validationErrors)?.message;
+  const errorsMessage: string | undefined =
+    validationErrors && getObjectPropertyValue(name, validationErrors)?.message;
 
   return (
-    <>
-      <Controller
-        render={({ field }) => <TextField {...register(name)} {...field} {...rest} />}
-        name={name}
-        control={control}
-      />
-      {!!errorsMessage && (
-        <Typography sx={{ mt: 0.5 }} variant="body1" color={theme.palette?.error?.dark}>
-          {errorsMessage}
-        </Typography>
+    <Controller
+      name={name}
+      control={control}
+      render={({ field: { ref, ...field } }) => (
+        <TextField
+          {...field}
+          value={field.value ?? ''}
+          inputRef={ref}
+          disabled={readOnly || rest.disabled}
+          {...rest}
+          error={!!errorsMessage || rest.error}
+          helperText={errorsMessage ?? helperText}
+        />
       )}
-    </>
+    />
   );
 };
 

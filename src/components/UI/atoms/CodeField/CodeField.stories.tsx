@@ -8,12 +8,6 @@ const meta: Meta<StoryProps> = {
   title: 'UI/Atoms/CodeField',
   component: CodeField,
   tags: ['autodocs'],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: ''
-    }
-  },
   argTypes: {
     name: {
       control: {

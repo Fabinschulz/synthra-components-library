@@ -1,7 +1,8 @@
+'use client';
 import { TextField as MuiTextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-export const StyledTextField = styled(MuiTextField)(({ theme, error }) => ({
+export const StyledTextField = styled(MuiTextField)(({ theme }) => ({
   '& .MuiInputBase-input': {
     ...theme.typography.body1,
     padding: '14px',
@@ -15,9 +16,9 @@ export const StyledTextField = styled(MuiTextField)(({ theme, error }) => ({
     }
   },
   '& .Mui-disabled': {
-    color: 'rgba(0, 0, 0, 0.38) !important',
+    color: `${theme.palette.text.disabled} !important`,
     '& .MuiSvgIcon-root': {
-      color: 'rgba(0, 0, 0, 0.38) !important'
+      color: `${theme.palette.text.disabled} !important`
     }
   },
   '& .MuiSvgIcon-root': {
@@ -27,12 +28,15 @@ export const StyledTextField = styled(MuiTextField)(({ theme, error }) => ({
   '& .MuiFormLabel-root': {
     ...theme.typography.body1
   },
-  '& MuiInputBase-root-MuiOutlinedInput-root.Mui-error ': {
-    border: `2px solid ${theme.palette.error.dark}`
+  '& .MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline': {
+    borderWidth: '2px',
+    borderColor: theme.palette.error.dark
   },
   '& .MuiFormHelperText-root': {
     ...theme.typography.body1,
-    color: theme.palette.primary.main
+    '&:not(.Mui-error)': {
+      color: theme.palette.primary.main
+    }
   },
   '& legend': {
     ...theme.typography.caption

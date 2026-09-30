@@ -1,13 +1,12 @@
 'use client';
 import { useFormContext } from '@/contexts/formContext';
-import { Autocomplete, AutocompleteBaseProps, Typography } from '../UI';
-import { activeTheme, getObjectPropertyValue } from '@/utils';
+import { getObjectPropertyValue } from '@/utils';
+import { Autocomplete, AutocompleteBaseProps } from '../UI';
 
 type AutocompleteFieldProps = {
   name: string;
 } & AutocompleteBaseProps;
 
-const theme = activeTheme();
 export default function AutocompleteField(props: AutocompleteFieldProps) {
   const { name, disabled } = props;
   const { validationErrors, watch, setValue, readOnly } = useFormContext();
@@ -17,22 +16,17 @@ export default function AutocompleteField(props: AutocompleteFieldProps) {
   };
 
   const autoCompleteValue = { value: watch(name) };
-  const errorsMessage = validationErrors && getObjectPropertyValue(name, validationErrors)?.message;
+  const errorsMessage: string | undefined =
+    validationErrors && getObjectPropertyValue(name, validationErrors)?.message;
 
   return (
-    <>
-      <Autocomplete
-        disabled={disabled || readOnly}
-        value={autoCompleteValue}
-        error={errorsMessage?.length > 0 ? true : false}
-        {...props}
-        onChange={onChange}
-      />
-      {!!errorsMessage && (
-        <Typography sx={{ mt: 0.5 }} variant="body1" color={theme.palette?.error?.dark}>
-          {errorsMessage}
-        </Typography>
-      )}
-    </>
+    <Autocomplete
+      disabled={disabled || readOnly}
+      value={autoCompleteValue}
+      {...props}
+      error={!!errorsMessage || props.error}
+      helperText={errorsMessage ?? props.helperText}
+      onChange={onChange}
+    />
   );
 }

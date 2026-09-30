@@ -3,13 +3,11 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const WaitingTimeIcon: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#373737' } = props;
-
   return (
     <SvgIcon viewBox="0 0 24 24" width="24" height="24" {...props}>
       <path
         d="M12 12H11C11 12.4304 11.2754 12.8126 11.6838 12.9487L12 12ZM13 6.5C13 5.94772 12.5523 5.5 12 5.5C11.4477 5.5 11 5.94772 11 6.5H13ZM14.9838 14.0487C15.5077 14.2233 16.074 13.9402 16.2487 13.4162C16.4233 12.8923 16.1402 12.326 15.6162 12.1513L14.9838 14.0487ZM13 12V6.5H11V12H13ZM11.6838 12.9487L14.9838 14.0487L15.6162 12.1513L12.3162 11.0513L11.6838 12.9487ZM22 12C22 17.5228 17.5228 22 12 22V24C18.6274 24 24 18.6274 24 12H22ZM12 22C6.47715 22 2 17.5228 2 12H0C0 18.6274 5.37258 24 12 24V22ZM2 12C2 6.47715 6.47715 2 12 2V0C5.37258 0 0 5.37258 0 12H2ZM12 2C17.5228 2 22 6.47715 22 12H24C24 5.37258 18.6274 0 12 0V2Z"
-        fill={htmlColor}
+        fill="currentColor"
         strokeWidth="0.2"
       />
     </SvgIcon>

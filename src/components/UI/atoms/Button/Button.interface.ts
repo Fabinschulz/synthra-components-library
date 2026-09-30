@@ -1,11 +1,11 @@
 import { ButtonProps as MuiButtonProps } from '@mui/material';
 
-export interface IButtonProps extends MuiButtonProps {
+export interface ButtonProps extends MuiButtonProps {
   /**
-   *  Determina se o skeleton do button deve ser exibido.
+   * Exibe um skeleton no lugar do botão enquanto o conteúdo da tela carrega.
+   * Para indicar uma ação em andamento (ex.: envio de formulário), use `loading`.
    * @default false
-   * @type boolean
-   * @example <Button isLoading />
+   * @example <Button skeleton />
    */
-  isLoading: boolean;
+  skeleton?: boolean;
 }

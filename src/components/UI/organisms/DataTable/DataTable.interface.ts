@@ -1,171 +1,111 @@
-import {
+import type {
   DataGridProps,
   GridCallbackDetails,
   GridColDef,
   GridRowIdGetter,
   GridRowParams,
-  GridRowSelectionModel
+  GridRowSelectionModel,
+  GridValidRowModel
 } from '@mui/x-data-grid';
 
 /**
- * Data Table Props
- * @interface DataTableProps
- * @extends {DataGridProps}
+ * Propriedades do DataTable: as do `DataGrid` do MUI X, com paginação controlada simplificada.
+ * `R` é o tipo de cada linha e é inferido a partir de `rows`.
  */
+export interface DataTableProps<R extends GridValidRowModel = any> extends Omit<
+  DataGridProps<R>,
+  'rows' | 'columns' | 'rowCount'
+> {
+  /** Dados da tabela. */
+  rows: R[];
 
-export interface DataTableProps extends DataGridProps {
-  /**
-   * @type {any[]}
-   * @memberof DataTableProps
-   * @description Dados da tabela
-   * @required
-   * @example rowsMock
-   */
-  rows: any[];
-  /**
-   * @type {number}
-   * @memberof DataTableProps
-   * @description Página atual da tabela
-   * @required
-   * @example 0
-   */
+  /** Colunas da tabela. */
+  columns: GridColDef<R>[];
+
+  /** Página atual (começa em 0). */
   page: number;
 
-  /**
-   * @type {number}
-   * @memberof DataTableProps
-   * @description Total de linhas da tabela
-   * @required
-   * @example 0
-   */
+  /** Total de linhas (necessário com `paginationMode="server"`). */
   rowCount: number;
 
-  /**
-   * @type {number}
-   * @memberof DataTableProps
-   * @description Linhas por página
-   * @required
-   * @example 0
-   */
+  /** Linhas por página. */
   rowsPerPage: number;
 
-  /**
-   * @type {(page: number) => void}
-   * @memberof DataTableProps
-   * @description Função para alterar a página
-   * @required
-   * @example () => {}
-   */
+  /** Chamado quando a página muda. */
   setPage: (page: number) => void;
 
-  /**
-   * @type {(page: number) => void}
-   * @memberof DataTableProps
-   * @description Função para alterar as linhas por página
-   * @required
-   * @example () => {}
-   */
-  setRowsPerPage: (page: number) => void;
+  /** Chamado quando a quantidade de linhas por página muda. */
+  setRowsPerPage: (rowsPerPage: number) => void;
 
   /**
-   * @type {GridColDef[]}
-   * @memberof DataTableProps
-   * @description Colunas da tabela
-   * @required
-   * @example columnsMock
-   */
-  columns: GridColDef[];
-
-  /**
-   * @type {boolean}
-   * @memberof DataTableProps
-   * @description  Tipo de paginação da tabela
-   * @default false
+   * Tipo de paginação da tabela
+   * @default 'client'
    */
   paginationMode?: 'server' | 'client';
 
   /**
-   * @type {boolean}
-   * @memberof DataTableProps
-   * @description  Função para obter o ID da linha
-   * @default false
+   * Obtém o ID de cada linha. Por padrão usa `row.id`; linhas sem `id` recebem um ID estável
+   * gerado a partir do próprio objeto.
    */
-  getRowId?: GridRowIdGetter<any> | undefined;
+  getRowId?: GridRowIdGetter<R>;
 
-  /**
-   * @type {(selectionModel: GridRowSelectionModel, details: GridCallbackDetails) => void}
-   * @memberof DataTableProps
-   * @description  Função para alterar a seleção da linha
-   * @default false
-   */
+  /** Chamado quando a seleção muda. Ativa a seleção de linhas. */
   onSelectionModelChange?: (
     selectionModel: GridRowSelectionModel,
     details: GridCallbackDetails
   ) => void;
 
-  /**
-   * @type {GridRowSelectionModel}
-   * @memberof DataTableProps
-   * @description  Modelo de seleção da linha
-   * @default false
-   */
+  /** Modelo de seleção (controlado). */
   rowSelectionModel?: GridRowSelectionModel;
 
   /**
-   * @type {boolean}
-   * @memberof DataTableProps
-   * @description  Mantém as linhas selecionadas mesmo que não existam
+   * Mantém as linhas selecionadas mesmo que não existam na página atual
    * @default false
    */
   keepNonExistentRowsSelected?: boolean;
 
-  /**
-   * @type {(params: GridRowParams<any>) => boolean}
-   * @memberof DataTableProps
-   * @description  Função para verificar se a linha é selecionável
-   * @default false
-   */
-  isRowSelectable?: (params: GridRowParams<any>) => boolean;
+  /** Define quais linhas podem ser selecionadas. Por padrão, todas. */
+  isRowSelectable?: (params: GridRowParams<R>) => boolean;
 
   /**
-   * @type {boolean}
-   * @memberof DataTableProps
-   * @description  Exibe a seleção de checkbox
+   * Exibe a coluna de checkbox e ativa a seleção
    * @default false
    */
   checkboxSelection?: boolean;
 
   /**
-   * @type {boolean}
-   * @memberof DataTableProps
-   * @description  Oculta a contagem de linhas selecionadas no rodapé
+   * Oculta a contagem de linhas selecionadas no rodapé
    * @default false
    */
   hideFooterSelectedRowCount?: boolean;
 
+  /**
+   * Mensagem exibida quando não há linhas
+   * @default 'Nenhum resultado encontrado'
+   */
   NoRowsOverlayNew?: string;
 
   /**
-   * @type {boolean}
-   * @memberof DataTableProps
-   * @description  Exibe uma mensagem de erro quando não há resultados na tabela
-   * @default
-   * @example 'Nenhum resultado encontrado'
+   * Mensagem exibida quando o filtro não retorna resultados
+   * @default 'Nenhum resultado encontrado'
    */
   NoResultsOverlayNew?: string;
 
   /**
-   * @type {boolean}
-   * @memberof DataTableProps
-   * @description  Exibe um loader na tabela
-   * @default false
+   * Texto do seletor de linhas por página. Por padrão vem do locale do tema
+   * (pt-BR: 'Linhas por página:').
    */
-  isLoading?: boolean;
+  labelRowsPerPage?: string;
 
   /**
-   * @type {boolean}
-   * @memberof DataTableProps
-   * @description  Ativa a funcionalidade de pular para o início ou fim da tabela
+   * Exibe um skeleton no lugar da tabela (carregamento inicial).
+   * Para recarregamentos com a tabela visível, use `loading`.
+   * @default false
+   */
+  skeleton?: boolean;
+
+  /**
+   * Exibe os botões de ir para a primeira e a última página
    * @default false
    */
   enableJumpToPage?: boolean;

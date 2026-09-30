@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 export interface ModalProps {
   /**
-   * Determina o titulo do modal
+   * Determina o titulo do modal (também usado como nome acessível do diálogo)
    * @default ''
    * @example 'Modal title'
    * @type {string}
@@ -10,7 +10,7 @@ export interface ModalProps {
   title?: string;
 
   /**
-   * Determina a descrição
+   * Determina a descrição (associada ao diálogo via `aria-describedby`)
    * @default ''
    * @example 'Modal description'
    * @type {string}
@@ -18,7 +18,7 @@ export interface ModalProps {
   description?: string;
 
   /**
-   * Determina o icone
+   * Determina o icone (oculto em telas pequenas)
    * @default null
    * @example <Icon />
    * @type {ReactNode}
@@ -28,33 +28,33 @@ export interface ModalProps {
 
   /**
    * Determina o tamanho do icone
-   * @default 'medium'
-   * @example 'small'
+   * @default 'small'
+   * @example 'large'
    * @type {'small' | 'large'}
    */
   size?: 'small' | 'large';
 
   /**
-   * Determina o tamanho do modal
-   * @default 'medium'
-   * @example 'small'
+   * Determina a largura máxima do modal (460, 646 ou 900px)
+   * @default 'small'
+   * @example 'medium'
    * @type {'small' | 'medium' | 'large'}
    * @see Modal
    */
   sizeModal?: 'small' | 'medium' | 'large';
 
   /**
-   * Determina a direção do conteudo interno do modal
-   * @default 'row'
-   * @example 'column'
+   * Determina a direção entre o ícone e os textos
+   * @default 'column'
+   * @example 'row'
    * @type {'row' | 'column'}
    */
   direction?: 'row' | 'column';
 
   /**
    * Determina se o texto estará centralizado ou alinhado a esquerda
-   * @default 'center'
-   * @example 'left'
+   * @default 'left'
+   * @example 'center'
    * @type {'center' | 'left'}
    */
   align?: 'center' | 'left';
@@ -78,11 +78,16 @@ export interface ModalProps {
   open: boolean;
 
   /**
-   * Determina a ação de feixar o modal
-   * @default () => {}
-   * @example () => console.log('Modal closed')
+   * Chamado ao fechar (tecla Esc, clique fora ou botão fechar). Sem ele, o botão fechar não é exibido.
+   * @example () => setOpen(false)
    * @type {() => void}
    * @see Modal
    */
   onClose?: () => void;
+
+  /**
+   * Nome acessível do botão fechar.
+   * @default 'Fechar'
+   */
+  closeLabel?: string;
 }

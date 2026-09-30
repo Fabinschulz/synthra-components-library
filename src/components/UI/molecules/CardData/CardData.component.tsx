@@ -1,11 +1,10 @@
+'use client';
 import type { FunctionComponent } from 'react';
 import type { CardDataProps } from './CardData.interface';
 import { Grid } from '@mui/material';
 import { Card, ListItem, TooltipIcon } from './CardData.styled';
 import { Typography } from '../../atoms';
-import { activeTheme } from '@/utils';
 
-const theme = activeTheme()?.palette;
 const CardData: FunctionComponent<CardDataProps> = ({ listItem }) => {
   return (
     <Card>
@@ -15,16 +14,19 @@ const CardData: FunctionComponent<CardDataProps> = ({ listItem }) => {
             {item.color && <TooltipIcon color={item.color} />}
             <Typography
               variant="body2"
-              color={theme?.neutral?.darkest}
-              sx={{ lineHeight: '19px', textAlign: 'left' }}
+              sx={{ color: 'neutral.darkest', lineHeight: '19px', textAlign: 'left' }}
             >
               {item.title}
             </Typography>
           </Grid>
           <Typography
             variant="caption"
-            color={theme?.neutral?.dark}
-            sx={{ lineHeight: '19px', textTransform: item.uppercase, textAlign: 'right' }}
+            sx={{
+              color: 'neutral.dark',
+              lineHeight: '19px',
+              textTransform: item.uppercase,
+              textAlign: 'right'
+            }}
           >
             {item.value}
           </Typography>

@@ -12,14 +12,13 @@ export const palette: ThemeOptions['palette'] = {
   },
 
   secondary: {
-    light: '#6AB7FF', // Um azul claro complementando a cor primária
-    main: '#3399FF', // Um tom de azul principal mais claro que o primário
-    dark: '#005BB5', // Um tom de azul mais escuro para contraste
+    light: '#6AB7FF',
+    main: '#3399FF',
+    dark: '#005BB5',
     contrastText: '#FFFFFF'
   },
 
   neutral: {
-    // Cores neutras é essencial para textos e backgrounds
     lightest: '#FFFFFF',
     light: '#BABFD0',
     medium: '#666666',

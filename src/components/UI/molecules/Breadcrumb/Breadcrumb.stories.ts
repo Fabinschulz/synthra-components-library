@@ -9,12 +9,6 @@ const meta: Meta<StoryProps> = {
   title: 'UI/molecules/Breadcrumb',
   component: Breadcrumb,
   tags: ['autodocs'],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: ''
-    }
-  },
   argTypes: {
     separator: {
       control: { type: 'text' },

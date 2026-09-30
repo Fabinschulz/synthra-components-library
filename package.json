@@ -6,8 +6,21 @@
   "author": "Synthra",
   "description": "A framework for building UI components with React and Material-UI",
   "packageManager": "pnpm@9.12.2",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./next": {
+      "types": "./dist/next/index.d.ts",
+      "import": "./dist/next/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
   "type": "module",
   "files": [
     "dist"
@@ -19,7 +32,7 @@
   ],
   "scripts": {
     "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
-    "build": "pnpm clean && rollup -c --bundleConfigAsCjs",
+    "build": "pnpm clean && rollup -c --bundleConfigAsCjs --forceExit",
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{ts,tsx,json,css,mdx}\"",
     "storybook": "storybook dev -p 6006",
@@ -27,29 +40,39 @@
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "pnpm build && changeset publish",
-    "prepare": "husky"
+    "prepare": "husky",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
-    "@hookform/resolvers": "^5.9.1",
-    "@mui/material": "^9.4.0",
-    "@mui/x-data-grid": "^9.14.0",
-    "autoprefixer": "^10.6.1",
     "clsx": "^2.1.1",
-    "husky": "^9.1.7",
-    "next": "16.3.7",
     "react-code-input": "^3.10.1",
-    "react-hook-form": "^7.89.0",
     "tslib": "^2.8.1"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^9.0.0",
+    "@mui/x-data-grid": "^9.0.0",
+    "next": ">=15.0.0",
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0",
+    "react-hook-form": "^7.55.0"
+  },
+  "peerDependenciesMeta": {
+    "next": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.3",
     "@chromatic-com/storybook": "5.3.1",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^9.4.0",
+    "@mui/x-data-grid": "^9.14.0",
     "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-node-resolve": "^16.0.3",
-    "@rollup/plugin-terser": "^1.0.0",
     "@rollup/plugin-typescript": "^12.3.0",
     "@storybook/addon-a11y": "^10.6.1",
     "@storybook/addon-docs": "^10.6.1",
@@ -64,11 +87,15 @@
     "eslint": "^9.39.5",
     "eslint-config-next": "16.3.7",
     "eslint-plugin-storybook": "^10.6.1",
+    "husky": "^9.1.7",
+    "next": "^16.3.8",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
+    "react-hook-form": "^7.89.0",
     "rollup": "^4.63.5",
     "rollup-plugin-css-only": "^4.5.5",
     "rollup-plugin-dts": "^6.5.1",
+    "rollup-plugin-preserve-directives": "^0.4.0",
     "storybook": "10.6.1",
     "typescript": "^6.0.3"
   }

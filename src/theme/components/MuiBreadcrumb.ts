@@ -1,13 +1,9 @@
-import { Components } from '@mui/material';
-import { TypographyVariants as Typography } from '@mui/material/styles';
-import { typography as typographyOptions } from '../typography';
+import type { Components, Theme } from '@mui/material/styles';
 
-const typography = typographyOptions! as Typography;
-
-export const MuiBreadcrumbs: Components['MuiBreadcrumbs'] = {
+export const MuiBreadcrumbs: Components<Theme>['MuiBreadcrumbs'] = {
   styleOverrides: {
-    root: {
-      ...typography.caption
-    }
+    root: ({ theme }) => ({
+      ...theme.typography.caption
+    })
   }
 };

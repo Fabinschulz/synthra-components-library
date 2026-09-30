@@ -1,3 +1,4 @@
+'use client';
 import { ReactNode } from 'react';
 
 export const alertBaseStyle = (message?: ReactNode) => ({

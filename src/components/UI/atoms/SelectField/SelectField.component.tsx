@@ -1,29 +1,48 @@
 'use client';
-import type { SelectFieldProps } from './SelectField.interface';
+import type { SelectFieldOption, SelectFieldProps } from './SelectField.interface';
 import { FunctionComponent, useId } from 'react';
-import { Box, InputLabel, Select } from '@mui/material';
+import { Checkbox, InputLabel, ListItemText, Select } from '@mui/material';
 import { FormControl } from './SelectField.styled';
-import { Checkbox } from '../Checkbox';
 import { DownIcon } from '../../icons';
 import { MenuItem } from '../MenuItem';
 import { Typography } from '../Typography';
-import { activeTheme } from '@/utils';
 
-const theme = activeTheme()?.palette;
 const SelectField: FunctionComponent<SelectFieldProps> = (props) => {
-  const { label, items, required, onChange, multiple, value, disabled, variant, ...selectProps } =
-    props;
+  const {
+    label,
+    items,
+    options,
+    noOptionsText = 'Nenhuma opção encontrada',
+    required,
+    onChange,
+    multiple,
+    value,
+    disabled,
+    variant,
+    error,
+    ...selectProps
+  } = props;
   const id = useId();
   const isFilled = variant === 'filled';
 
-  const arrayValue = Array.isArray(value) ? value : (!!value && [value]) || [];
-  const total = arrayValue?.length;
+  const normalizedOptions: SelectFieldOption[] =
+    options ?? items?.map((item) => ({ label: item, value: item })) ?? [];
+  const labelOf = (optionValue: unknown) =>
+    normalizedOptions.find((option) => option.value === optionValue)?.label ?? String(optionValue);
+
+  const arrayValue: unknown[] = Array.isArray(value) ? value : (!!value && [value]) || [];
+  const total = arrayValue.length;
 
   return (
-    <FormControl fullWidth disabled={disabled} required={required} variant={variant}>
+    <FormControl
+      fullWidth
+      disabled={disabled}
+      required={required}
+      error={error}
+      variant={variant}
+    >
       <InputLabel
         id={`select-${id}-label`}
-        required={required}
         variant={variant}
         shrink={isFilled && multiple ? false : undefined}
       >
@@ -37,7 +56,9 @@ const SelectField: FunctionComponent<SelectFieldProps> = (props) => {
         multiple={multiple}
         disabled={disabled}
         IconComponent={DownIcon}
-        renderValue={multiple ? (selected) => (selected as string[]).join(', ') : undefined}
+        renderValue={
+          multiple ? (selected) => (selected as unknown[]).map(labelOf).join(', ') : undefined
+        }
         variant={variant}
         {...selectProps}
         labelId={`select-${id}-label`}
@@ -46,15 +67,27 @@ const SelectField: FunctionComponent<SelectFieldProps> = (props) => {
           ...selectProps.MenuProps
         }}
       >
-        {items?.map((item, index) => (
-          <MenuItem dense={!multiple} value={item} key={index} color="primary">
+        {normalizedOptions.length === 0 && (
+          <MenuItem disabled value="">
+            {noOptionsText}
+          </MenuItem>
+        )}
+        {normalizedOptions.map((option) => (
+          <MenuItem dense={!multiple} value={option.value} key={option.value}>
             {multiple ? (
-              <Box sx={{ pointerEvents: 'none' }}>
-                <Checkbox size="small" label={item} checked={arrayValue.indexOf(item) > -1} />
-              </Box>
+              <>
+                <Checkbox
+                  size="small"
+                  checked={arrayValue.indexOf(option.value) > -1}
+                  tabIndex={-1}
+                  disableRipple
+                  slotProps={{ input: { 'aria-hidden': true } }}
+                />
+                <ListItemText primary={option.label} />
+              </>
             ) : (
-              <Typography variant="body1" sx={{ fontWeight: 500 }} color={theme?.neutral?.dark}>
-                {item}
+              <Typography variant="body1" sx={{ fontWeight: 500, color: 'neutral.dark' }}>
+                {option.label}
               </Typography>
             )}
           </MenuItem>

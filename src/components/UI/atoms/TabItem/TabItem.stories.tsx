@@ -16,12 +16,6 @@ const meta: Meta<StoryProps> = {
       </Tabs>
     )
   ],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: ''
-    }
-  },
   argTypes: {
     label: {
       control: 'text',
@@ -31,7 +25,7 @@ const meta: Meta<StoryProps> = {
       control: 'text',
       description: 'Componente, página ou rota que será renderizado ao clicar na tab'
     },
-    to: {
+    href: {
       control: 'text',
       description: 'Link de navegação'
     }

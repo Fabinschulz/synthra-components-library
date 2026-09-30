@@ -3,8 +3,6 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const DealIcon: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#373737' } = props;
-
   return (
     <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <svg
@@ -16,7 +14,7 @@ export const DealIcon: FunctionComponent<SvgIconProps> = (props) => {
       >
         <path
           d="M15.5917 17.0332H20C21.1046 17.0332 22 16.0453 22 14.8266V8.57043C22 7.73462 21.572 6.97054 20.8944 6.59675L18.8446 5.46592C18.2892 5.15952 17.6767 5 17.0557 5H14.9225C13.7074 5 12.5581 5.60943 11.799 6.65633L11.7739 6.69096M11.7739 6.69096L9.83452 9.36569C9.35943 10.0209 9.40684 10.9655 9.94461 11.5588C10.5275 12.2019 11.4725 12.2019 12.0554 11.5588L13.4706 9.99741L15.7615 14.6313C16.3882 15.8991 15.7606 17.4784 14.4907 17.8287L10.9609 18.8023C9.68876 19.1532 8.34745 19.0347 7.14217 18.4647L3.21216 16.6064C2.47679 16.2587 2 15.4609 2 14.5782V8.57043C2 7.73462 2.428 6.97054 3.10557 6.59675L5.15542 5.46592C5.71084 5.15952 6.32329 5 6.94427 5H8.62547C9.86642 5 11.0234 5.63403 11.7739 6.69096Z"
-          stroke={htmlColor}
+          stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"

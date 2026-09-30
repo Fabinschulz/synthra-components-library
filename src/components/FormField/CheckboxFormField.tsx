@@ -1,9 +1,9 @@
 'use client';
-import { CheckboxProps } from '@mui/material';
-import { FunctionComponent } from 'react';
-import { activeTheme, getObjectPropertyValue } from '@/utils';
+import { FormHelperText } from '@mui/material';
+import { FunctionComponent, useId } from 'react';
+import { getObjectPropertyValue } from '@/utils';
 import { useFormContext } from '@/contexts/formContext';
-import { Checkbox, Typography } from '../UI';
+import { Checkbox, CheckboxProps } from '../UI';
 import React from 'react';
 
 export interface CheckboxFormFieldProps extends CheckboxProps {
@@ -11,11 +11,11 @@ export interface CheckboxFormFieldProps extends CheckboxProps {
   label: string;
 }
 
-const theme = activeTheme();
 const CheckboxFormField: FunctionComponent<CheckboxFormFieldProps> = ({ label, ...props }) => {
   const name = props.name;
+  const errorId = useId();
   let value = undefined;
-  let { validationErrors, watch, setValue } = useFormContext();
+  let { validationErrors, watch, setValue, readOnly } = useFormContext();
 
   if (watch) {
     value = watch(name);
@@ -26,7 +26,8 @@ const CheckboxFormField: FunctionComponent<CheckboxFormFieldProps> = ({ label, .
     setValue(name, newValue, { shouldDirty: true });
   };
 
-  const errorsMessage = validationErrors && getObjectPropertyValue(name, validationErrors)?.message;
+  const errorsMessage: string | undefined =
+    validationErrors && getObjectPropertyValue(name, validationErrors)?.message;
 
   return (
     <>
@@ -34,15 +35,19 @@ const CheckboxFormField: FunctionComponent<CheckboxFormFieldProps> = ({ label, .
         label={label}
         onChange={onChange}
         checked={value === true}
+        disabled={readOnly || props.disabled}
         slotProps={{
-          input: { 'aria-label': 'secondary checkbox' }
+          input: {
+            'aria-invalid': !!errorsMessage,
+            'aria-describedby': errorsMessage ? errorId : undefined
+          }
         }}
         {...props}
       />
       {!!errorsMessage && (
-        <Typography sx={{ mt: 0.5 }} variant="body1" color={theme.palette?.error?.dark}>
+        <FormHelperText id={errorId} error sx={{ mt: 0.5, typography: 'body1' }}>
           {errorsMessage}
-        </Typography>
+        </FormHelperText>
       )}
     </>
   );

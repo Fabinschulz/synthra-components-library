@@ -11,7 +11,6 @@ export interface CodeFieldProps {
    * @default false
    * @type boolean
    */
-
   toggle: boolean;
 
   /**

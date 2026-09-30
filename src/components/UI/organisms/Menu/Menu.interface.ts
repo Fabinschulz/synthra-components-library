@@ -1,5 +1,22 @@
 import { ReactNode } from 'react';
 
+export interface MenuLabels {
+  /** @default 'Menu' */
+  menu?: string;
+
+  /** @default 'Conta' */
+  account?: string;
+
+  /** @default 'Sair' */
+  logout?: string;
+
+  /** Nome acessível do botão que expande o menu. @default 'Expandir menu' */
+  expand?: string;
+
+  /** Nome acessível do botão que recolhe o menu. @default 'Recolher menu' */
+  collapse?: string;
+}
+
 export interface MenuProps {
   /**
    * Determina o titulo do avatar
@@ -9,13 +26,24 @@ export interface MenuProps {
   /**
    * Determina o subtitulo do avatar
    */
-
   avatarSubtitle?: string;
 
-  /*
-   * Determina se o menu esta aberto
+  /**
+   * Controla se o menu está expandido. Use junto com `onOpenChange`.
+   * Sem esta prop, o menu controla o próprio estado.
    */
   open?: boolean;
+
+  /**
+   * Estado inicial quando o menu não é controlado
+   * @default false
+   */
+  defaultOpen?: boolean;
+
+  /**
+   * Chamado quando o menu expande ou recolhe.
+   */
+  onOpenChange?: (open: boolean) => void;
 
   /**
    * Items do menu
@@ -28,7 +56,7 @@ export interface MenuProps {
   logoIcon?: ReactNode;
 
   /**
-   * Determina a largura do drawer
+   * Recebe a largura ocupada pelo menu (270 expandido, 105 recolhido) para ajustar o layout.
    */
   drawerWidthMain?: (width: number) => void;
 
@@ -39,18 +67,26 @@ export interface MenuProps {
 
   /**
    * Determina quanto tempo após um click fora da área do menu para que ele seja retraído automaticamente
+   * @default 200
    */
   closeDelay?: number;
 
   /**
-   * Determina se as informações estão carregando
+   * Exibe skeletons no lugar dos itens enquanto carregam
+   * @default false
    */
-  isLoading?: boolean;
+  skeleton?: boolean;
 
   /**
    * Determina se o menu irá fechar de forma automática ao clicar fora
+   * @default false
    */
-  activateAutoOutsideMenu: boolean;
+  activateAutoOutsideMenu?: boolean;
+
+  /**
+   * Textos exibidos pelo menu (títulos das seções, logout e nomes acessíveis).
+   */
+  labels?: MenuLabels;
 }
 
 export interface MenuItems {
@@ -60,7 +96,7 @@ export interface MenuItems {
   title?: string;
 
   /**
-   * Link que será redirecionado
+   * Link que será redirecionado (usa o LinkComponent do tema)
    */
   href: string;
 
@@ -113,8 +149,8 @@ export interface ISubmenuOptions {
    */
   href: string;
 
-  // /**
-  //  * Determina se o item esta ativo
-  //  */
+  /**
+   * Determina se o item esta ativo
+   */
   active?: boolean;
 }

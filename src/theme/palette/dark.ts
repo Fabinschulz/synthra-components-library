@@ -5,9 +5,9 @@ export const palette: ThemeOptions['palette'] = {
   mode: 'dark',
 
   primary: {
-    light: '#3968D0',
-    main: '#0762ED',
-    dark: '#192B66',
+    light: '#6A95F0',
+    main: '#3D7BF2',
+    dark: '#0762ED',
     contrastText: '#FFFFFF'
   },
 
@@ -27,11 +27,20 @@ export const palette: ThemeOptions['palette'] = {
   },
 
   neutral: {
-    lightest: '#E0E0E0',
-    light: '#BABFD0',
-    medium: '#666666',
-    dark: '#373737',
-    darkest: '#000000'
+    lightest: '#111B33',
+    light: '#3A4560',
+    medium: '#A7ADBF',
+    dark: '#E0E3EB',
+    darkest: '#FFFFFF',
+
+    primaryShade: {
+      '10': alpha('#FFFFFF', 0.1),
+      '15': alpha('#A7ADBF', 0.1),
+      '20': alpha('#A7ADBF', 0.2),
+      '30': alpha('#A7ADBF', 0.3),
+      '45': alpha('#FFFFFF', 0.45),
+      '87': alpha('#E0E3EB', 0.87)
+    }
   },
 
   divider: alpha('#FFFFFF', 0.12),
@@ -58,14 +67,25 @@ export const palette: ThemeOptions['palette'] = {
   },
 
   info: {
-    light: '#E0F2FF',
+    light: '#0B2F4A',
     main: '#0288D1',
-    dark: '#005BB5',
+    dark: '#7CC4F5',
     contrastText: '#FFFFFF'
   },
 
   common: {
     black: '#000000',
     white: '#FFFFFF'
+  },
+
+  background: {
+    default: '#0B1224',
+    paper: '#111B33'
+  },
+
+  custom: {
+    background: {
+      dark: '#060B18'
+    }
   }
 };

@@ -8,13 +8,7 @@ type StoryProps = ComponentProps<typeof DataTable>;
 const meta: Meta<StoryProps> = {
   title: 'UI/organisms/DataTable',
   component: DataTable,
-  tags: ['autodocs'],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: ''
-    }
-  }
+  tags: ['autodocs']
 };
 
 export default meta;
@@ -48,6 +42,6 @@ export const TableWithSkeleton: Story = {
     rowsPerPage: 5,
     setPage: () => {},
     setRowsPerPage: () => {},
-    isLoading: true
+    skeleton: true
   }
 };

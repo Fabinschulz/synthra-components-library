@@ -10,7 +10,6 @@ import { ReactNode } from 'react';
  * @example <TabBar tabs={[{ label: 'Tab 1', href: '/tab1' }, { label: 'Tab 2', href: '/tab2' }]} variant='standard' scrollButtons='auto' orientation='horizontal'>Children</TabBar>
  * @returns JSX.Element
  */
-
 export interface TabBarProps {
   /**
    * Determina os items de tabs
@@ -32,7 +31,7 @@ export interface TabBarProps {
 
   /**
    * Determina se conterá scroll
-   * @default 'auto'
+   * @default true
    * @example 'auto'
    * @type 'auto' | false | true
    * @see https://mui.com/pt/api/tabs/
@@ -47,6 +46,13 @@ export interface TabBarProps {
    * @see https://mui.com/pt/api/tabs/
    */
   orientation?: 'horizontal' | 'vertical';
+
+  /**
+   * Rota atual. Quando informada, a aba ativa é a que tem o `href` correspondente.
+   * No Next.js, use o `TabBar` de `@synthra.io/ui-kit/next`, que injeta a rota automaticamente.
+   * @example <TabBar pathname={location.pathname} tabs={...} />
+   */
+  pathname?: string;
 
   /**
    * Determina os childrens da tab
@@ -91,7 +97,6 @@ export interface TabsProps {
  * @example <TabPanel index={0} value={0}>Children</TabPanel>
  * @returns JSX.Element
  */
-
 export interface TabPanelProps {
   children?: ReactNode;
   index?: number;

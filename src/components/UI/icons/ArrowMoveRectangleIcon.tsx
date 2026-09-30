@@ -3,8 +3,6 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const ArrowMoveRectangleIcon: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#373737' } = props;
-
   return (
     <SvgIcon {...props}>
       <svg
@@ -16,21 +14,21 @@ export const ArrowMoveRectangleIcon: FunctionComponent<SvgIconProps> = (props) =
       >
         <path
           d="M18 2H6C3.79086 2 2 3.79086 2 6V18C2 20.2091 3.79086 22 6 22H18C20.2091 22 22 20.2091 22 18V6C22 3.79086 20.2091 2 18 2Z"
-          stroke={htmlColor}
+          stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
           d="M14 16L12 18M12 18L10 16M12 18L12 6M12 6L14 8M12 6L10 8"
-          stroke={htmlColor}
+          stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
           d="M8 14L6 12M6 12L8 10M6 12L18 12M18 12L16 14M18 12L16 10"
-          stroke={htmlColor}
+          stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"

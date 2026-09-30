@@ -1,33 +1,23 @@
 import { BreadcrumbsProps as MuiBreadcrumb } from '@mui/material';
 
+export interface BreadcrumbLink {
+  url: string;
+  title: string;
+}
+
 export interface BreadcrumbProps extends MuiBreadcrumb {
   /**
-   * Define o separador entre os links
-   * @default '/'
-   * @type {string}
-   * @example <Breadcrumb separator=">" />
-   * @see BreadcrumbProps
-   */
-  separator?: string;
-
-  /**
-   * Define os links do breadcrumb
+   * Define os links do breadcrumb. O último item representa a página atual e é renderizado como
+   * texto com `aria-current="page"`.
    * @default []
-   * @type {{ url: string, title: string }[]}
    * @example <Breadcrumb links={[{ url: '/home', title: 'Home' }]} />
-   * @see BreadcrumbProps
    */
-  links?: {
-    url: string;
-    title: string;
-  }[];
+  links?: BreadcrumbLink[];
 
   /**
    * Determina se o skeleton do breadcrumb deve ser exibido.
    * @default false
-   * @type {boolean}
-   * @example <Breadcrumb isLoading />
-   * @see BreadcrumbProps
+   * @example <Breadcrumb skeleton />
    */
-  isLoading?: boolean;
+  skeleton?: boolean;
 }

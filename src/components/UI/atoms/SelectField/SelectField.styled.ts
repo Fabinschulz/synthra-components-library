@@ -1,6 +1,6 @@
+'use client';
 import { styled } from '@mui/material/styles';
 import { FormControl as MuiFormControl } from '@mui/material';
-import { MenuItem } from '../MenuItem';
 
 export const FormControl = styled(MuiFormControl)(({ theme }) => ({
   '& .MuiInputBase-input': {
@@ -38,7 +38,7 @@ export const FormControl = styled(MuiFormControl)(({ theme }) => ({
     paddingRight: '7px',
     '&:hover, &:active, &:focus, &.Mui-focused': {
       color: theme.palette.primary.main,
-      background: theme.palette.common.white
+      background: theme.palette.background.paper
     }
   },
   '& .MuiSelect-select': {
@@ -54,23 +54,13 @@ export const FormControl = styled(MuiFormControl)(({ theme }) => ({
       borderBottomColor: theme.palette.primary.main
     },
     '&, & .MuiFilledInput-input': {
-      background: theme.palette.common.white,
+      background: theme.palette.background.paper,
       padding: '5px',
       borderRadius: '4px 4px 0 0',
       '&:hover, &:active, &:focus, &.Mui-focused': {
-        background: theme.palette.common.white,
+        background: theme.palette.background.paper,
         borderRadius: '4px 4px 0 0'
       }
     }
-  }
-}));
-
-export const SelectMenuItem = styled(MenuItem)(({ theme }) => ({
-  '& .MuiFormControlLabel-label, & .MuiCheckbox-root': {
-    color: 'inherit'
-  },
-  '&.Mui-selected, &.Mui-focusVisible': {
-    color: theme.palette.brand.darkest,
-    backgroundColor: theme.palette.primary.shade?.['10']
   }
 }));

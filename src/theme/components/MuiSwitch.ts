@@ -1,13 +1,11 @@
-import type { Palette } from '@mui/material/styles';
-import { Components } from '@mui/material';
 
-import { palette as paletteOptions } from '../palette/light';
+import type { Components, Theme } from '@mui/material/styles';
 
-const palette = paletteOptions! as Palette;
 
-export const MuiSwitch: Components['MuiSwitch'] = {
+
+export const MuiSwitch: Components<Theme>['MuiSwitch'] = {
   styleOverrides: {
-    root: {
+    root: ({ theme }) => ({
       width: 52,
       height: 32,
       padding: 0,
@@ -22,24 +20,24 @@ export const MuiSwitch: Components['MuiSwitch'] = {
         marginLeft: '8px',
         '&.Mui-checked': {
           transform: 'translateX(20px)',
-          color: palette.primary.main,
-          background: palette.common.white,
+          color: theme.palette.primary.main,
+          background: theme.palette.common.white,
           marginTop: '4px',
           marginLeft: '4px',
           '&:hover': {
-            color: palette.primary.main,
-            background: palette.common.white
+            color: theme.palette.primary.main,
+            background: theme.palette.common.white
           },
           '& .MuiSvgIcon-root': {
             padding: '6px',
-            color: palette.primary.main,
-            background: palette.common.white,
+            color: theme.palette.primary.main,
+            background: theme.palette.common.white,
             borderRadius: '50%',
             marginTop: '0',
             marginLeft: '0'
           },
           '& + .MuiSwitch-track': {
-            backgroundColor: palette.primary.main,
+            backgroundColor: theme.palette.primary.main,
             opacity: 1,
             border: 0
           },
@@ -48,7 +46,7 @@ export const MuiSwitch: Components['MuiSwitch'] = {
           },
           '& .MuiSwitch-thumb': {
             boxSizing: 'border-box',
-            color: palette.common.white,
+            color: theme.palette.common.white,
             width: 24,
             height: 24,
             marginTop: '0',
@@ -56,15 +54,15 @@ export const MuiSwitch: Components['MuiSwitch'] = {
           }
         },
         '&.Mui-disabled .MuiSwitch-thumb': {
-          color: palette.neutral.medium
+          color: theme.palette.neutral.medium
         },
         '&.Mui-disabled + .MuiSwitch-track': {
           opacity: 0.7
         },
         '& .MuiSvgIcon-root': {
           padding: '6px',
-          color: palette.common.white,
-          backgroundColor: palette.neutral.medium,
+          color: theme.palette.common.white,
+          backgroundColor: theme.palette.neutral.medium,
           borderRadius: '50%',
           fontSize: '24px',
           marginTop: '-4px',
@@ -75,24 +73,24 @@ export const MuiSwitch: Components['MuiSwitch'] = {
         boxSizing: 'border-box',
         width: 16,
         height: 16,
-        color: palette.neutral.medium,
+        color: theme.palette.neutral.medium,
         boxShadow: 'none'
       },
       '& .MuiSwitch-track': {
         borderRadius: 32 / 2,
-        backgroundColor: palette.common.white,
-        border: `2px solid ${palette.neutral.medium}`,
+        backgroundColor: theme.palette.common.white,
+        border: `2px solid ${theme.palette.neutral.medium}`,
         opacity: 1
       },
       '& .MuiSvgIcon': {
-        backgroundColor: palette.common.white,
+        backgroundColor: theme.palette.common.white,
         borderRadius: '50%',
-        color: palette.primary.main,
+        color: theme.palette.primary.main,
         position: 'absolute',
         zIndex: 999,
         top: '50%',
         transform: 'translateY(-50%)'
       }
-    }
+    })
   }
 };

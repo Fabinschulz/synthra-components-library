@@ -10,12 +10,6 @@ const meta: Meta<StoryProps> = {
   title: 'UI/atoms/SelectField',
   component: SelectField,
   tags: ['autodocs'],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: ''
-    }
-  },
   argTypes: {
     label: { control: 'text' },
     items: { control: 'multi-select' },

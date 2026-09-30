@@ -1,20 +1,27 @@
 'use client';
-import React from 'react';
 import createCache from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
 import { useServerInsertedHTML } from 'next/navigation';
-import { ThemeContext } from '@/theme';
-import activeTheme from '../activeTheme';
+import React from 'react';
+import type { ProviderProps, ThemeMode } from '../theme';
+import { initializeTheme, Provider } from '../theme';
+import { nextLinkComponents } from './nextLinkComponents';
 
 const options = { key: 'css', prepend: true };
 
-// This implementation is from emotion-js
-// https://github.com/emotion-js/emotion/issues/2928#issuecomment-1319747902
-export default function ThemeRegistry(props: { children: React.ReactNode }) {
-  const { children } = props;
+export interface ThemeRegistryProps extends Omit<ProviderProps, 'theme'> {
+  /**
+   * Modo de cor usado quando `theme` não é informado.
+   * @default 'light'
+   */
+  mode?: ThemeMode;
 
+  /** Tema customizado. Quando informado, `mode` é ignorado. */
+  theme?: ProviderProps['theme'];
+}
+
+export default function ThemeRegistry({ mode = 'light', theme, ...providerProps }: ThemeRegistryProps) {
   const [{ cache, flush }] = React.useState(() => {
-    // Here wa setted directly "options" object and dont passed for ThemeProvider to isolate the logic
     const cache = createCache(options);
     cache.compat = true;
     const prevInsert = cache.insert;
@@ -34,6 +41,10 @@ export default function ThemeRegistry(props: { children: React.ReactNode }) {
     return { cache, flush };
   });
 
+  const [defaultTheme] = React.useState(() =>
+    initializeTheme({ mode, overrides: { components: nextLinkComponents } })
+  );
+
   useServerInsertedHTML(() => {
     const names = flush();
     if (names.length === 0) {
@@ -52,10 +63,9 @@ export default function ThemeRegistry(props: { children: React.ReactNode }) {
     );
   });
 
-  const theme = activeTheme();
   return (
     <CacheProvider value={cache}>
-      <ThemeContext theme={theme}>{children}</ThemeContext>
+      <Provider theme={theme ?? defaultTheme} {...providerProps} />
     </CacheProvider>
   );
 }

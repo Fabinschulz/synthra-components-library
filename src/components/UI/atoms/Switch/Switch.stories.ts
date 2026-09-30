@@ -8,12 +8,6 @@ const meta: Meta<StoryProps> = {
   title: 'UI/atoms/Switch',
   component: Switch,
   tags: ['autodocs'],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: ''
-    }
-  },
   argTypes: {
     checked: {
       control: 'boolean',

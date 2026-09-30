@@ -1,16 +1,17 @@
 'use client';
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
 import {
-  FieldErrorsImpl,
   FieldErrors,
+  FieldErrorsImpl,
   FieldValues,
   FormState,
+  Resolver,
   useForm,
   UseFormSetValue,
   useFormState,
   UseFormWatch
 } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { getObjectPropertyValue } from '@/utils';
 
 export type FormMode = 'create' | 'update';
 
@@ -27,54 +28,51 @@ type FormContextProps = {
   submitting: boolean;
   isDirty: boolean;
   isValid: boolean;
-  dirtyFields: any;
+  dirtyFields: Partial<Record<string, unknown>>;
   readOnly?: boolean;
   trigger: ReturnType<typeof useForm>['trigger'];
   register: ReturnType<typeof useForm>['register'];
+};
+
+const notInitialized = () => {
+  throw new Error('useFormContext deve ser usado dentro de um <FormProvider>.');
 };
 
 const FormContext = createContext<FormContextProps>({
   readOnly: false,
   onSubmit: () => true,
   onError: () => true,
-  setValue: () => {
-    throw new Error('formContext not initialized');
-  },
-  reset: () => {
-    throw new Error('formContext not initialized');
-  },
-  watch: () => {
-    throw new Error('formContext not initialized');
-  },
+  setValue: notInitialized,
+  reset: notInitialized,
+  watch: notInitialized as any,
   control: undefined,
   formState: undefined,
-  getValues: () => {
-    throw new Error('formContext not initialized');
-  },
+  getValues: notInitialized as any,
   validationErrors: undefined,
   submitting: false,
   isDirty: false,
   isValid: false,
   dirtyFields: {},
-  trigger: () => {
-    throw new Error('formContext not initialized');
-  },
-  register: () => {
-    throw new Error('formContext not initialized');
-  }
+  trigger: notInitialized as any,
+  register: notInitialized as any
 });
 
-interface FormProviderProps {
-  children: React.JSX.Element;
-  validationSchema: any;
-  defaultValues: any;
-  onSubmit: (values: any) => void;
-  onError?: any;
+export interface FormProviderProps<TValues extends FieldValues = FieldValues> {
+  children: React.ReactNode;
+
+  /**
+   * Resolver de validação do react-hook-form (yup, zod, valibot...).
+   * @example resolver={zodResolver(schema)}
+   */
+  resolver?: Resolver<TValues>;
+  defaultValues?: any;
+  onSubmit: (values: TValues) => unknown | Promise<unknown>;
+  onError?: (error: unknown) => void;
   onChangeField?: ChangeFieldDelegate[];
   readOnly?: boolean;
 }
 
-interface ChangeFieldDelegate {
+export interface ChangeFieldDelegate {
   fieldName: string;
   delegate: (
     fieldValue: any,
@@ -83,16 +81,17 @@ interface ChangeFieldDelegate {
   ) => void;
 }
 
-export const FormProvider = ({
+export const FormProvider = <TValues extends FieldValues = FieldValues>({
   children,
-  validationSchema,
+  resolver,
   defaultValues,
   onSubmit,
   onError,
   readOnly = false,
   onChangeField
-}: FormProviderProps) => {
+}: FormProviderProps<TValues>) => {
   const [submitting, setSubmitting] = useState(false);
+  const wasSubmitting = useRef(false);
 
   const {
     handleSubmit,
@@ -105,35 +104,31 @@ export const FormProvider = ({
     trigger,
     register,
     formState: { isDirty, isValid, dirtyFields }
-  } = useForm({
-    resolver: yupResolver(validationSchema),
-    defaultValues: defaultValues
+  } = useForm<FieldValues>({
+    resolver: resolver as Resolver<FieldValues> | undefined,
+    defaultValues
   });
 
   useEffect(() => {
-    if (!submitting) {
+    if (wasSubmitting.current && !submitting) {
       reset(getValues());
     }
-  }, [reset, submitting]);
+    wasSubmitting.current = submitting;
+  }, [reset, getValues, submitting]);
 
   const { errors } = useFormState({ control });
   const validationErrors = Object.keys(errors ?? {}).length ? errors : undefined;
+
   const formSubmit = async (values: FieldValues) => {
     setSubmitting(true);
-    console.log('FormContext - submiting', { values });
     try {
-      const res = await onSubmit(values);
-      setSubmitting(false);
-      console.log('FormContext - setSubmitting false');
-      return res;
+      return await onSubmit(values as TValues);
     } catch (error) {
-      console.log('FormProvider - error submit', { error });
-      onError && onError(error);
+      onError?.(error);
+    } finally {
       setSubmitting(false);
     }
   };
-
-  if (validationErrors !== undefined) console.log('validationErrors: ', validationErrors);
 
   const htmlSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -141,17 +136,13 @@ export const FormProvider = ({
     return handleSubmit(formSubmit, onError)(event);
   };
 
-  const setValueCustom = (name: any, value: any, options: any) => {
-    return setValue(name, value, options);
-  };
-
   return (
     <FormContext.Provider
       value={{
         readOnly,
-        onSubmit,
-        onError,
-        setValue: setValueCustom,
+        onSubmit: onSubmit as FormContextProps['onSubmit'],
+        onError: onError ?? (() => undefined),
+        setValue,
         control,
         reset,
         formState,
@@ -167,7 +158,7 @@ export const FormProvider = ({
       }}
     >
       <ChangeFieldHandlers handlers={onChangeField}>
-        <form className="formContext" onSubmit={htmlSubmit}>
+        <form className="formContext" onSubmit={htmlSubmit} noValidate>
           {children}
         </form>
       </ChangeFieldHandlers>
@@ -177,48 +168,41 @@ export const FormProvider = ({
 
 interface ChangeFieldHandlersProps {
   handlers: ChangeFieldDelegate[] | undefined;
-  children: React.JSX.Element;
+  children: React.ReactNode;
 }
 
-const ChangeFieldHandlers = ({ handlers, children }: ChangeFieldHandlersProps): React.JSX.Element => {
-  const isEmpty = handlers === undefined || handlers.length === 0;
-  let currentElement: React.JSX.Element = children;
-  if (isEmpty) return currentElement;
+const ChangeFieldHandlers = ({ handlers, children }: ChangeFieldHandlersProps) => {
+  if (!handlers?.length) return <>{children}</>;
 
-  for (let i = 0; i < handlers.length; i++) {
-    const currentHandler = handlers[i];
-    currentElement = (
-      <ChangeFieldHandler handler={currentHandler} children={currentElement}></ChangeFieldHandler>
-    );
-  }
-  return currentElement;
+  return handlers.reduce<React.ReactNode>(
+    (currentElement, handler) => (
+      <ChangeFieldHandler key={handler.fieldName} handler={handler}>
+        {currentElement}
+      </ChangeFieldHandler>
+    ),
+    children
+  ) as React.JSX.Element;
 };
 
 interface ChangeFieldHandlerProps {
   handler: ChangeFieldDelegate;
-  children: React.JSX.Element;
+  children: React.ReactNode;
 }
 
-const ChangeFieldHandler = ({ handler, children }: ChangeFieldHandlerProps): React.JSX.Element => {
+const ChangeFieldHandler = ({ handler, children }: ChangeFieldHandlerProps) => {
   const { watch, setValue, dirtyFields } = useFormContext();
-  const handlerFieldName = handler.fieldName;
-  const currentValue = watch(handlerFieldName);
-  const [prefix, field] = handlerFieldName?.split('.');
-
-  console.log('ChangeFieldHandler', { prefix, field, handlerFieldName });
+  const currentValue = watch(handler.fieldName);
+  const isDirtyField = !!getObjectPropertyValue(handler.fieldName, dirtyFields);
 
   useEffect(() => {
-    if (field && dirtyFields[field]) {
-      handler.delegate(currentValue, setValue, watch);
-    } else if (dirtyFields[prefix]) {
+    if (isDirtyField) {
       handler.delegate(currentValue, setValue, watch);
     }
-  }, [prefix, field, currentValue, dirtyFields]);
+  }, [currentValue, isDirtyField]);
 
-  return children;
+  return <>{children}</>;
 };
 
 export function useFormContext() {
-  const context = useContext(FormContext);
-  return context;
+  return useContext(FormContext);
 }
