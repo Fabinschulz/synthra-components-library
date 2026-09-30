@@ -414,3 +414,18 @@ export { ZoomOutIcon } from './ZoomOutIcon';
 export { ZoomIcon } from './ZoomIcon';
 export { ZoomTextIcon } from './ZoomTextIcon';
 export { ZoomArrowRectangleIcon } from './ZoomArrowRectangleIcon';
+
+export { AbacusIcon } from './AbacusIcon';
+export { ArrowUpRectangleIcon } from './ArrowUpRectangleIcon';
+export { AssignmentIcon } from './AssignmentIcon';
+export { BooksIcon } from './BooksIcon';
+export { CalculatorIcon } from './CalculatorIcon';
+export { ChatSmileIcon } from './ChatSmileIcon';
+export { CompassIcon } from './CompassIcon';
+export { DirectionLeftRectangleIcon } from './DirectionLeftRectangleIcon';
+export { DownloadCircleIcon } from './DownloadCircleIcon';
+export { IdeaIcon } from './IdeaIcon';
+export { LineIcon } from './LineIcon';
+export { ReloadIcon } from './ReloadIcon';
+export { RightDownIcon } from './RightDownIcon';
+export { WatchIcon } from './WatchIcon';

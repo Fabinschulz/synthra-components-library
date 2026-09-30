@@ -8,13 +8,7 @@ type StoryProps = ComponentProps<typeof TabBar>;
 const meta: Meta<StoryProps> = {
   title: 'UI/molecules/TabBar',
   component: TabBar,
-  tags: ['autodocs'],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: ''
-    }
-  }
+  tags: ['autodocs']
 };
 
 export default meta;

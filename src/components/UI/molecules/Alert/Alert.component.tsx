@@ -1,21 +1,31 @@
+'use client';
 import type { FunctionComponent } from 'react';
-import type { IAlertProps } from './Alert.interface';
+import type { AlertProps } from './Alert.interface';
 import { AlertTitle, Alert as MuiAlert } from '@mui/material';
+import clsx from 'clsx';
 import { alertBaseStyle } from './Alert.styled';
-import { activeTheme } from '@/utils';
 
-const theme = activeTheme();
-const Alert: FunctionComponent<IAlertProps> = ({ description, title, type, ...props }) => {
+const Alert: FunctionComponent<AlertProps> = ({
+  description,
+  title,
+  severity = 'info',
+  className,
+  sx,
+  children,
+  ...props
+}) => {
+  const content = description ?? children;
+
   return (
     <MuiAlert
+      data-testid={`${severity}-alert`}
       {...props}
-      sx={{ fontSize: theme.typography.h6, ...alertBaseStyle(description) }}
-      className={`${type}Alert`}
-      data-testId={`${type}-alert`}
-      severity={type}
+      severity={severity}
+      className={clsx(`${severity}Alert`, className)}
+      sx={[alertBaseStyle(content), ...(Array.isArray(sx) ? sx : [sx])]}
     >
       {title && <AlertTitle>{title}</AlertTitle>}
-      {description}
+      {content}
     </MuiAlert>
   );
 };

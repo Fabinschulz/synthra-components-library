@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import { DataTable } from '../../organisms';
 import { GridColDef } from '@mui/x-data-grid';

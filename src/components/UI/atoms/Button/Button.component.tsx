@@ -1,12 +1,13 @@
+'use client';
 import type { FunctionComponent } from 'react';
-import type { IButtonProps } from './Button.interface';
+import type { ButtonProps } from './Button.interface';
 import { Button as MuiButton } from '@mui/material';
 import ButtonSkeleton from './Button.skeleton';
 
-const Button: FunctionComponent<IButtonProps> = ({ name, ...props }) => {
+const Button: FunctionComponent<ButtonProps> = ({ skeleton = false, ...props }) => {
   return (
-    <ButtonSkeleton isLoading={props.isLoading} fullWidth={props.fullWidth}>
-      <MuiButton {...props} data-testid={name} name={name} />
+    <ButtonSkeleton skeleton={skeleton} fullWidth={props.fullWidth}>
+      <MuiButton data-testid={props.name} {...props} />
     </ButtonSkeleton>
   );
 };

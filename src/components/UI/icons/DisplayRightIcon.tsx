@@ -3,8 +3,6 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const DisplayRightIcon: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#373737' } = props;
-
   return (
     <SvgIcon viewBox="0 0 29 25" width="29" height="25" fill="none" {...props}>
       <svg
@@ -16,7 +14,7 @@ export const DisplayRightIcon: FunctionComponent<SvgIconProps> = (props) => {
       >
         <path
           d="M2 5V19M22 10V14C22 15.6569 20.6569 17 19 17L9 17C7.34315 17 6 15.6569 6 14L6 10C6 8.34315 7.34315 7 9 7L19 7C20.6569 7 22 8.34314 22 10Z"
-          stroke={htmlColor}
+          stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"

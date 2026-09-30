@@ -1,5 +1,6 @@
+'use client';
 import type { FunctionComponent } from 'react';
-import type { MenuProps } from './Menu.interface';
+import type { MenuLabels, MenuProps } from './Menu.interface';
 import { useState, useEffect, useRef } from 'react';
 import Box from '@mui/material/Box';
 import { IconButton, Skeleton, Stack, styled, Typography } from '@mui/material';
@@ -17,6 +18,14 @@ import { CustomMenu } from './CustomMenu';
 import { LeftIcon, RightIcon, SignInIcon } from '../../icons';
 import { Avatar } from '../../atoms';
 
+const defaultLabels: Required<MenuLabels> = {
+  menu: 'Menu',
+  account: 'Conta',
+  logout: 'Sair',
+  expand: 'Expandir menu',
+  collapse: 'Recolher menu'
+};
+
 type TitleMenuProps = {
   title: string;
   open: boolean;
@@ -27,7 +36,7 @@ const TitleMenu = ({ title, open }: TitleMenuProps) => {
     <Typography
       variant="body2"
       sx={{
-        color: '#666666',
+        color: 'neutral.medium',
         fontWeight: 500,
         fontSize: '0.85rem',
         my: 2,
@@ -39,17 +48,23 @@ const TitleMenu = ({ title, open }: TitleMenuProps) => {
   );
 };
 
-const CustomIconButton = styled(IconButton)({
+const CustomIconButton = styled(IconButton)(({ theme }) => ({
   position: 'absolute',
-  right: '-15px',
+  right: 0,
   padding: 0,
+  color: theme.palette.neutral.medium,
   '&:hover': {
     backgroundColor: 'transparent'
   },
   '&:active': {
     backgroundColor: 'transparent'
   }
-});
+}));
+
+const iconSx = {
+  width: '20px',
+  height: '20px'
+};
 
 const Menu: FunctionComponent<MenuProps> = ({
   items,
@@ -58,17 +73,30 @@ const Menu: FunctionComponent<MenuProps> = ({
   onClickLogout,
   closeDelay = 200,
   activateAutoOutsideMenu = false,
-  isLoading = false,
+  skeleton = false,
   avatarTitle,
-  avatarSubtitle
+  avatarSubtitle,
+  open: openProp,
+  defaultOpen = false,
+  onOpenChange,
+  labels: labelsProp
 }) => {
-  const [open, setOpen] = useState(false);
+  const labels = { ...defaultLabels, ...labelsProp };
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
+  const isControlled = openProp !== undefined;
+  const open = isControlled ? openProp : uncontrolledOpen;
+
+  const setOpen = (next: boolean) => {
+    if (!isControlled) setUncontrolledOpen(next);
+    onOpenChange?.(next);
+  };
+
   const wrapperRef = useRef(null);
 
   useOnClickOutside(
     wrapperRef,
     () => {
-      if (activateAutoOutsideMenu === false || !activateAutoOutsideMenu) return;
+      if (!activateAutoOutsideMenu || !open) return;
       setOpen(false);
     },
     closeDelay
@@ -76,46 +104,36 @@ const Menu: FunctionComponent<MenuProps> = ({
 
   const [activeIndex, setActiveIndex] = useState(-1);
 
-  const handleDrawerOpen = () => {
-    setOpen((prev) => !prev);
-  };
-
   useEffect(() => {
     drawerWidthMain?.(open ? 270 : 105);
   }, [drawerWidthMain, open]);
-
-  const iconSx = {
-    width: '20px',
-    height: '20px'
-  };
 
   return (
     <Box ref={wrapperRef} sx={{ display: 'flex', position: 'relative' }}>
       <Drawer variant="permanent" open={open}>
         <LogoBox>
           {logoIcon}
-          <CustomIconButton size="small" onClick={handleDrawerOpen}>
-            {open ? (
-              <LeftIcon htmlColor="#666666" sx={iconSx} />
-            ) : (
-              <RightIcon htmlColor="#666666" sx={iconSx} />
-            )}
+          <CustomIconButton
+            size="small"
+            onClick={() => setOpen(!open)}
+            aria-label={open ? labels.collapse : labels.expand}
+            aria-expanded={open}
+          >
+            {open ? <LeftIcon sx={iconSx} /> : <RightIcon sx={iconSx} />}
           </CustomIconButton>
         </LogoBox>
 
         <StyledDivider />
 
-        <TitleMenu title="Menu" open={open} />
+        <TitleMenu title={labels.menu} open={open} />
 
-        {!isLoading ? (
+        {!skeleton ? (
           <CustomMenu
-            {...{
-              activeIndex: activeIndex!,
-              itemsList: items!,
-              open: open!,
-              setActiveIndex,
-              setOpen
-            }}
+            activeIndex={activeIndex}
+            itemsList={items ?? []}
+            open={open}
+            setActiveIndex={setActiveIndex}
+            setOpen={setOpen}
           />
         ) : (
           <>
@@ -137,7 +155,7 @@ const Menu: FunctionComponent<MenuProps> = ({
           </>
         )}
         <StyledDivider />
-        <TitleMenu title="Conta" open={open} />
+        <TitleMenu title={labels.account} open={open} />
 
         <StyledListItem disablePadding openMenu={open}>
           {onClickLogout && (
@@ -148,16 +166,17 @@ const Menu: FunctionComponent<MenuProps> = ({
                 px: 2.5
               }}
               onClick={onClickLogout}
+              aria-label={open ? undefined : labels.logout}
             >
               <StyledListItemIcon
                 sx={{
                   mr: open ? 2 : 0
                 }}
               >
-                <SignInIcon htmlColor="#666666" />
+                <SignInIcon />
               </StyledListItemIcon>
               <StyledListItemText
-                primary="Sair"
+                primary={labels.logout}
                 sx={{ display: open ? 'block' : 'none' }}
                 className="title"
               />

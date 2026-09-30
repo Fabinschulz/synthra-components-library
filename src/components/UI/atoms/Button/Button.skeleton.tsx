@@ -1,14 +1,15 @@
+'use client';
 import React from 'react';
 import { Skeleton, Box } from '@mui/material';
 
 type ButtonSkeletonProps = {
-  isLoading: boolean;
+  skeleton: boolean;
   fullWidth?: boolean;
   children: React.ReactNode;
 };
 
-const ButtonSkeleton: React.FC<ButtonSkeletonProps> = ({ isLoading, children, fullWidth }) => {
-  if (!isLoading) return <>{children}</>;
+const ButtonSkeleton: React.FC<ButtonSkeletonProps> = ({ skeleton, children, fullWidth }) => {
+  if (!skeleton) return <>{children}</>;
 
   return (
     <Box

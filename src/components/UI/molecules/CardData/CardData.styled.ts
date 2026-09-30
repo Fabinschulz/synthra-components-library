@@ -1,9 +1,10 @@
+'use client';
 import { styled } from '@mui/material/styles';
 import { Box, Stack } from '@mui/material';
 
 export const Card = styled(Stack)(({ theme }) => ({
-  background: theme.palette.common.white,
-  border: '0.5px solid #BABFD0',
+  background: theme.palette.background.paper,
+  border: `0.5px solid ${theme.palette.neutral.light}`,
   borderRadius: '8px',
   padding: '24px',
   maxWidth: '100%',
@@ -27,12 +28,9 @@ export const ListItem = styled(Stack)(({ theme }) => ({
     width: '0.4em',
     height: '0.4em'
   },
-  '&::-webkit-scrollbar-track': {
-    '-webkit-box-shadow': 'inset 0 0 6px rgba(0,0,0,0.00)'
-  },
   '&::-webkit-scrollbar-thumb': {
-    backgroundColor: 'rgba(0,0,0,.1)',
-    outline: '1px solid #BABFD0',
+    backgroundColor: theme.palette.action.disabledBackground,
+    outline: `1px solid ${theme.palette.neutral.light}`,
     borderRadius: '4px'
   },
   '&:first-of-type': {

@@ -3,7 +3,6 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const ShieldWarningIcon: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#373737' } = props;
   return (
     <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <svg
@@ -13,10 +12,10 @@ export const ShieldWarningIcon: FunctionComponent<SvgIconProps> = (props) => {
         viewBox="0 0 24 24"
         fill="none"
       >
-        <circle cx="12" cy="17" r="1" transform="rotate(-180 12 17)" fill={htmlColor} />
+        <circle cx="12" cy="17" r="1" transform="rotate(-180 12 17)" fill="currentColor" />
         <path
           d="M12 14L12 7M5.33248 4.71069L10.3708 2.36419C11.4134 1.8786 12.6036 1.8786 13.6462 2.36419L18.6646 4.70139C20.1321 5.38485 21.0953 6.92095 20.9925 8.60032C20.5981 15.0419 18.8406 17.9539 14.0899 21.3322C12.8361 22.2238 11.1823 22.2216 9.92759 21.3315C5.1914 17.9715 3.36871 15.1001 3.00617 8.57773C2.91343 6.90939 3.87515 5.38942 5.33248 4.71069Z"
-          stroke={htmlColor}
+          stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"

@@ -8,12 +8,6 @@ const meta: Meta<StoryProps> = {
   title: 'UI/atoms/Avatar',
   component: Avatar,
   tags: ['autodocs'],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: ''
-    }
-  },
   argTypes: {
     imageSrc: {
       description: 'Imagem do avatar'
@@ -44,7 +38,7 @@ export const Template: Story = {
 
 export const AvatarWithSkeleton: Story = {
   args: {
-    isLoading: true,
+    skeleton: true,
     title: 'John Doe',
     subtitle: 'Software Engineer'
   }

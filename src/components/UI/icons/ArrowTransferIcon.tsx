@@ -3,8 +3,6 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const ArrowTransferIcon: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#373737' } = props;
-
   return (
     <SvgIcon viewBox="0 0 24 25" width="24" height="25" fill="none" {...props}>
       <svg
@@ -16,14 +14,14 @@ export const ArrowTransferIcon: FunctionComponent<SvgIconProps> = (props) => {
       >
         <path
           d="M15 5L18 8M18 8L15 11M18 8L6 8"
-          stroke={htmlColor}
+          stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
           d="M9 19L6 16M6 16L9 13M6 16L18 16"
-          stroke={htmlColor}
+          stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"

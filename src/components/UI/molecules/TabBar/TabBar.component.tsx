@@ -1,19 +1,24 @@
 'use client';
 import type { FunctionComponent } from 'react';
 import type { TabBarProps, TabPanelProps } from './TabBar.interface';
-import { useState } from 'react';
-import { Box, Link } from '@mui/material';
+import { useId, useState } from 'react';
+import { Box } from '@mui/material';
 import { Tabs } from './TabBar.styled';
 import { TabItem } from '../../atoms/TabItem';
-import { usePathname } from 'next/navigation';
 
-const TabPanel: FunctionComponent<TabPanelProps> = ({ children, value, index, ...other }) => {
+const TabPanel: FunctionComponent<TabPanelProps & { baseId: string }> = ({
+  children,
+  value,
+  index,
+  baseId,
+  ...other
+}) => {
   return (
     <div
       role="tabpanel"
       hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
+      id={`${baseId}-tabpanel-${index}`}
+      aria-labelledby={`${baseId}-tab-${index}`}
       {...other}
     >
       {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
@@ -21,26 +26,28 @@ const TabPanel: FunctionComponent<TabPanelProps> = ({ children, value, index, ..
   );
 };
 
-const TabBar: FunctionComponent<TabBarProps> = ({ tabs, variant, orientation, children }) => {
-  const pathname = usePathname() ?? '';
-  const [value, setValue] = useState(0);
-  const target = tabs?.[0].href ?? '';
+const findActiveTab = (tabs: TabBarProps['tabs'], pathname: string) => {
+  const matches = (path: string) =>
+    tabs.findIndex((tab) => !!tab.href && (path.endsWith(tab.href) || `${path}/`.endsWith(tab.href)));
 
-  const handleChange = (_: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
+  const exact = matches(pathname);
+  if (exact !== -1) return exact;
+  return matches(pathname.split('/').slice(0, -1).join('/'));
+};
 
-  let activeTab =
-    tabs?.length &&
-    tabs.findIndex(
-      (tab) => pathname.endsWith(tab.href ?? '') || `${pathname}/`.endsWith(tab.href ?? '')
-    );
+const TabBar: FunctionComponent<TabBarProps> = ({
+  tabs,
+  variant,
+  orientation,
+  scrollButtons = true,
+  pathname,
+  children
+}) => {
+  const baseId = useId();
+  const [selected, setSelected] = useState(0);
 
-  const path = pathname.split('/').slice(0, -1).join('/');
-
-  if (activeTab === -1) {
-    activeTab = (tabs?.length && tabs.findIndex((tab) => path.endsWith(tab.href ?? ''))) ?? 0;
-  }
+  const routeTab = pathname !== undefined ? findActiveTab(tabs ?? [], pathname) : -1;
+  const activeTab = routeTab !== -1 ? routeTab : selected;
 
   const childrenArray = Array.isArray(children) ? children : [children];
 
@@ -48,28 +55,26 @@ const TabBar: FunctionComponent<TabBarProps> = ({ tabs, variant, orientation, ch
     <Box sx={{ width: '100%' }}>
       <Box>
         <Tabs
-          value={activeTab ?? value}
+          value={activeTab}
           variant={variant}
           orientation={orientation}
-          onChange={handleChange}
-          scrollButtons
+          onChange={(_, newValue: number) => setSelected(newValue)}
+          scrollButtons={scrollButtons}
           allowScrollButtonsMobile
         >
-          {tabs?.map((tab) => {
-            const firtsTab = tab.href === target;
-            return (
-              <TabItem
-                key={tab.label}
-                label={tab.label}
-                component={Link}
-                to={firtsTab ? '' : tab.href}
-              />
-            );
-          })}
+          {tabs?.map((tab, index) => (
+            <TabItem
+              key={tab.href ?? tab.label ?? index}
+              id={`${baseId}-tab-${index}`}
+              aria-controls={`${baseId}-tabpanel-${index}`}
+              label={tab.label}
+              href={tab.href}
+            />
+          ))}
         </Tabs>
       </Box>
       {tabs?.map((tab, index) => (
-        <TabPanel key={tab.label} value={activeTab ?? value} index={index}>
+        <TabPanel key={tab.href ?? tab.label ?? index} baseId={baseId} value={activeTab} index={index}>
           {childrenArray[index]}
         </TabPanel>
       ))}

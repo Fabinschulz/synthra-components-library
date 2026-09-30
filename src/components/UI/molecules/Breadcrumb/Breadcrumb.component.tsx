@@ -1,28 +1,33 @@
+'use client';
 import type { BreadcrumbProps } from './Breadcrumb.interface';
 import type { FunctionComponent } from 'react';
-import { Breadcrumbs as MuiBreadcrumbs } from '@mui/material';
+import { Breadcrumbs as MuiBreadcrumbs, Typography } from '@mui/material';
 import { StyledLink } from './Breadcrumb.styled';
 import { BreadcrumbSkeleton } from './Breadcrumb.skeleton';
-import { activeTheme } from '@/utils';
 
-const theme = activeTheme();
 const Breadcrumb: FunctionComponent<BreadcrumbProps> = ({
-  separator,
   links,
-  isLoading = false
+  skeleton = false,
+  ...props
 }) => {
   return (
-    <BreadcrumbSkeleton isLoading={isLoading}>
-      <MuiBreadcrumbs aria-label="breadcrumb" separator={separator}>
-        {links?.map((link, key) => (
-          <StyledLink
-            key={key}
-            href={link.url}
-            color={links.length - 1 === key ? theme.palette.primary.main : 'inherit'}
-          >
-            {link.title}
-          </StyledLink>
-        ))}
+    <BreadcrumbSkeleton skeleton={skeleton}>
+      <MuiBreadcrumbs aria-label="breadcrumb" {...props}>
+        {links?.map((link, index) =>
+          index === links.length - 1 ? (
+            <Typography
+              key={`${link.url}-${index}`}
+              aria-current="page"
+              sx={{ fontSize: 'inherit', color: 'primary.main' }}
+            >
+              {link.title}
+            </Typography>
+          ) : (
+            <StyledLink key={`${link.url}-${index}`} href={link.url} color="inherit">
+              {link.title}
+            </StyledLink>
+          )
+        )}
       </MuiBreadcrumbs>
     </BreadcrumbSkeleton>
   );

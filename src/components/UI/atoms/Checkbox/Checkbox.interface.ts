@@ -16,10 +16,9 @@ export interface CheckboxProps extends MuiCheckbox {
   formControlSX?: SxProps<Theme> | undefined;
 
   /**
-   *  Determina se o skeleton do checkbox deve ser exibido.
+   * Determina se o skeleton do checkbox deve ser exibido.
    * @default false
-   * @type boolean
-   * @example <Button isLoading />
+   * @example <Checkbox skeleton />
    */
-  isLoading?: boolean;
+  skeleton?: boolean;
 }

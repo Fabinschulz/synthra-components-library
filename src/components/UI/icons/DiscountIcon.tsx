@@ -3,13 +3,11 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const DiscountIcon: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#373737' } = props;
-
   return (
     <SvgIcon viewBox="0 0 24 24" width="24" height="24" {...props}>
       <path
         d="M1 8H3.2L10.2426 11.2012C11.2231 11.6469 11.6746 12.7889 11.2639 13.7846L11.1341 14.0992C10.7046 15.1404 9.50052 15.6218 8.47166 15.1636L6.5 14.2857"
-        stroke={htmlColor}
+        stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -17,9 +15,9 @@ export const DiscountIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
       <path
         d="M1.46483 17.6146C0.975842 17.3579 0.371323 17.5462 0.114602 18.0352C-0.142119 18.5242 0.0461743 19.1287 0.535166 19.3854L1.46483 17.6146ZM11.4648 14.1146L10.5794 13.6498L9.64977 15.4206L10.5352 15.8854L11.4648 14.1146ZM16.9237 18.3333H19V16.3333H16.9237V18.3333ZM20 19.3333V20H22V19.3333H20ZM19 21H9.63902V23H19V21ZM6.38518 20.1978L1.46483 17.6146L0.535166 19.3854L5.45552 21.9686L6.38518 20.1978ZM14.5995 15.7603L11.4648 14.1146L10.5352 15.8854L13.6699 17.5311L14.5995 15.7603ZM9.63902 21C8.50545 21 7.38884 20.7247 6.38518 20.1978L5.45552 21.9686C6.74593 22.6461 8.18157 23 9.63902 23V21ZM20 20C20 20.5523 19.5523 21 19 21V23C20.6569 23 22 21.6569 22 20H20ZM19 18.3333C19.5523 18.3333 20 18.781 20 19.3333H22C22 17.6765 20.6569 16.3333 19 16.3333V18.3333ZM16.9237 16.3333C16.114 16.3333 15.3164 16.1367 14.5995 15.7603L13.6699 17.5311C14.6735 18.058 15.7901 18.3333 16.9237 18.3333V16.3333Z"
-        fill={htmlColor}
+        fill="currentColor"
       />
-      <circle cx="18.5" cy="7.5" r="4.5" stroke={htmlColor} fill="none" strokeWidth="2" />
+      <circle cx="18.5" cy="7.5" r="4.5" stroke="currentColor" fill="none" strokeWidth="2" />
     </SvgIcon>
   );
 };

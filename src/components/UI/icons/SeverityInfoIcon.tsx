@@ -3,8 +3,6 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const SeverityInfoIcon: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#373737' } = props;
-
   return (
     <SvgIcon viewBox="0 0 56 56" width="26" height="26" {...props}>
       <svg

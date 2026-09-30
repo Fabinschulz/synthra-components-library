@@ -3,8 +3,6 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const MenuLineCenterChangedIcon: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#373737' } = props;
-
   return (
     <SvgIcon viewBox="0 0 24 25" width="24" height="25" fill="none" {...props}>
       <svg
@@ -16,7 +14,7 @@ export const MenuLineCenterChangedIcon: FunctionComponent<SvgIconProps> = (props
       >
         <path
           d="M16 10V14M12 7L12 17M8 10L8 14"
-          stroke={htmlColor}
+          stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
         />

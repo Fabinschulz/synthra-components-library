@@ -1,10 +1,10 @@
-import React from 'react';
+'use client';
 import { Avatar as AvatarMui, Box } from '@mui/material';
-import { AvatarProps } from './Avatar.interface';
+import React from 'react';
 import { Typography } from '../Typography';
+import { AvatarProps } from './Avatar.interface';
 import AvatarSkeleton from './Avatar.skeleton';
 
-// Função para gerar uma cor baseada em uma string
 function stringToColor(string: string) {
   let hash = 0;
   let i;
@@ -22,21 +22,13 @@ function stringToColor(string: string) {
   return color;
 }
 
-// Função para gerar as props do Avatar quando não houver imagem
-function stringAvatar(name: string) {
-  const initials = name
+function getInitials(name: string) {
+  return name
     .split(' ')
     .map((word) => word[0])
     .slice(0, 2)
     .join('')
     .toUpperCase();
-
-  return {
-    sx: {
-      bgcolor: stringToColor(name)
-    },
-    children: initials
-  };
 }
 
 const Avatar: React.FC<AvatarProps> = ({
@@ -46,17 +38,31 @@ const Avatar: React.FC<AvatarProps> = ({
   altText,
   showText,
   sx = {},
-  isLoading = false
+  skeleton = false
 }) => {
+  const hasImage = !!imageSrc;
+
+  const initialsA11y = showText
+    ? { 'aria-hidden': true }
+    : { role: 'img', 'aria-label': altText || title };
+
   return (
-    <AvatarSkeleton isLoading={isLoading} showText={showText}>
+    <AvatarSkeleton skeleton={skeleton} showText={showText}>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <AvatarMui
           src={imageSrc}
-          alt={altText}
-          {...(!imageSrc && title ? stringAvatar(title) : {})}
-          sx={{ ...sx, ...(imageSrc ? {} : stringAvatar(title).sx) }}
-        />
+          alt={altText || title}
+          {...(hasImage ? {} : initialsA11y)}
+          sx={[
+            hasImage ? {} : (theme) => ({
+              bgcolor: stringToColor(title),
+              color: theme.palette.getContrastText(stringToColor(title))
+            }),
+            ...(Array.isArray(sx) ? sx : [sx])
+          ]}
+        >
+          {!hasImage && title ? getInitials(title) : undefined}
+        </AvatarMui>
         {showText && (
           <Box sx={{ ml: 2 }}>
             <Typography variant="subtitle2">{title}</Typography>

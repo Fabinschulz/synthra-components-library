@@ -1,10 +1,11 @@
+'use client';
 import { Box } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { alpha, styled } from '@mui/material/styles';
 import { DataGrid } from '@mui/x-data-grid';
 
 export const MainBox = styled(Box)(({ theme }) => ({
   width: '100%',
-  background: theme.palette?.common?.white,
+  background: theme.palette.background.paper,
   borderRadius: '8px',
   position: 'relative'
 }));
@@ -15,10 +16,10 @@ export const StyledDataGrid = styled(DataGrid)(({ theme }) => {
 
   return {
     '& .MuiDataGrid-row': {
-      backgroundColor: theme.palette?.common?.white
+      backgroundColor: theme.palette.background.paper
     },
     '& .MuiDataGrid-row .Mui-selected, & .MuiDataGrid-row:nth-child(2n).Mui-selected': {
-      backgroundColor: 'rgba(208, 77, 39, 0.08)'
+      backgroundColor: theme.palette.action.selected
     },
     '& .MuiDataGrid-cell': {
       fontSize,
@@ -27,7 +28,7 @@ export const StyledDataGrid = styled(DataGrid)(({ theme }) => {
     '& .MuiDataGrid-columnHeader, .MuiDataGrid-cell': {
       borderRight: '1px solid',
       ...theme.applyStyles('light', {
-        borderRightColor: '#f0f0f0'
+        borderRightColor: alpha(theme.palette.neutral.light, 0.35)
       })
     },
     '& .MuiDataGrid-columnHeaderTitle': {
@@ -44,11 +45,11 @@ export const StyledDataGrid = styled(DataGrid)(({ theme }) => {
       {
         fontSize: '22px'
       },
-    '& .MuiTablePagination-selectLabel,&  .css-aglid1-MuiTablePagination-displayedRows': {
+    '& .MuiTablePagination-selectLabel,&  .MuiTablePagination-displayedRows': {
       fontSize,
       color: theme.palette?.neutral?.medium
     },
-    '& .css-aglid1-MuiTablePagination-displayedRows': {
+    '& .MuiTablePagination-displayedRows': {
       marginRight: 23
     },
     '& .MuiTablePagination-select': {
@@ -68,20 +69,8 @@ export const StyledDataGrid = styled(DataGrid)(({ theme }) => {
       paddingRight: '2.5rem'
     },
     '& .Mui-disabled': {
-      color: '#BDBDBD',
+      color: theme.palette.text.disabled,
       backgroundColor: 'transparent'
     }
   };
-});
-
-export const ArrowButtonLeftSx = {
-  position: 'absolute',
-  bottom: 2.6,
-  right: 4 * 25
-};
-
-export const ArrowButtonRightSx = {
-  position: 'absolute',
-  bottom: -3.5,
-  left: 'calc(100% - 55px)'
-};
+}) as unknown as typeof DataGrid;

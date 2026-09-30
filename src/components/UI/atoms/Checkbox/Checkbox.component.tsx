@@ -6,10 +6,10 @@ import { StyledCheckbox, StyledFormControlLabel } from './Checkbox.styled';
 import CheckboxSkeleton from './Checkbox.skeleton';
 
 const Checkbox: FunctionComponent<CheckboxProps> = (props) => {
-  const { label, name, formControlSX, isLoading, ...rest } = props;
+  const { label, name, formControlSX, skeleton = false, ...rest } = props;
 
   return (
-    <CheckboxSkeleton isLoading={!!isLoading}>
+    <CheckboxSkeleton skeleton={skeleton}>
       <FormGroup>
         <StyledFormControlLabel
           sx={{ ...formControlSX }}

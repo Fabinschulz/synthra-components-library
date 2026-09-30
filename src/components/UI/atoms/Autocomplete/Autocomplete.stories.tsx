@@ -9,12 +9,6 @@ const meta: Meta<StoryProps> = {
   title: 'UI/atoms/Autocomplete',
   component: Autocomplete,
   tags: ['autodocs'],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: ''
-    }
-  },
   argTypes: {
     label: {
       control: 'text',
@@ -66,7 +60,7 @@ const meta: Meta<StoryProps> = {
     required: {
       description: 'Determina se o autocomplete é obrigatório'
     },
-    isLoading: {
+    skeleton: {
       description: 'Determina se o skeleton do autocomplete deve ser exibido',
       control: 'boolean',
       defaultValue: false

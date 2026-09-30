@@ -1,20 +1,18 @@
 'use client';
 
-import type { FunctionComponent } from 'react';
 import type { DataTableProps } from './DataTable.interface';
+import type { GridRowIdGetter, GridValidRowModel } from '@mui/x-data-grid';
 import { GridFilterModel, GridPaginationModel, GridRowSelectionModel } from '@mui/x-data-grid';
 import { Stack } from '@mui/material';
 import { useState } from 'react';
-import { ArrowButtonLeftSx, ArrowButtonRightSx, MainBox, StyledDataGrid } from './DataTable.styled';
+import { MainBox, StyledDataGrid } from './DataTable.styled';
 import { Typography } from '../../atoms';
 import { DataTableSkeleton } from './DataTable.skeleton';
-import { JumpToEndIcon, JumpToStartIcon } from '../../icons';
-import JumpButton from './JumpButton';
 
-const NoOverlayMsg = (message: string) => {
+const OverlayMessage = (message: string) => {
   return (
     <Stack sx={{ height: 'auto', alignItems: 'center', justifyContent: 'center' }}>
-      <Typography variant="body2" color="black" sx={{ lineHeight: '29px' }}>
+      <Typography variant="body2" sx={{ color: 'neutral.darkest', lineHeight: '29px' }}>
         {message}
       </Typography>
     </Stack>
@@ -23,12 +21,19 @@ const NoOverlayMsg = (message: string) => {
 
 const emptyRowSelectionModel: GridRowSelectionModel = { type: 'include', ids: new Set() };
 
-const iconSx = {
-  width: 33,
-  height: 33
+const generatedRowIds = new WeakMap<object, string>();
+let generatedRowIdCounter = 0;
+const defaultGetRowId: GridRowIdGetter<any> = (row) => {
+  if (row?.id !== undefined && row?.id !== null) return row.id;
+  let id = generatedRowIds.get(row);
+  if (!id) {
+    id = `synthra-row-${++generatedRowIdCounter}`;
+    generatedRowIds.set(row, id);
+  }
+  return id;
 };
 
-const DataTable: FunctionComponent<DataTableProps> = ({
+const DataTable = <R extends GridValidRowModel = any>({
   NoRowsOverlayNew = 'Nenhum resultado encontrado',
   NoResultsOverlayNew = 'Nenhum resultado encontrado',
   rows,
@@ -44,17 +49,18 @@ const DataTable: FunctionComponent<DataTableProps> = ({
   loading = false,
   checkboxSelection = false,
   rowSelectionModel = emptyRowSelectionModel,
-  isRowSelectable = () => false,
+  isRowSelectable,
   isCellEditable = () => false,
   paginationMode = 'client',
-  getRowId = (row) => row?.id ?? Math.random(),
-  isLoading = false,
+  getRowId = defaultGetRowId,
+  skeleton = false,
   enableJumpToPage = false,
+  labelRowsPerPage,
   ...props
-}: DataTableProps) => {
+}: DataTableProps<R>) => {
   const [filterModel, setFilterModel] = useState<GridFilterModel | undefined>(undefined);
 
-  const handleFilterModelChange = (model: GridFilterModel, _: any) => {
+  const handleFilterModelChange = (model: GridFilterModel) => {
     setFilterModel(model);
   };
 
@@ -66,18 +72,10 @@ const DataTable: FunctionComponent<DataTableProps> = ({
   };
 
   const pageSizeOptions = [5, 10, 15, 20];
-
-  const handleJumpToStart = () => {
-    setPage(0);
-  };
-
-  const handleJumpToEnd = () => {
-    const lastPage = Math.ceil(rowCount / rowsPerPage) - 1;
-    setPage(lastPage);
-  };
+  const hasRows = rows?.length > 0;
 
   return (
-    <DataTableSkeleton isLoading={isLoading} rowsPerPage={rowsPerPage}>
+    <DataTableSkeleton skeleton={skeleton} rowsPerPage={rowsPerPage}>
       <MainBox sx={{ height: Math.max(rowsPerPage * 35 + 190, 350) }}>
         <StyledDataGrid
           rows={rows}
@@ -92,59 +90,40 @@ const DataTable: FunctionComponent<DataTableProps> = ({
           disableColumnMenu
           isCellEditable={isCellEditable}
           isRowSelectable={isRowSelectable}
-          rowSelection={false}
+          rowSelection={checkboxSelection || !!onSelectionModelChange}
           getRowId={getRowId}
           disableColumnFilter
           disableRowSelectionOnClick
           disableColumnSelector
-          hideFooter={hideFooterSelectedRowCount}
           checkboxSelection={checkboxSelection}
           onRowSelectionModelChange={onSelectionModelChange}
           rowSelectionModel={rowSelectionModel}
           keepNonExistentRowsSelected={keepNonExistentRowsSelected}
-          hideFooterPagination={rows?.length === 0}
-          hideFooterSelectedRowCount={rows?.length === 0}
+          hideFooterPagination={!hasRows}
+          hideFooterSelectedRowCount={hideFooterSelectedRowCount || !hasRows}
           filterModel={filterModel}
           onFilterModelChange={handleFilterModelChange}
-          loading={isLoading}
+          loading={loading}
           initialState={{
             pagination: {
               paginationModel: { page: page, pageSize: rowsPerPage }
             }
           }}
+          localeText={labelRowsPerPage ? { paginationRowsPerPage: labelRowsPerPage } : undefined}
           slotProps={{
-            pagination: {
-              labelRowsPerPage: 'Linha por páginas'
+            basePagination: {
+              material: {
+                showFirstButton: enableJumpToPage,
+                showLastButton: enableJumpToPage
+              }
             }
           }}
           slots={{
-            noRowsOverlay: () => NoOverlayMsg(NoRowsOverlayNew)
+            noRowsOverlay: () => OverlayMessage(NoRowsOverlayNew),
+            noResultsOverlay: () => OverlayMessage(NoResultsOverlayNew)
           }}
           {...props}
         />
-        {rows?.length > 0 && (
-          <>
-            <JumpButton
-              sx={ArrowButtonLeftSx}
-              icon={<JumpToStartIcon sx={iconSx} htmlColor={page === 0 ? '#BDBDBD' : 'black'} />}
-              onClick={handleJumpToStart}
-              disabled={page === 0}
-              tooltip="Primeira página"
-            />
-            <JumpButton
-              sx={ArrowButtonRightSx}
-              icon={
-                <JumpToEndIcon
-                  sx={iconSx}
-                  htmlColor={page === Math.ceil(rowCount / rowsPerPage) - 1 ? '#BDBDBD' : 'black'}
-                />
-              }
-              onClick={handleJumpToEnd}
-              disabled={page === Math.ceil(rowCount / rowsPerPage) - 1}
-              tooltip="Última página"
-            />
-          </>
-        )}
       </MainBox>
     </DataTableSkeleton>
   );

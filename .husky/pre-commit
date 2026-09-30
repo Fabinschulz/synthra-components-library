@@ -4,19 +4,12 @@ echo " Validando commit..."
 
 pending=$(find .changeset -maxdepth 1 -name '*.md' ! -name 'README.md')
 
-if [ -n "$pending" ]; then
-    echo "✅ Changeset detectado."
-    echo " Executando comando 'version-packages'..."
-    pnpm version-packages
-elif [ -z "$(git diff HEAD --name-only -- CHANGELOG.md)" ]; then
+if [ -z "$pending" ]; then
     echo "🚨 Error: Você precisa executar o comando 'changeset' antes de fazer commit."
     exit 1
-else
-    echo "✅ Versão já aplicada pelo 'version-packages'."
 fi
 
-git add package.json CHANGELOG.md .changeset
+pnpm lint
+pnpm typecheck
 
 echo "✅ Validação concluída com sucesso!"
-# Pre-commit
-pnpm release

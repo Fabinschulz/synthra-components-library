@@ -1,15 +1,11 @@
-import { Components } from '@mui/material';
-import { Palette } from '@mui/material/styles';
-import { palette as paletteOptions } from '../palette/light';
+import type { Components, Theme } from '@mui/material/styles';
 
-const palette = paletteOptions! as Palette;
-
-export const MuiDivider: Components['MuiDivider'] = {
+export const MuiDivider: Components<Theme>['MuiDivider'] = {
   styleOverrides: {
-    root: {
-      borderColor: palette.primary.main,
+    root: ({ theme }) => ({
+      borderColor: theme.palette.primary.main,
       borderBottomWidth: '2px'
-    },
+    }),
     vertical: {
       borderBottomWidth: '0',
       borderRightWidth: '2px'

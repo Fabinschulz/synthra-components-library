@@ -1,13 +1,14 @@
+'use client';
 import React from 'react';
 import { Box, Skeleton } from '@mui/material';
 
 type CheckboxSkeletonProps = {
-  isLoading: boolean;
+  skeleton: boolean;
   children: React.ReactNode;
 };
 
-const CheckboxSkeleton: React.FC<CheckboxSkeletonProps> = ({ isLoading, children }) => {
-  if (!isLoading) return <>{children}</>;
+const CheckboxSkeleton: React.FC<CheckboxSkeletonProps> = ({ skeleton, children }) => {
+  if (!skeleton) return <>{children}</>;
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>

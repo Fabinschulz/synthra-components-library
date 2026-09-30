@@ -10,12 +10,6 @@ const meta: Meta<StoryProps> = {
   title: 'UI/atoms/Typography',
   component: Typography,
   tags: ['autodocs'],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: ''
-    }
-  },
   argTypes: {
     variant: {
       options: [

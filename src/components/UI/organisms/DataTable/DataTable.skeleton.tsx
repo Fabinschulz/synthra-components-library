@@ -1,13 +1,14 @@
+'use client';
 import { Stack, Skeleton } from '@mui/material';
 
 type ListSkeletonProps = {
-  isLoading: boolean;
+  skeleton: boolean;
   rowsPerPage: number;
   children: React.ReactNode;
 };
 
 export const DataTableSkeleton: React.FC<ListSkeletonProps> = ({
-  isLoading,
+  skeleton,
   children,
   rowsPerPage
 }) => {
@@ -25,7 +26,7 @@ export const DataTableSkeleton: React.FC<ListSkeletonProps> = ({
 
   return (
     <>
-      {isLoading ? (
+      {skeleton ? (
         <Stack>
           <Stack
             sx={{

@@ -1,34 +1,30 @@
-import { Components } from '@mui/material';
-import { TypographyVariants as Typography } from '@mui/material/styles';
-import { typography as typographyOptions } from '../typography';
+import type { Components, Theme } from '@mui/material/styles';
 
-const typography = typographyOptions! as Typography;
-
-export const MuiButton: Components['MuiButton'] = {
+export const MuiButton: Components<Theme>['MuiButton'] = {
   styleOverrides: {
     root: {
       textTransform: 'none'
     },
-    sizeSmall: {
+    sizeSmall: ({ theme }) => ({
       padding: '8px',
-      ...typography.caption,
+      ...theme.typography.caption,
       '& svg': {
         fontSize: '14px!important'
       }
-    },
-    sizeMedium: {
+    }),
+    sizeMedium: ({ theme }) => ({
       padding: '8px 16px',
-      ...typography?.subtitle2,
+      ...theme.typography.subtitle2,
       '& svg': {
         fontSize: '16px!important'
       }
-    },
-    sizeLarge: {
-      ...typography?.subtitle1,
+    }),
+    sizeLarge: ({ theme }) => ({
+      ...theme.typography.subtitle1,
       padding: '12px 16px',
       '& svg': {
         fontSize: '18px!important'
       }
-    }
+    })
   }
 };

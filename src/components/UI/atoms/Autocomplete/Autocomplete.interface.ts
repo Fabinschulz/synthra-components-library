@@ -16,6 +16,11 @@ export type AutocompleteBaseProps = {
   error?: boolean;
 
   /**
+   * Texto de apoio exibido abaixo do campo (ex.: mensagem de erro), associado ao input.
+   */
+  helperText?: React.ReactNode;
+
+  /**
    * Ativa o indicador de carregamento no campo.
    * @default false
    * @type boolean
@@ -27,6 +32,12 @@ export type AutocompleteBaseProps = {
    * @type 'link' | 'submit' | undefined
    */
   endIconType?: 'link' | 'submit' | undefined;
+
+  /**
+   * Nome acessível do botão exibido quando `endIconType` é definido.
+   * @default 'Pesquisar'
+   */
+  endIconLabel?: string;
 
   /**
    * Link associado ao ícone no final do campo (apenas se `endIconType` for 'link').
@@ -55,12 +66,11 @@ export type AutocompleteBaseProps = {
   required?: boolean;
 
   /**
-   *  Determina se o skeleton do autocomplete deve ser exibido.
+   * Determina se o skeleton do autocomplete deve ser exibido.
    * @default false
-   * @type {boolean}
-   * @example <Autocomplete isLoading />
+   * @example <Autocomplete skeleton />
    */
-  isLoading?: boolean;
+  skeleton?: boolean;
 } & AutocompletePropsMUI<
   unknown,
   boolean | undefined,

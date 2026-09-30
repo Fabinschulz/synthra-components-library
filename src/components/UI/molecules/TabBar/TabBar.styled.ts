@@ -1,3 +1,4 @@
+'use client';
 import { styled } from '@mui/material/styles';
 import { Tabs as MuiTabs } from '@mui/material';
 

@@ -13,7 +13,7 @@ export const autocompletMock: AutocompleteProps = {
   label: 'Autocomplete',
   value: { label: 'Opção 1', value: '1' },
   onChange: fn(),
-  isLoading: false
+  skeleton: false
 };
 
 export const autocompletWithSkeleton: AutocompleteProps = {
@@ -27,5 +27,5 @@ export const autocompletWithSkeleton: AutocompleteProps = {
   label: 'Autocomplete',
   value: { label: 'Opção 1', value: '1' },
   onChange: fn(),
-  isLoading: true
+  skeleton: true
 };

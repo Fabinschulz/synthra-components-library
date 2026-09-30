@@ -3,8 +3,6 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const FilledTime: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#373737' } = props;
-
   return (
     <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <circle
@@ -12,7 +10,7 @@ export const FilledTime: FunctionComponent<SvgIconProps> = (props) => {
         cy="12"
         r="11"
         transform="rotate(-90 12 12)"
-        fill={htmlColor}
+        fill="currentColor"
         stroke="white"
         strokeWidth="2"
       />

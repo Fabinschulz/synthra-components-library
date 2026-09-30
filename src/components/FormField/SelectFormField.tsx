@@ -1,19 +1,18 @@
 'use client';
-import { activeTheme, getObjectPropertyValue } from '@/utils';
-import { Box, SelectChangeEvent, InputAdornment, IconButton } from '@mui/material';
-import { FunctionComponent } from 'react';
-import { SelectField, SelectFieldProps } from '../UI';
 import { useFormContext } from '@/contexts/formContext';
-import React from 'react';
-import { Typography, CancelIcon, SearchIcon } from '../UI';
+import { getObjectPropertyValue } from '@/utils';
+import { Box, FormHelperText, IconButton, InputAdornment, SelectChangeEvent } from '@mui/material';
+import { FunctionComponent, useId } from 'react';
+import { CancelIcon, SearchIcon, SelectField, SelectFieldProps } from '../UI';
 
 export interface SelectOption {
   label: string;
   value: string | number | undefined | boolean | null;
 }
 
-export type SelectFormFieldProps = SelectFieldProps & {
+export type SelectFormFieldProps = Omit<SelectFieldProps, 'options'> & {
   name: string;
+
   /**
    * Determina os items do select
    */
@@ -32,109 +31,106 @@ export type SelectFormFieldProps = SelectFieldProps & {
   /**
    * Habilita um botão de pesquisa no final do campo
    */
-
   showEndAdornment?: boolean;
 
   /**
    * Habilita um botão para limpar o valor do campo
    */
   showButtonClearValue?: boolean;
+
+  /**
+   * Nome acessível do botão de pesquisa
+   * @default 'Pesquisar'
+   */
+  searchLabel?: string;
+
+  /**
+   * Nome acessível do botão de limpar
+   * @default 'Limpar'
+   */
+  clearLabel?: string;
 };
 
-const theme = activeTheme();
 const SelectFormField: FunctionComponent<SelectFormFieldProps> = ({
-  options,
+  options = [],
   required,
   label,
+  showEndAdornment,
+  showButtonClearValue,
+  searchLabel = 'Pesquisar',
+  clearLabel = 'Limpar',
   ...props
 }) => {
   const name = props.name;
-  const labels: string[] | undefined = options?.length
-    ? options.map((i) => i?.label)
-    : ['Nenhuma opção encontrada'];
+  const errorId = useId();
+  const { validationErrors, setValue, watch, readOnly } = useFormContext();
 
-  let value = undefined;
-  let { validationErrors, setValue, watch, readOnly } = useFormContext();
+  const indexedOptions = options.map((option, index) => ({ label: option.label, value: index }));
 
-  const errorsMessage = validationErrors && getObjectPropertyValue(name, validationErrors)?.message;
+  const currentValue = watch ? watch(name) : undefined;
+  const selectedIndexes = props.multiple
+    ? options.flatMap((option, index) => (currentValue?.includes(option.value) ? [index] : []))
+    : options.findIndex((option) => option.value === currentValue);
 
-  if (watch) {
-    const currentValue = watch(name);
-    if (props.multiple) {
-      const selectedItems = options?.filter((item) => currentValue?.includes(item?.value));
-      const selectedLabels = selectedItems?.map((item) => item.label);
-      value = selectedLabels ?? undefined;
-    } else {
-      const foundItem = options?.find((item) => item.value === currentValue);
-      value = foundItem?.label ?? undefined;
-    }
-  }
+  const errorsMessage: string | undefined =
+    validationErrors && getObjectPropertyValue(name, validationErrors)?.message;
 
   const onChange = (event: SelectChangeEvent<unknown>) => {
-    if (props.multiple && options?.length) {
-      const selectedOptions = event.target?.value as string[];
-      const selectedValues: any[] = [];
-      const selectedLabels: any[] = [];
-
-      selectedOptions.forEach((val) => {
-        const index = options.findIndex((i) => i?.label === val);
-        if (index !== -1) {
-          selectedValues.push(options[index]?.value);
-          selectedLabels.push(options[index]?.label);
-        }
-      });
-      setValue(name, selectedValues, { shouldDirty: true });
-    } else if (options?.length) {
-      const value = event.target?.value as string;
-      const index = options.findIndex((i) => i?.label === value);
-      setValue(name, options[index]?.value, { shouldDirty: true });
+    const selected = event.target?.value;
+    if (props.multiple) {
+      const indexes = (selected as number[]) ?? [];
+      setValue(
+        name,
+        indexes.map((index) => options[index]?.value),
+        { shouldDirty: true }
+      );
+    } else {
+      setValue(name, options[selected as number]?.value, { shouldDirty: true });
     }
   };
 
-  const labelWithRequired = required ? `${label} *` : label;
+  const hasValue = props.multiple
+    ? (selectedIndexes as number[]).length > 0
+    : (selectedIndexes as number) !== -1;
 
   return (
     <Box>
       <SelectField
         id={name}
-        label={labelWithRequired}
-        inputProps={{
-          'aria-label': 'secondary select'
-        }}
+        label={label}
+        required={required}
         endAdornment={
           <>
-            {props.showEndAdornment && (
+            {showEndAdornment && (
               <InputAdornment position="end" sx={{ marginRight: 1.5 }}>
-                <IconButton type="submit">
-                  <SearchIcon style={{ width: 25, height: 25 }} htmlColor="#666666" />
+                <IconButton type="submit" aria-label={searchLabel}>
+                  <SearchIcon sx={{ width: 25, height: 25, color: 'neutral.medium' }} />
                 </IconButton>
               </InputAdornment>
             )}
-            {props.showButtonClearValue && (
-              <>
-                {!!value && !readOnly && (
-                  <InputAdornment position="end" sx={{ marginRight: 1.5 }}>
-                    <IconButton onClick={() => setValue(name, null)}>
-                      <CancelIcon style={{ width: 15, height: 15 }} htmlColor="#666666" />
-                    </IconButton>
-                  </InputAdornment>
-                )}
-              </>
+            {showButtonClearValue && hasValue && !readOnly && (
+              <InputAdornment position="end" sx={{ marginRight: 1.5 }}>
+                <IconButton onClick={() => setValue(name, null)} aria-label={clearLabel}>
+                  <CancelIcon sx={{ width: 15, height: 15, color: 'neutral.medium' }} />
+                </IconButton>
+              </InputAdornment>
             )}
           </>
         }
-        key={`${name}${value}key`}
         error={!!errorsMessage}
         onChange={onChange}
-        items={labels}
-        value={value === undefined ? '' : value}
+        options={indexedOptions}
+        value={props.multiple ? selectedIndexes : hasValue ? selectedIndexes : ''}
         disabled={!!readOnly}
+        SelectDisplayProps={{
+          'aria-describedby': errorsMessage ? errorId : undefined
+        }}
         {...props}
       />
       {!!errorsMessage && (
-        <Typography sx={{ mt: 0.5 }} variant="body1" color={theme.palette?.error?.dark}>
+        <FormHelperText id={errorId} error sx={{ mt: 0.5, typography: 'body1' }}>
           {errorsMessage}
-        </Typography>
+        </FormHelperText>
       )}
     </Box>
   );

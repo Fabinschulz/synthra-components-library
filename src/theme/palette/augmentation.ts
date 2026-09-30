@@ -1,8 +1,4 @@
-import type {} from '@mui/material/styles';
-import type {} from '@mui/material/Typography';
-import type {} from '@mui/x-data-grid/themeAugmentation';
-import type {} from '@mui/x-data-grid-pro/themeAugmentation';
-import type {} from '@mui/lab/themeAugmentation';
+import type { } from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
   interface Palette {
@@ -61,3 +57,5 @@ declare module '@mui/material/styles' {
     '10': string;
   }
 }
+
+export type SynthraPalette = import('@mui/material/styles').Palette;

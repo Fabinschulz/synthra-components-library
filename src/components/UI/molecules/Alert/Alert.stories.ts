@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
 import { ComponentProps } from 'react';
+import { fn } from 'storybook/test';
 import Alert from './Alert.component';
 
 type StoryProps = ComponentProps<typeof Alert>;
@@ -8,12 +9,6 @@ const meta: Meta<StoryProps> = {
   title: 'UI/molecules/Alert',
   component: Alert,
   tags: ['autodocs'],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: ''
-    }
-  },
   argTypes: {
     onClose: {
       description: 'Função executada ao fechar o alerta'
@@ -24,7 +19,7 @@ const meta: Meta<StoryProps> = {
       control: { type: 'select' },
       description: 'Variações de estilo do alert'
     },
-    type: {
+    severity: {
       options: ['error', 'info', 'success', 'warning'],
       default: 'info',
       control: { type: 'select' },
@@ -43,8 +38,7 @@ type Story = StoryObj<StoryProps>;
 export const Template: Story = {
   args: {
     title: 'Alerta',
-    onClose: () => console.log('Fechar alerta'),
-    description: 'Alerta de exemplo',
-    dataTestId: 'alert'
+    onClose: fn(),
+    description: 'Alerta de exemplo'
   }
 };

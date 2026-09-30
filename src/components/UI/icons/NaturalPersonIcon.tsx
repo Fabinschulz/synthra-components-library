@@ -3,7 +3,7 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const NaturalPersonIcon: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#373737', fill = 'none' } = props;
+  const { fill = 'none' } = props;
 
   return (
     <SvgIcon {...props}>
@@ -13,7 +13,7 @@ export const NaturalPersonIcon: FunctionComponent<SvgIconProps> = (props) => {
         cy="17.5"
         rx="7"
         ry="3.5"
-        stroke={htmlColor}
+        stroke="currentColor"
         stroke-width="1.5"
         stroke-linejoin="round"
       />
@@ -21,7 +21,7 @@ export const NaturalPersonIcon: FunctionComponent<SvgIconProps> = (props) => {
         cx="12"
         cy="7"
         r="4"
-        stroke={htmlColor}
+        stroke="currentColor"
         stroke-width="1.5"
         stroke-linejoin="round"
         fill={fill}

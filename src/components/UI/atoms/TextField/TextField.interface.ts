@@ -1,26 +1,13 @@
-import { TextFieldProps } from '@mui/material';
+import { TextFieldProps as MuiTextFieldProps } from '@mui/material';
 
 /**
- * Interface que estende as propriedades de `TextFieldProps`,
- *
- * @interface TextFieldProps
- * @extends {TextFieldProps}
- * @property {string} dataTestId - Atributo de teste automatizado.
+ * Propriedades do `TextField`: todas as do `TextField` do MUI, mais o skeleton.
  */
-export type ITextFieldProps = TextFieldProps & {
-  /**
-   * Atributo de teste automatizado.
-   * @default ''
-   * @type {string}
-   * @example <TextField dataTestId="input" />
-   */
-  dataTestId?: string;
-
+export type TextFieldProps = MuiTextFieldProps & {
   /**
    * Determina se o skeleton do TextField deve ser exibido.
    * @default false
-   * @type {boolean}
-   * @example <TextField isLoading />
+   * @example <TextField skeleton />
    */
-  isLoading?: boolean;
+  skeleton?: boolean;
 };

@@ -1,13 +1,14 @@
+'use client';
 import React from 'react';
 import { Grid, Skeleton } from '@mui/material';
 
 type BreadcrumbSkeletonProps = {
-  isLoading: boolean;
+  skeleton: boolean;
   children: React.ReactNode;
 };
 
-export const BreadcrumbSkeleton: React.FC<BreadcrumbSkeletonProps> = ({ isLoading, children }) => {
-  if (!isLoading) return <>{children}</>;
+export const BreadcrumbSkeleton: React.FC<BreadcrumbSkeletonProps> = ({ skeleton, children }) => {
+  if (!skeleton) return <>{children}</>;
 
   const borderSx = {
     borderRadius: '4px'

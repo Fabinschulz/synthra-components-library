@@ -7,14 +7,15 @@ export interface AvatarProps {
    * @type {string}
    */
   imageSrc?: string;
+
   /**
    * Título do avatar
    * @default ''
    * @type {string}
    * @example 'John Doe'
    */
-
   title: string;
+
   /**
    * Subtítulo do avatar
    * @default ''
@@ -49,9 +50,8 @@ export interface AvatarProps {
 
   /**
    * Determina se o skeleton do avatar deve ser exibido.
-   * @default true
-   * @type {boolean}
-   * @example <Avatar isLoading />
+   * @default false
+   * @example <Avatar skeleton />
    */
-  isLoading?: boolean;
+  skeleton?: boolean;
 }

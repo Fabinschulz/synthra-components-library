@@ -1,3 +1,4 @@
+'use client';
 import { styled } from '@mui/material/styles';
 import { Tab as MuiTab } from '@mui/material';
 
@@ -38,4 +39,4 @@ export const Tab = styled(MuiTab)(({ theme }) => ({
       borderTopRightRadius: '8px'
     }
   }
-}));
+})) as unknown as typeof MuiTab;

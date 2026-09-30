@@ -1,24 +1,17 @@
 'use client';
 import type { FunctionComponent } from 'react';
 import { StyledTextField } from './TextField.styled';
-import type { ITextFieldProps } from './TextField.interface';
+import type { TextFieldProps } from './TextField.interface';
 import { TextFieldSkeleton } from './TextField.skeleton';
 
-const TextField: FunctionComponent<ITextFieldProps> = ({
-  label,
-  required,
-  dataTestId,
+const TextField: FunctionComponent<TextFieldProps> = ({
   variant = 'outlined',
-  isLoading = false,
+  skeleton = false,
   ...props
 }) => {
-  const labelWithRequired = required ? `${label} *` : label;
-
   return (
-    <TextFieldSkeleton isLoading={isLoading}>
+    <TextFieldSkeleton skeleton={skeleton}>
       <StyledTextField
-        label={labelWithRequired}
-        data-testId={`${dataTestId}-textField`}
         variant={variant}
         {...props}
       />

@@ -3,39 +3,39 @@ import { GridColDef } from '@mui/x-data-grid';
 export const columnsMock: GridColDef[] = [
   {
     field: 'firstName',
-    headerName: '2',
+    headerName: 'Nome',
     width: 150,
     editable: false
   },
   {
     field: 'lastName',
-    headerName: '3',
+    headerName: 'Sobrenome',
     width: 150,
     editable: false
   },
   {
     field: 'age',
-    headerName: '4',
+    headerName: 'Idade',
     type: 'number',
     width: 110,
     editable: false
   },
   {
     field: 'fullName',
-    headerName: '5',
+    headerName: 'Nome completo',
     sortable: false,
     width: 160,
     editable: false
   },
   {
     field: 'email',
-    headerName: '6',
+    headerName: 'E-mail',
     width: 200,
     editable: false
   },
   {
     field: 'phone',
-    headerName: '7',
+    headerName: 'Telefone',
     width: 200,
     editable: false
   }

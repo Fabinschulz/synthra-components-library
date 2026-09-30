@@ -1,18 +1,19 @@
+'use client';
 import React from 'react';
 import { Box, Skeleton } from '@mui/material';
 
 type AvatarSkeletonProps = {
-  isLoading: boolean;
+  skeleton: boolean;
   showText?: boolean;
   children: React.ReactNode;
 };
 
 const AvatarSkeleton: React.FC<AvatarSkeletonProps> = ({
-  isLoading,
+  skeleton,
   showText = true,
   children
 }) => {
-  if (!isLoading) return <>{children}</>;
+  if (!skeleton) return <>{children}</>;
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>

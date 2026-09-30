@@ -9,12 +9,6 @@ const meta: Meta<StoryProps> = {
   title: 'UI/atoms/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: ''
-    }
-  },
   argTypes: {
     label: {
       control: 'text',
@@ -60,6 +54,6 @@ export const Template: Story = {
 export const CheckboxWithSkeleton: Story = {
   args: {
     ...checkboxMock,
-    isLoading: true
+    skeleton: true
   }
 };

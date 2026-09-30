@@ -16,9 +16,9 @@ export const breadcrumbMock: BreadcrumbProps = {
       title: 'Página atual'
     }
   ],
-  isLoading: false
+  skeleton: false
 };
 
 export const breadcrumbWithSkeleton: BreadcrumbProps = {
-  isLoading: true
+  skeleton: true
 };

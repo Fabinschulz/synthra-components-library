@@ -3,8 +3,6 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const CellphoneIcon: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#373737' } = props;
-
   return (
     <SvgIcon viewBox="0 0 1080 1080" width="1080" height="1080" fill="none" {...props}>
       <svg
@@ -20,11 +18,11 @@ export const CellphoneIcon: FunctionComponent<SvgIconProps> = (props) => {
           width="14"
           height="20"
           rx="3"
-          stroke={htmlColor}
+          stroke="currentColor"
           strokeWidth="2"
           strokeLinejoin="round"
         />
-        <path d="M11 19H13" stroke={htmlColor} strokeWidth="2" strokeLinecap="round" />
+        <path d="M11 19H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
       </svg>
     </SvgIcon>
   );

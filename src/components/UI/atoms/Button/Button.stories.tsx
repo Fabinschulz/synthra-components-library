@@ -10,12 +10,6 @@ const meta: Meta<StoryProps> = {
   title: 'UI/atoms/Button',
   component: Button,
   tags: ['autodocs'],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: ''
-    }
-  },
   argTypes: {
     variant: {
       options: ['text', 'contained', 'outlined'],
@@ -68,6 +62,20 @@ export const IconeAEsquerda = { args: iconeAEsquerdaProps };
 export const ButtonWithSkeleton = {
   args: {
     ...argsProps,
-    isLoading: true
+    skeleton: true
+  }
+};
+
+export const Loading = {
+  args: {
+    ...argsProps,
+    loading: true
+  }
+};
+
+export const Disabled = {
+  args: {
+    ...argsProps,
+    disabled: true
   }
 };

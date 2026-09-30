@@ -8,13 +8,7 @@ type StoryProps = ComponentProps<typeof Menu>;
 const meta: Meta<StoryProps> = {
   title: 'UI/organisms/Menu',
   component: Menu,
-  tags: ['autodocs'],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: ''
-    }
-  }
+  tags: ['autodocs']
 };
 
 export default meta;

@@ -1,3 +1,4 @@
+'use client';
 import type { MenuItemProps } from './MenuItem.interface';
 import React from 'react';
 import clsx from 'clsx';

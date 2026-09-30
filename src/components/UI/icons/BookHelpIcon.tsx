@@ -3,8 +3,6 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const BookHelpIcon: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#373737' } = props;
-
   return (
     <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <svg
@@ -16,14 +14,14 @@ export const BookHelpIcon: FunctionComponent<SvgIconProps> = (props) => {
       >
         <path
           d="M17 17C18.1046 17 19 16.1046 19 15C19 13.8954 18.1046 13 17 13C15.8954 13 15 13.8954 15 15M5 8.25464C6.26578 8.45067 7.67778 8.77657 9 9.28788M12 6.05337V21C11.7605 21 11.5209 20.9285 11.3168 20.7855C9.19313 19.2974 6.21271 18.623 3.99433 18.3723C2.89642 18.2483 2 17.3311 2 16.2V4.93518C2 3.80402 2.89642 2.88721 3.99433 3.01127C6.21271 3.26195 9.19313 3.93632 11.3168 5.42445C11.725 5.71045 12.275 5.71045 12.6832 5.42445C14.8069 3.93632 17.7873 3.26195 20.0057 3.01127C21.1036 2.88721 22 3.80402 22 4.93518V14M5 12.2546C5.63949 12.3537 6.3163 12.4859 7 12.6584"
-          stroke={htmlColor}
+          stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
           d="M18 20C18 20.5523 17.5523 21 17 21C16.4477 21 16 20.5523 16 20C16 19.4477 16.4477 19 17 19C17.5523 19 18 19.4477 18 20Z"
-          fill={htmlColor}
+          fill="currentColor"
         />
       </svg>
     </SvgIcon>

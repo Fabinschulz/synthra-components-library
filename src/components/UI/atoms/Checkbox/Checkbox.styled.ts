@@ -1,3 +1,4 @@
+'use client';
 import { alpha, styled } from '@mui/material/styles';
 import { Checkbox, FormControlLabel } from '@mui/material';
 

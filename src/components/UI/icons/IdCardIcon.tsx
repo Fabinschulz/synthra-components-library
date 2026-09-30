@@ -3,8 +3,6 @@ import type { SvgIconProps } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 
 export const IdCardIcon: FunctionComponent<SvgIconProps> = (props) => {
-  const { htmlColor = '#373737' } = props;
-
   return (
     <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <svg
@@ -16,7 +14,7 @@ export const IdCardIcon: FunctionComponent<SvgIconProps> = (props) => {
       >
         <path
           d="M18 17H15M18 14H15M6 21H18C20.2091 21 22 19.2091 22 17V7C22 4.79086 20.2091 3 18 3H6C3.79086 3 2 4.79086 2 7V17C2 19.2091 3.79086 21 6 21ZM8 7H10C11.1046 7 12 7.89543 12 9C12 10.1046 11.1046 11 10 11H8C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7Z"
-          stroke={htmlColor}
+          stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"

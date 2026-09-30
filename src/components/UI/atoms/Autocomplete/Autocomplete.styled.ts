@@ -1,4 +1,5 @@
-import { styled } from '@mui/material/styles';
+'use client';
+import { alpha, styled } from '@mui/material/styles';
 import { Autocomplete } from '@mui/material';
 
 export const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
@@ -10,8 +11,8 @@ export const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
     color: theme.palette.primary.main
   },
   '& .MuiChip-root': {
-    backgroundColor: '#F7E2DC',
-    color: theme.palette.common.white,
+    backgroundColor: alpha(theme.palette.primary.main, 0.12),
+    color: theme.palette.primary.main,
     '& .MuiChip-deleteIcon': {
       color: theme.palette.primary.main,
 
