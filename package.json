@@ -47,7 +47,7 @@
     "build-storybook": "storybook build",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "pnpm build && npm publish --access public && changeset tag",
+    "release": "pnpm build && npm publish --access public",
     "prepare": "husky",
     "typecheck": "tsc --noEmit"
   },

@@ -1,15 +1,4 @@
 #!/bin/bash
 
-echo " Validando commit..."
-
-pending=$(find .changeset -maxdepth 1 -name '*.md' ! -name 'README.md')
-
-if [ -z "$pending" ]; then
-    echo "🚨 Error: Você precisa executar o comando 'changeset' antes de fazer commit."
-    exit 1
-fi
-
 pnpm lint
 pnpm typecheck
-
-echo "✅ Validação concluída com sucesso!"
