@@ -5,6 +5,14 @@
   "license": "MIT",
   "author": "Synthra",
   "description": "A framework for building UI components with React and Material-UI",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fabinschulz/synthra-components-library.git"
+  },
+  "homepage": "https://github.com/Fabinschulz/synthra-components-library#readme",
+  "bugs": {
+    "url": "https://github.com/Fabinschulz/synthra-components-library/issues"
+  },
   "packageManager": "pnpm@9.12.2",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -39,7 +47,7 @@
     "build-storybook": "storybook build",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "pnpm build && changeset publish",
+    "release": "pnpm build && npm publish --access public && changeset tag",
     "prepare": "husky",
     "typecheck": "tsc --noEmit"
   },
