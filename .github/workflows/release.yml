@@ -37,6 +37,31 @@ jobs:
           publish: pnpm release
           commit: 'chore: version packages'
           title: 'chore: version packages'
+          createGithubReleases: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
+
+      - name: Tag and GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          NAME=$(node -p "require('./package.json').name")
+          VERSION=$(node -p "require('./package.json').version")
+          TAG="$NAME@$VERSION"
+
+          if git ls-remote --exit-code --tags origin "refs/tags/$TAG" > /dev/null; then
+            echo "$TAG já existe"
+            exit 0
+          fi
+
+          if ! npm view "$TAG" version > /dev/null 2>&1; then
+            echo "$TAG ainda não foi publicado"
+            exit 0
+          fi
+
+          awk -v v="$VERSION" '$0=="## "v{f=1;next} /^## /{if(f)exit} f' CHANGELOG.md > release-notes.md
+
+          git tag "$TAG"
+          git push origin "$TAG"
+          gh release create "$TAG" --title "$TAG" --notes-file release-notes.md --verify-tag
