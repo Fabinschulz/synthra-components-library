@@ -9,30 +9,16 @@ export const MuiDataGrid: DataGridComponents<Theme>['MuiDataGrid'] = {
       border: 'none',
       '& .MuiDataGrid-columnHeaders': {
         color: theme.palette.neutral.darkest,
-        ...theme.typography.body2,
-        lineHeight: '19px',
-        minHeight: 'auto!important'
+        ...theme.typography.body2
       },
       '& .MuiDataGrid-virtualScrollerRenderZone': {
-        marginTop: '24px',
         '& .MuiDataGrid-row': {
           '&:nth-child(2n)': { backgroundColor: alpha(theme.palette.neutral.light, 0.07) }
         }
       },
-      '& .MuiDataGrid-iconButtonContainer': {
-        visibility: 'visible!important',
-        width: 'auto!important',
-        marginRight: '5px'
-      },
       '& .MuiDataGrid-sortIcon': {
-        opacity: '1!important',
-        fontSize: '25px!important',
+        fontSize: '18px',
         color: theme.palette.neutral.darkest
-      },
-      '& .MuiDataGrid-columnHeaderTitleContainer': {
-        flexDirection: 'row-reverse',
-        justifyContent: 'flex-end',
-        marginLeft: '-10px'
       }
     }),
     row: ({ theme }) => ({
@@ -49,19 +35,18 @@ export const MuiDataGrid: DataGridComponents<Theme>['MuiDataGrid'] = {
       display: 'none'
     },
     columnHeaders: ({ theme }) => ({
-      borderColor: alpha(theme.palette.neutral.light, 0.4),
-      marginBottom: '24px'
+      borderColor: alpha(theme.palette.neutral.light, 0.4)
     }),
     columnHeader: {
-      padding: '0px 24px'
+      padding: '0 16px'
     },
     columnHeaderCheckbox: {
       padding: 0
     },
     cell: ({ theme }) => ({
       ...theme.typography.caption,
-      lineHeight: '14px',
-      padding: '0px 24px',
+      lineHeight: 'calc(var(--height) - 1px)',
+      padding: '0 16px',
       border: 'none'
     }),
     footerContainer: ({ theme }) => ({
