@@ -6,7 +6,7 @@ export const ApproveIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 25 24" width="25" height="24" fill="none" {...props}>
       <path
         d="M5.52688 7.55556H3.26344C2.01338 7.55556 1 8.55048 1 9.77778V19.7778C1 21.0051 2.01338 22 3.26344 22H5.52688C6.77694 22 7.79032 21.0051 7.79032 19.7778V9.77778C7.79032 8.55048 6.77694 7.55556 5.52688 7.55556Z"
         stroke={htmlColor}
@@ -25,11 +25,4 @@ export const ApproveIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-ApproveIcon.defaultProps = {
-  viewBox: '0 0 25 24',
-  width: '25',
-  height: '24',
-  fill: 'none'
 };

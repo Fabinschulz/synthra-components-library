@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid2, Skeleton } from '@mui/material';
+import { Grid, Skeleton } from '@mui/material';
 
 type BreadcrumbSkeletonProps = {
   isLoading: boolean;
@@ -14,19 +14,19 @@ export const BreadcrumbSkeleton: React.FC<BreadcrumbSkeletonProps> = ({ isLoadin
   };
 
   return (
-    <Grid2 container spacing={1}>
+    <Grid container spacing={1}>
       {[...Array(3)].map((_, index) => (
         <React.Fragment key={index}>
-          <Grid2>
+          <Grid>
             <Skeleton variant="text" width={100} height={16} animation="wave" sx={borderSx} />
-          </Grid2>
+          </Grid>
           {index < 2 && (
-            <Grid2>
+            <Grid>
               <Skeleton variant="text" width={16} height={16} animation="wave" sx={borderSx} />
-            </Grid2>
+            </Grid>
           )}
         </React.Fragment>
       ))}
-    </Grid2>
+    </Grid>
   );
 };

@@ -5,7 +5,7 @@ import { SvgIcon } from '@mui/material';
 export const EditIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 23 23" width="23" height="23" fill="none" {...props}>
       <path
         d="M11.5 6.25L16.75 11.5"
         stroke={htmlColor}
@@ -24,11 +24,4 @@ export const EditIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-EditIcon.defaultProps = {
-  viewBox: '0 0 23 23',
-  width: '23',
-  height: '23',
-  fill: 'none'
 };

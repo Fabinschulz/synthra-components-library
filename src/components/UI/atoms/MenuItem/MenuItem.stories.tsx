@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { ComponentProps } from 'react';
+import { MenuList } from '@mui/material';
 import MenuItem from './MenuItem.component';
 
 type StoryProps = ComponentProps<typeof MenuItem>;
@@ -8,6 +9,13 @@ const meta: Meta<StoryProps> = {
   title: 'UI/atoms/MenuItem',
   component: MenuItem,
   tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <MenuList>
+        <Story />
+      </MenuList>
+    )
+  ],
   parameters: {
     design: {
       type: 'figma',

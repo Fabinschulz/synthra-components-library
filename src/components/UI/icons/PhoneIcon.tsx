@@ -6,7 +6,7 @@ export const PhoneIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <rect
         x="4"
         y="1"
@@ -21,11 +21,4 @@ export const PhoneIcon: FunctionComponent<SvgIconProps> = (props) => {
       <path d="M11 20H13" stroke={htmlColor} strokeWidth="2" strokeLinecap="round" />
     </SvgIcon>
   );
-};
-
-PhoneIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  width: '24',
-  height: '24',
-  fill: 'none'
 };

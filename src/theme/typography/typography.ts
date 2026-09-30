@@ -1,5 +1,5 @@
 import type { ThemeOptions } from '@mui/material/styles';
-import { TypographyStyleOptions } from '@mui/material/styles/createTypography';
+import { TypographyStyle as TypographyStyleOptions } from '@mui/material/styles';
 import { fontSizes } from '../tokens/font-sizes';
 import { fontWeights } from '../tokens/font-weights';
 import { fonts } from '../tokens/fonts';

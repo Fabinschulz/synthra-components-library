@@ -39,6 +39,18 @@ const TitleMenu = ({ title, open }: TitleMenuProps) => {
   );
 };
 
+const CustomIconButton = styled(IconButton)({
+  position: 'absolute',
+  right: '-15px',
+  padding: 0,
+  '&:hover': {
+    backgroundColor: 'transparent'
+  },
+  '&:active': {
+    backgroundColor: 'transparent'
+  }
+});
+
 const Menu: FunctionComponent<MenuProps> = ({
   items,
   logoIcon,
@@ -76,18 +88,6 @@ const Menu: FunctionComponent<MenuProps> = ({
     width: '20px',
     height: '20px'
   };
-
-  const CustomIconButton = styled(IconButton)({
-    position: 'absolute',
-    right: '-15px',
-    padding: 0,
-    '&:hover': {
-      backgroundColor: 'transparent'
-    },
-    '&:active': {
-      backgroundColor: 'transparent'
-    }
-  });
 
   return (
     <Box ref={wrapperRef} sx={{ display: 'flex', position: 'relative' }}>
@@ -164,7 +164,7 @@ const Menu: FunctionComponent<MenuProps> = ({
             </StyledListItemButton>
           )}
           {avatarTitle && (
-            <Stack alignItems={open ? 'flex-start' : 'center'} sx={{ mt: 2 }}>
+            <Stack sx={{ alignItems: open ? 'flex-start' : 'center', mt: 2 }}>
               <Avatar title={avatarTitle} subtitle={avatarSubtitle} showText={open} />
             </Stack>
           )}

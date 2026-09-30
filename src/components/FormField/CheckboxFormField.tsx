@@ -34,13 +34,13 @@ const CheckboxFormField: FunctionComponent<CheckboxFormFieldProps> = ({ label, .
         label={label}
         onChange={onChange}
         checked={value === true}
-        inputProps={{
-          'aria-label': 'secondary checkbox'
+        slotProps={{
+          input: { 'aria-label': 'secondary checkbox' }
         }}
         {...props}
       />
       {!!errorsMessage && (
-        <Typography mt={0.5} variant="body1" color={theme.palette?.error?.dark}>
+        <Typography sx={{ mt: 0.5 }} variant="body1" color={theme.palette?.error?.dark}>
           {errorsMessage}
         </Typography>
       )}

@@ -6,7 +6,7 @@ export const SeverityInfoIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 56 56" width="26" height="26" {...props}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="56"
@@ -34,10 +34,4 @@ export const SeverityInfoIcon: FunctionComponent<SvgIconProps> = (props) => {
       </svg>
     </SvgIcon>
   );
-};
-
-SeverityInfoIcon.defaultProps = {
-  viewBox: '0 0 56 56',
-  width: '26',
-  height: '26'
 };

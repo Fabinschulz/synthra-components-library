@@ -1,9 +1,14 @@
-import type { Preview } from '@storybook/react';
-import { withThemeProvider } from 'storybook-addon-theme-provider';
+import type { Preview } from '@storybook/nextjs';
 import { ThemeContext } from '../src/theme/ThemeContext';
 
 const preview: Preview = {
-  decorators: [withThemeProvider(ThemeContext)],
+  decorators: [
+    (Story) => (
+      <ThemeContext>
+        <Story />
+      </ThemeContext>
+    )
+  ],
   parameters: {
     controls: {
       matchers: {

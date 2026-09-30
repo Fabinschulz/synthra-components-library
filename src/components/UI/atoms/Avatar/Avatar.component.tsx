@@ -50,7 +50,7 @@ const Avatar: React.FC<AvatarProps> = ({
 }) => {
   return (
     <AvatarSkeleton isLoading={isLoading} showText={showText}>
-      <Box display="flex" alignItems="center">
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <AvatarMui
           src={imageSrc}
           alt={altText}
@@ -58,7 +58,7 @@ const Avatar: React.FC<AvatarProps> = ({
           sx={{ ...sx, ...(imageSrc ? {} : stringAvatar(title).sx) }}
         />
         {showText && (
-          <Box ml={2}>
+          <Box sx={{ ml: 2 }}>
             <Typography variant="subtitle2">{title}</Typography>
             {subtitle && (
               <Typography variant="body2" color="textSecondary">

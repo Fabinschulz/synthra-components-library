@@ -6,7 +6,7 @@ export const MailDelayIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <path
         d="M6.80273 12.2893L9.00273 13.9393C10.0694 14.7393 11.5361 14.7393 12.6027 13.9393L14.8027 12.2893M12.4876 7.28931H5.80273C4.14588 7.28931 2.80273 8.63245 2.80273 10.2893V18.2893C2.80273 19.9462 4.14588 21.2893 5.80273 21.2893H15.8027C17.4596 21.2893 18.8027 19.9462 18.8027 18.2893V10.2893C18.8027 10.0495 18.8027 9.85516 18.8027 9.85516"
         stroke={htmlColor}
@@ -21,11 +21,4 @@ export const MailDelayIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-MailDelayIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  width: '24',
-  height: '24',
-  fill: 'none'
 };

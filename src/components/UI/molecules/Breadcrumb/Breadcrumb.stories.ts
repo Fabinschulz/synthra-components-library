@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { ComponentProps } from 'react';
 import Breadcrumb from './Breadcrumb.component';
 import { breadcrumbMock, breadcrumbWithSkeleton } from './Breadcrumb.mock';

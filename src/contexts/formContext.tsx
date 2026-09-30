@@ -65,7 +65,7 @@ const FormContext = createContext<FormContextProps>({
 });
 
 interface FormProviderProps {
-  children: JSX.Element;
+  children: React.JSX.Element;
   validationSchema: any;
   defaultValues: any;
   onSubmit: (values: any) => void;
@@ -177,12 +177,12 @@ export const FormProvider = ({
 
 interface ChangeFieldHandlersProps {
   handlers: ChangeFieldDelegate[] | undefined;
-  children: JSX.Element;
+  children: React.JSX.Element;
 }
 
-const ChangeFieldHandlers = ({ handlers, children }: ChangeFieldHandlersProps): JSX.Element => {
+const ChangeFieldHandlers = ({ handlers, children }: ChangeFieldHandlersProps): React.JSX.Element => {
   const isEmpty = handlers === undefined || handlers.length === 0;
-  let currentElement: JSX.Element = children;
+  let currentElement: React.JSX.Element = children;
   if (isEmpty) return currentElement;
 
   for (let i = 0; i < handlers.length; i++) {
@@ -196,10 +196,10 @@ const ChangeFieldHandlers = ({ handlers, children }: ChangeFieldHandlersProps): 
 
 interface ChangeFieldHandlerProps {
   handler: ChangeFieldDelegate;
-  children: JSX.Element;
+  children: React.JSX.Element;
 }
 
-const ChangeFieldHandler = ({ handler, children }: ChangeFieldHandlerProps): JSX.Element => {
+const ChangeFieldHandler = ({ handler, children }: ChangeFieldHandlerProps): React.JSX.Element => {
   const { watch, setValue, dirtyFields } = useFormContext();
   const handlerFieldName = handler.fieldName;
   const currentValue = watch(handlerFieldName);

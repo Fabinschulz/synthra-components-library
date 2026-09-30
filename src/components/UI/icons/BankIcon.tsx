@@ -6,7 +6,7 @@ export const BankIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 25 24" width="25" height="24" fill="none" {...props}>
       <path
         d="M3.08457 10L21.9154 10C22.9865 10 23.4072 8.64858 22.5159 8.07059L13.701 2.35375C12.9737 1.88208 12.0263 1.88208 11.299 2.35375L2.48407 8.07059C1.59285 8.64858 2.01346 10 3.08457 10Z"
         stroke={htmlColor}
@@ -23,11 +23,4 @@ export const BankIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-BankIcon.defaultProps = {
-  viewBox: '0 0 25 24',
-  width: '25',
-  height: '24',
-  fill: 'none'
 };

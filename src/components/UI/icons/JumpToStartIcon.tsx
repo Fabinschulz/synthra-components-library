@@ -6,7 +6,7 @@ export const JumpToStartIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#000000' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 32 32" width="32" height="32" fill="none" {...props}>
       <path
         d="M20.825 11L22 12.175L18.1833 16L22 19.825L20.825 21L15.825 16L20.825 11Z"
         fill={htmlColor}
@@ -21,11 +21,4 @@ export const JumpToStartIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-JumpToStartIcon.defaultProps = {
-  viewBox: '0 0 32 32',
-  width: '32',
-  height: '32',
-  fill: 'none'
 };

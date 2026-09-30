@@ -44,7 +44,7 @@ const CodeField: React.FC<CodeFieldProps> = ({ name, toggle, fields = 6 }) => {
   };
 
   return (
-    <Stack justifyContent="center">
+    <Stack sx={{ justifyContent: 'center' }}>
       <FieldCode handleChange={onChangeField} props={dinamicProps} fields={fields} />
       {!!error && (
         <Typography variant="body1" color={theme.palette?.error?.dark}>

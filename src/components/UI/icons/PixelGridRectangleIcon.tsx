@@ -6,7 +6,7 @@ export const PixelGridRectangleIcon: FunctionComponent<SvgIconProps> = (props) =
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 29 25" width="29" height="25" fill="none" {...props}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -23,11 +23,4 @@ export const PixelGridRectangleIcon: FunctionComponent<SvgIconProps> = (props) =
       </svg>
     </SvgIcon>
   );
-};
-
-PixelGridRectangleIcon.defaultProps = {
-  viewBox: '0 0 29 25',
-  width: '29',
-  height: '25',
-  fill: 'none'
 };

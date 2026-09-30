@@ -1,6 +1,6 @@
 import { AutocompleteProps } from './Autocomplete.component';
 import { AutocompleteBaseProps } from './Autocomplete.interface';
-import { fn } from '@storybook/test';
+import { fn } from 'storybook/test';
 
 export const autocompletMock: AutocompleteProps = {
   name: 'autocomplete',

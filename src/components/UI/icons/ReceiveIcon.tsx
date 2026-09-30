@@ -6,7 +6,7 @@ export const ReceiveIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 26" width="24" height="26" fill="none" {...props}>
       <rect
         x="1"
         y="9"
@@ -51,11 +51,4 @@ export const ReceiveIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-ReceiveIcon.defaultProps = {
-  viewBox: '0 0 24 26',
-  width: '24',
-  height: '26',
-  fill: 'none'
 };

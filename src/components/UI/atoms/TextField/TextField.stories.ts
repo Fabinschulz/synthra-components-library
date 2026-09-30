@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { ComponentProps } from 'react';
 import TextField from './TextField.component';
 
@@ -35,13 +35,9 @@ const meta: Meta<StoryProps> = {
       control: 'text',
       description: 'Texto do placeholder'
     },
-    InputProps: {
+    slotProps: {
       control: 'object',
-      description: 'Propriedades do input'
-    },
-    InputLabelProps: {
-      control: 'object',
-      description: 'Propriedades do label'
+      description: 'Propriedades dos slots (input, inputLabel, htmlInput...)'
     },
     dataTestId: {
       control: 'text',

@@ -6,7 +6,7 @@ export const MailBlockIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <circle cx="18" cy="6" r="4" stroke={htmlColor} strokeWidth="2" fill="none" />
       <path d="M15 3L21 9" stroke={htmlColor} strokeWidth="2" fill="none" />
       <path
@@ -25,11 +25,4 @@ export const MailBlockIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-MailBlockIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  width: '24',
-  height: '24',
-  fill: 'none'
 };

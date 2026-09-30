@@ -6,7 +6,7 @@ export const USBIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" fill="none" height="24px" width="24px" {...props}>
       <path
         d="M10.2 3.4L11.2 2.06667C11.6 1.53333 12.4 1.53333 12.8 2.06667L13.8 3.4C14.2944 4.05924 13.824 5 13 5H11C10.176 5 9.70557 4.05924 10.2 3.4Z"
         fill={htmlColor}
@@ -46,11 +46,4 @@ export const USBIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-USBIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  height: '24px',
-  width: '24px'
 };

@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { ComponentProps } from 'react';
+import { Tabs } from '@mui/material';
 import TabItem from './TabItem.component';
 
 type StoryProps = ComponentProps<typeof TabItem>;
@@ -8,6 +9,13 @@ const meta: Meta<StoryProps> = {
   title: 'UI/atoms/TabItem',
   component: TabItem,
   tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <Tabs value={0}>
+        <Story />
+      </Tabs>
+    )
+  ],
   parameters: {
     design: {
       type: 'figma',

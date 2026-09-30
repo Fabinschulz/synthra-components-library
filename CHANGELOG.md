@@ -1,5 +1,23 @@
 # @synthra.io/ui-kit
 
+## 0.4.0
+
+### Minor Changes
+
+- chore: atualiza dependências para as versões mais recentes (React 19, MUI 9, MUI X Data Grid 9, Next 16, Storybook 10, TypeScript 6, ESLint 9)
+
+  **Breaking changes**
+
+  - Requer `@mui/material` 9 e `@mui/x-data-grid` 9 no projeto consumidor.
+  - System props do MUI (`mt`, `mb`, `fontWeight`, `lineHeight`, `textAlign`, `display`, etc.) não são mais suportadas nos componentes repassados ao MUI; use `sx`. O `Typography` do kit continua aceitando `fontFamily` e `fontWeight`.
+  - `TextField`: use `slotProps` no lugar de `InputProps`/`InputLabelProps`.
+  - `DataTable`: `rowSelectionModel` agora segue o formato do MUI X 9 (`{ type: 'include', ids: Set }`).
+  - `TabItem` deve ser usado dentro de `Tabs`/`TabBar` e `MenuItem` dentro de `Menu`/`MenuList`.
+
+  **Correções**
+
+  - Ícones voltam a aplicar `viewBox`, `width`, `height` e `fill` padrão no React 19 (`defaultProps` foi removido para componentes função).
+
 ## 0.3.7
 
 ### Patch Changes

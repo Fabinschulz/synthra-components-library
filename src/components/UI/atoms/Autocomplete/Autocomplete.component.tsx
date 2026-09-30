@@ -79,16 +79,19 @@ const Autocomplete: FunctionComponent<AutocompleteProps> = (props) => {
             required={required}
             name={`autocomplete-${name}`}
             label={label}
-            InputProps={{
-              ...params.InputProps,
-              endAdornment: (
-                <>
-                  {loading ? <CircularProgress color="inherit" size={20} /> : null}
-                  {params.InputProps.endAdornment}
-                  <EndAdornmen link={link} endIconType={endIconType} />
-                </>
-              ),
-              onChange: onChangeTextField
+            slotProps={{
+              ...params.slotProps,
+              input: {
+                ...params.slotProps.input,
+                endAdornment: (
+                  <>
+                    {loading ? <CircularProgress color="inherit" size={20} /> : null}
+                    {params.slotProps.input.endAdornment}
+                    <EndAdornmen link={link} endIconType={endIconType} />
+                  </>
+                ),
+                onChange: onChangeTextField
+              }
             }}
           />
         )}
@@ -102,20 +105,20 @@ export default Autocomplete;
 const renderOption = (props: object, option: any) => {
   const { label } = option;
   return (
-    <Typography {...props} variant="subtitle1" fontFamily={'Lato, sans-serif'}>
+    <Typography {...props} variant="subtitle1" sx={{ fontFamily: 'Lato, sans-serif' }}>
       {label}
     </Typography>
   );
 };
 
-const EndAdornmen = ({ link = '', endIconType }: EndAdornmenProps) => {
-  const Search = () => (
-    <SearchIcon
-      htmlColor={theme.palette.primary.main}
-      style={{ display: 'inline-block', width: 21, height: 21 }}
-    />
-  );
+const Search = () => (
+  <SearchIcon
+    htmlColor={theme.palette.primary.main}
+    style={{ display: 'inline-block', width: 21, height: 21 }}
+  />
+);
 
+const EndAdornmen = ({ link = '', endIconType }: EndAdornmenProps) => {
   return (
     <InputAdornment position="end" sx={{ pr: 0.5, justifyContent: 'center', mt: 0.2 }}>
       {endIconType === 'link' && (

@@ -29,7 +29,7 @@ export default function AutocompleteField(props: AutocompleteFieldProps) {
         onChange={onChange}
       />
       {!!errorsMessage && (
-        <Typography mt={0.5} variant="body1" color={theme.palette?.error?.dark}>
+        <Typography sx={{ mt: 0.5 }} variant="body1" color={theme.palette?.error?.dark}>
           {errorsMessage}
         </Typography>
       )}

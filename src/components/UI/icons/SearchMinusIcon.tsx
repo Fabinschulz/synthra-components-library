@@ -6,7 +6,7 @@ export const SearchMinusIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 22 24" width="22" height="24" {...props}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -24,10 +24,4 @@ export const SearchMinusIcon: FunctionComponent<SvgIconProps> = (props) => {
       </svg>
     </SvgIcon>
   );
-};
-
-SearchMinusIcon.defaultProps = {
-  viewBox: '0 0 22 24',
-  width: '22',
-  height: '24'
 };

@@ -1,9 +1,9 @@
 import { IconButton, Tooltip } from '@mui/material';
 import { SxProps, Theme } from '@mui/material/styles';
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 
 interface JumpButtonProps {
-  icon: JSX.Element;
+  icon: React.JSX.Element;
   onClick: () => void;
   disabled: boolean;
   tooltip: string;

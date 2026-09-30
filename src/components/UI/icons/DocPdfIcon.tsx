@@ -6,7 +6,7 @@ export const DocPdfIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <path
         d="M13.1111 1V5.4C13.1111 7.83005 15.101 9.8 17.5556 9.8L22 9.8M2 5.4L2 18.6C2 21.0301 3.98985 23 6.44445 23H17.5556C20.0102 23 22 21.0301 22 18.6V11.6225C22 10.4556 21.5317 9.33643 20.6983 8.51127L14.4129 2.28873C13.5794 1.46357 12.4489 1 11.2702 1L6.44444 1C3.98985 1 2 2.96995 2 5.4Z"
         stroke={htmlColor}
@@ -31,11 +31,4 @@ export const DocPdfIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-DocPdfIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  width: '24',
-  height: '24',
-  fill: 'none'
 };

@@ -53,7 +53,7 @@ const SelectField: FunctionComponent<SelectFieldProps> = (props) => {
                 <Checkbox size="small" label={item} checked={arrayValue.indexOf(item) > -1} />
               </Box>
             ) : (
-              <Typography variant="body1" fontWeight={500} color={theme?.neutral?.dark}>
+              <Typography variant="body1" sx={{ fontWeight: 500 }} color={theme?.neutral?.dark}>
                 {item}
               </Typography>
             )}

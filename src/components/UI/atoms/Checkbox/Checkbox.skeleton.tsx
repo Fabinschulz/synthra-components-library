@@ -10,7 +10,7 @@ const CheckboxSkeleton: React.FC<CheckboxSkeletonProps> = ({ isLoading, children
   if (!isLoading) return <>{children}</>;
 
   return (
-    <Box display="flex" alignItems="center">
+    <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Skeleton
         variant="rectangular"
         animation="wave"

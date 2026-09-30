@@ -6,7 +6,7 @@ export const UserRejectIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737', fill = 'none' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" width="24" height="24" fill="none" {...props}>
       <ellipse
         cx="10"
         cy="17.5"
@@ -34,11 +34,4 @@ export const UserRejectIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-UserRejectIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  width: '24',
-  height: '24',
-  fill: 'none'
 };

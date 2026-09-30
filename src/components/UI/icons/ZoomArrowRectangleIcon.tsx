@@ -6,7 +6,7 @@ export const ZoomArrowRectangleIcon: FunctionComponent<SvgIconProps> = (props) =
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 25" width="24" height="25" fill="none" {...props}>
       <svg
         width="24"
         height="24"
@@ -31,11 +31,4 @@ export const ZoomArrowRectangleIcon: FunctionComponent<SvgIconProps> = (props) =
       </svg>
     </SvgIcon>
   );
-};
-
-ZoomArrowRectangleIcon.defaultProps = {
-  viewBox: '0 0 24 25',
-  width: '24',
-  height: '25',
-  fill: 'none'
 };

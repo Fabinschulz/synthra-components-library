@@ -1,6 +1,6 @@
 import type { DataGridComponents } from '@mui/x-data-grid/themeAugmentation';
 import { Palette } from '@mui/material/styles';
-import { Typography } from '@mui/material/styles/createTypography';
+import { TypographyVariants as Typography } from '@mui/material/styles';
 import { palette as paletteOptions } from '../palette/light';
 import { typography as typographyOptions } from '../typography';
 

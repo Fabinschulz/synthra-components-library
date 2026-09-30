@@ -6,7 +6,7 @@ export const NoNetworkIcon: FunctionComponent<SvgIconProps> = (props) => {
   const { htmlColor = '#373737' } = props;
 
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 24 24" fill="none" height="24px" width="24px" {...props}>
       <circle cx="12.4451" cy="19" r="1" fill={htmlColor} />
       <path d="M3 3L21 21" stroke={htmlColor} strokeWidth="2" strokeLinecap="round" fill="none" />
       <path
@@ -18,11 +18,4 @@ export const NoNetworkIcon: FunctionComponent<SvgIconProps> = (props) => {
       />
     </SvgIcon>
   );
-};
-
-NoNetworkIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  height: '24px',
-  width: '24px'
 };

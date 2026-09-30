@@ -4,7 +4,7 @@ import { SvgIcon } from '@mui/material';
 
 export const SeverityWarningIcon: FunctionComponent<SvgIconProps> = (props) => {
   return (
-    <SvgIcon {...props}>
+    <SvgIcon viewBox="0 0 56 56" width="26" height="26" {...props}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="56"
@@ -24,10 +24,4 @@ export const SeverityWarningIcon: FunctionComponent<SvgIconProps> = (props) => {
       </svg>
     </SvgIcon>
   );
-};
-
-SeverityWarningIcon.defaultProps = {
-  viewBox: '0 0 56 56',
-  width: '26',
-  height: '26'
 };
