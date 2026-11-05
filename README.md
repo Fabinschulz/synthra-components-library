@@ -1,4 +1,4 @@
-# Synthra UI Kit
+# Mariliz UI Kit
 
 ![Componente React](./src/assets/react-component-libraries.webp)
 
@@ -9,7 +9,7 @@ Biblioteca de componentes React construída sobre o [MUI](https://mui.com), com 
 A biblioteca usa as mesmas instâncias de React, MUI e Emotion da sua aplicação, então elas são instaladas como dependências do projeto:
 
 ```bash
-pnpm add @synthra.io/ui-kit @mui/material @mui/x-data-grid @emotion/react @emotion/styled react-hook-form
+pnpm add @mariliz/ui-kit @mui/material @mui/x-data-grid @emotion/react @emotion/styled react-hook-form
 ```
 
 A tipografia usa a fonte **Lato**, que precisa ser carregada pela aplicação (Google Fonts, `next/font`, `@fontsource/lato`…).
@@ -19,7 +19,7 @@ A tipografia usa a fonte **Lato**, que precisa ser carregada pela aplicação (G
 Envolva a aplicação com o `Provider`:
 
 ```tsx
-import { Provider, Button } from '@synthra.io/ui-kit';
+import { Provider, Button } from '@mariliz/ui-kit';
 
 export function App() {
   return (
@@ -36,18 +36,18 @@ O `Provider` aplica o tema e o `CssBaseline` do MUI. Se a aplicação já tiver 
 
 ### Next.js (App Router)
 
-Use o entry `@synthra.io/ui-kit/next`. Ele coleta os estilos no SSR e configura o `next/link` como componente de navegação de `Link`, `Button`, `Tab`, `ListItemButton` etc.
+Use o entry `@mariliz/ui-kit/next`. Ele coleta os estilos no SSR e configura o `next/link` como componente de navegação de `Link`, `Button`, `Tab`, `ListItemButton` etc.
 
 ```tsx
 // app/layout.tsx
-import { GlobalLayoutContainer } from '@synthra.io/ui-kit/next';
+import { GlobalLayoutContainer } from '@mariliz/ui-kit/next';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return <GlobalLayoutContainer>{children}</GlobalLayoutContainer>;
 }
 ```
 
-Se o layout já renderiza `<html>` e `<body>`, use `<ThemeRegistry>` no lugar do `GlobalLayoutContainer`. Para abas ligadas à rota atual, importe `TabBar` de `@synthra.io/ui-kit/next`.
+Se o layout já renderiza `<html>` e `<body>`, use `<ThemeRegistry>` no lugar do `GlobalLayoutContainer`. Para abas ligadas à rota atual, importe `TabBar` de `@mariliz/ui-kit/next`.
 
 ### Outros roteadores (React Router, TanStack Router…)
 
@@ -55,7 +55,7 @@ Os componentes de navegação aceitam `href` e usam o componente de link configu
 
 ```tsx
 import { Link as RouterLink } from 'react-router-dom';
-import { initializeTheme, Provider } from '@synthra.io/ui-kit';
+import { initializeTheme, Provider } from '@mariliz/ui-kit';
 
 const LinkBehavior = React.forwardRef<HTMLAnchorElement, any>(({ href, ...props }, ref) => (
   <RouterLink ref={ref} to={href} {...props} />
@@ -75,10 +75,10 @@ const theme = initializeTheme({
 
 ## Tema
 
-`initializeTheme` gera o tema com os tokens, a tipografia e os overrides da Synthra:
+`initializeTheme` gera o tema com os tokens, a tipografia e os overrides da Mariliz:
 
 ```tsx
-import { initializeTheme } from '@synthra.io/ui-kit';
+import { initializeTheme } from '@mariliz/ui-kit';
 
 // Modo escuro
 const dark = initializeTheme({ mode: 'dark' });
@@ -100,7 +100,7 @@ Os temas prontos `light` e `dark` também são exportados.
 
 ```tsx
 import { zodResolver } from '@hookform/resolvers/zod';
-import { FormProvider, TextFormField, Button } from '@synthra.io/ui-kit';
+import { FormProvider, TextFormField, Button } from '@mariliz/ui-kit';
 
 <FormProvider resolver={zodResolver(schema)} defaultValues={{ nome: '' }} onSubmit={salvar}>
   <>
@@ -134,7 +134,7 @@ A publicação é feita pelo workflow `.github/workflows/release.yml` ao fazer m
 1. Com changesets pendentes, o workflow abre (ou atualiza) um PR **"chore: version packages"** com a nova versão e o CHANGELOG.
 2. Ao fazer merge desse PR, a nova versão é publicada no npm.
 
-O workflow usa **Trusted Publishing** (OIDC), então não há token do npm armazenado no repositório. Para ativar, configure uma vez no npm: _npmjs.com → pacote `@synthra.io/ui-kit` → Settings → Trusted Publisher → GitHub Actions_, com o repositório e o workflow `release.yml`.
+O workflow usa **Trusted Publishing** (OIDC), então não há token do npm armazenado no repositório. Para ativar, configure uma vez no npm: _npmjs.com → pacote `@mariliz/ui-kit` → Settings → Trusted Publisher → GitHub Actions_, com o repositório e o workflow `release.yml`.
 
 ## Licença
 
