@@ -49,7 +49,7 @@ export interface TabBarProps {
 
   /**
    * Rota atual. Quando informada, a aba ativa é a que tem o `href` correspondente.
-   * No Next.js, use o `TabBar` de `@synthra.io/ui-kit/next`, que injeta a rota automaticamente.
+   * No Next.js, use o `TabBar` de `@mariliz/ui-kit/next`, que injeta a rota automaticamente.
    * @example <TabBar pathname={location.pathname} tabs={...} />
    */
   pathname?: string;
