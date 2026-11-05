@@ -18,6 +18,8 @@ jobs:
       HUSKY: 0
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: pnpm/action-setup@v4
 
@@ -55,13 +57,31 @@ jobs:
             exit 0
           fi
 
-          if ! npm view "$TAG" version > /dev/null 2>&1; then
+          # O registry do npm demora para refletir uma versão recém-publicada.
+          # Espera até 5 minutos antes de concluir que ela não foi publicada.
+          PUBLISHED=0
+          for i in $(seq 1 30); do
+            if npm view "$TAG" version > /dev/null 2>&1; then
+              PUBLISHED=1
+              break
+            fi
+            echo "Aguardando $TAG aparecer no registry ($i/30)..."
+            sleep 10
+          done
+
+          if [ "$PUBLISHED" != "1" ]; then
             echo "$TAG ainda não foi publicado"
             exit 0
           fi
 
           awk -v v="$VERSION" '$0=="## "v{f=1;next} /^## /{if(f)exit} f' CHANGELOG.md > release-notes.md
 
-          git tag "$TAG"
+          # Marca o commit que introduziu esta versão no package.json, e não o HEAD
+          # atual, que pode ser de um push posterior.
+          PATTERN="\"version\": \"$VERSION\""
+          COMMIT=$(git log -1 --format=%H -S"$PATTERN" -- package.json)
+          COMMIT=${COMMIT:-$(git rev-parse HEAD)}
+
+          git tag "$TAG" "$COMMIT"
           git push origin "$TAG"
           gh release create "$TAG" --title "$TAG" --notes-file release-notes.md --verify-tag
