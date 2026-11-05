@@ -1,5 +1,11 @@
 # @mariliz/ui-kit
 
+## 0.6.1
+
+### Patch Changes
+
+- 9b5de0b: docs: adiciona o arquivo `LICENSE` (MIT), que já era declarado no `package.json` mas não estava no repositório nem no pacote publicado
+
 ## 0.6.0
 
 ### Minor Changes
