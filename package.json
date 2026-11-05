@@ -1,17 +1,17 @@
 {
-  "name": "@synthra.io/ui-kit",
+  "name": "@mariliz/ui-kit",
   "version": "0.5.1",
   "private": false,
   "license": "MIT",
-  "author": "Synthra",
-  "description": "A framework for building UI components with React and Material-UI",
+  "author": "Mariliz",
+  "description": "Biblioteca de componentes React construída sobre o MUI, com tema, tokens e componentes prontos para dashboards e sistemas B2B",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Fabinschulz/synthra-components-library.git"
+    "url": "git+https://github.com/Fabinschulz/mariliz-ui-kit.git"
   },
-  "homepage": "https://github.com/Fabinschulz/synthra-components-library#readme",
+  "homepage": "https://github.com/Fabinschulz/mariliz-ui-kit#readme",
   "bugs": {
-    "url": "https://github.com/Fabinschulz/synthra-components-library/issues"
+    "url": "https://github.com/Fabinschulz/mariliz-ui-kit/issues"
   },
   "packageManager": "pnpm@9.12.2",
   "main": "./dist/index.js",

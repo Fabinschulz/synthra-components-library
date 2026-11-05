@@ -1,4 +1,4 @@
-# @synthra.io/ui-kit
+# @mariliz/ui-kit
 
 ## 0.5.1
 

@@ -16,7 +16,7 @@ export interface TabItemProps extends TabProps {
 
   /**
    * Link de navegação. Renderizado com o `LinkComponent` do tema
-   * (ex.: `next/link` via `@synthra.io/ui-kit/next`).
+   * (ex.: `next/link` via `@mariliz/ui-kit/next`).
    * @example <TabItem href="/tab1" />
    */
   href?: string;

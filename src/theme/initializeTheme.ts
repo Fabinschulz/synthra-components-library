@@ -1,4 +1,4 @@
-export type { SynthraPalette } from './palette/augmentation';
+export type { MarilizPalette } from './palette/augmentation';
 import { ptBR } from '@mui/material/locale';
 import type { Theme, ThemeOptions } from '@mui/material/styles';
 import { createTheme } from '@mui/material/styles';

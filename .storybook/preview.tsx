@@ -4,7 +4,7 @@ import { Provider, dark, light } from '../src/theme';
 const preview: Preview = {
   globalTypes: {
     theme: {
-      description: 'Tema Synthra',
+      description: 'Tema Mariliz',
       toolbar: {
         title: 'Tema',
         icon: 'paintbrush',

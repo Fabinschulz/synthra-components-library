@@ -58,4 +58,4 @@ declare module '@mui/material/styles' {
   }
 }
 
-export type SynthraPalette = import('@mui/material/styles').Palette;
+export type MarilizPalette = import('@mui/material/styles').Palette;

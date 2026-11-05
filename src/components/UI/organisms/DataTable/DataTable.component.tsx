@@ -27,7 +27,7 @@ const defaultGetRowId: GridRowIdGetter<any> = (row) => {
   if (row?.id !== undefined && row?.id !== null) return row.id;
   let id = generatedRowIds.get(row);
   if (!id) {
-    id = `synthra-row-${++generatedRowIdCounter}`;
+    id = `mariliz-row-${++generatedRowIdCounter}`;
     generatedRowIds.set(row, id);
   }
   return id;
